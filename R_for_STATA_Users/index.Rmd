@@ -1,0 +1,9 @@
+---
+knit: "bookdown::render_book"
+title: "R for STATA Users"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```

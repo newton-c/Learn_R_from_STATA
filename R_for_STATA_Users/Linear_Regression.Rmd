@@ -1,0 +1,10 @@
+---
+title: "Linear Regression"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Let's start with plain old OLS.  In STATA this is done using the command`reg`. In R, OLS is run using the commend `lm()`. This is part of base-R, which means that there are no packages to install, you just start R and you're ready to go. 
