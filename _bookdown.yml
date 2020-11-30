@@ -1,0 +1,29 @@
+new_session: yes
+delete_merged_file: yes
+
+'''
+Something to consider about the order. It may make sense to go throught the
+steps the way one would in a project (load data, wrangle, merge, summary,
+exploration, model, report). It also may make sence to start with a complete
+project, and then break it down into pieces.
+'''
+rdm_files:
+    [
+    "index.Rmd",
+    
+    "intro.Rnd",
+    "Why_switch_to_R.Rmd",
+    "Dealing_with_dta.Rmd",
+    #Vizualining your data and summary statistics
+    # merging and wrangling
+    # Intro to CS: functions, loops, and ifelse()
+    #Zelig
+    "Linear Regression"
+    # Vizualizing your results
+    # MLE
+    # Survival models
+    # PML and panel models
+    # Clustered standard errors
+    # Tables
+    
+    ]
