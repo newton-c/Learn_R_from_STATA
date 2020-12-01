@@ -21,7 +21,8 @@ case:
 There will also be addition answer and explanations. For example, the
 linear model above can be written differently in R.
 
-    lm(example.data$dep_var ~ example.data$ind_var + example.data$control_var1 + example.data$control_var2)
+    lm(example.data$dep_var ~ example.data$ind_var + 
+        example.data$control_var1 + example.data$control_var2)
 
 These models are exactly the same. They all run OLS regression In R, you
 can either write the variables by themselves and then specifly which
