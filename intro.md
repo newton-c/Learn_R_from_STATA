@@ -32,4 +32,32 @@ them. More on this later.
 
 ## Who is this book for?
 
+This book is for anyone that is already profecient in STATA that would
+like to learn how to conduct statistical analyses in R. It is primarily
+written for researchers, educations, and students in quatitative fields.
+
 ## Who isn’t this book for?
+
+This books assumes that you are already comfortable with STATA and
+statistics. If you don’t already know STATA, this book will not make a
+lot of sense as the underlying concepts will not be explained. If you
+are not already familiar with the math and intuition behind statistical
+models, this book will not be of much use. In fact, there will be no
+pure math covered what so ever. The point of this book is not to explain
+why you should do something statistically, only to show you how to do
+something you’re already familiar with in R.
+
+## Setting up R
+
+There are already a number of great tutorials on how install and setup
+R. As this book is unlikely to provide an even better tutorial, instead
+of taking up space with redundant information, I instead recommend
+checking out one of these tutorials:
+
+<!-- Rethink the formatting here. Are the bold and italics in teh right place? -->
+
+  - [*Hands-On Programming with R*, by Garrett Grolemund, **A Installing
+    R and
+    RStudio**](https://rstudio-education.github.io/hopr/starting.html)
+  - [*R for Data Science*, by Hadley Wickam, **1.4
+    Prerequisites**](https://r4ds.had.co.nz/introduction.html)

@@ -14,6 +14,8 @@ rdm_files:
     "intro.Rnd",
     "Why_switch_to_R.Rmd",
     "Dealing_with_dta.Rmd",
+    "Going_through_a_project_from_start_to_finish.Rmd",
+    # Data types
     #Vizualining your data and summary statistics
     # merging and wrangling
     # Intro to CS: functions, loops, and ifelse()

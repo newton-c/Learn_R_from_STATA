@@ -48,3 +48,5 @@ If you're still having errors at this point, the best option is probable to quit
 
 Or, start practicing th single most important programming skill there is: looking up the answer on the internet.
 When something doesn't run, R prints and error message 
+
+## Other data formats
