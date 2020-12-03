@@ -82,7 +82,7 @@ Now have results, we need to communicate them. Let's start with a nice table. Ty
 ```{r}
 independent.var.names = c(
     'Class2nd' = 'Second Class',
-    'Class3nd' = 'Third Class',
+    'Class3rd' = 'Third Class',
     'ClassCrew' = 'Crew',
     'SexFemale' = 'Sex (Female',
     'AgeAdult' = 'Age (Adult) '
@@ -105,7 +105,7 @@ models = list(
 
 independent.var.names = c(
     'Class2nd' = 'Second Class',
-    'Class3nd' = 'Third Class',
+    'Class3rd' = 'Third Class',
     'ClassCrew' = 'Crew',
     'SexFemale' = 'Sex (Female',
     'AgeAdult' = 'Age (Adult) '

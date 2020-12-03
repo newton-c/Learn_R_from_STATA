@@ -232,7 +232,7 @@ independent.var.names` to `modelsummary()`:
 ``` r
 independent.var.names = c(
     'Class2nd' = 'Second Class',
-    'Class3nd' = 'Third Class',
+    'Class3rd' = 'Third Class',
     'ClassCrew' = 'Crew',
     'SexFemale' = 'Sex (Female',
     'AgeAdult' = 'Age (Adult) '
@@ -288,6 +288,36 @@ Second Class
 <td style="text-align:center;">
 
 (0.196)
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Third Class
+
+</td>
+
+<td style="text-align:center;">
+
+\-1.778\*\*\*
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+</td>
+
+<td style="text-align:center;">
+
+(0.172)
 
 </td>
 
@@ -482,7 +512,7 @@ models = list(
 
 independent.var.names = c(
     'Class2nd' = 'Second Class',
-    'Class3nd' = 'Third Class',
+    'Class3rd' = 'Third Class',
     'ClassCrew' = 'Crew',
     'SexFemale' = 'Sex (Female',
     'AgeAdult' = 'Age (Adult) '
@@ -584,6 +614,64 @@ Second Class
 <td style="text-align:center;">
 
 (0.196)
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Third Class
+
+</td>
+
+<td style="text-align:center;">
+
+\-1.596\*\*\*
+
+</td>
+
+<td style="text-align:center;">
+
+</td>
+
+<td style="text-align:center;">
+
+</td>
+
+<td style="text-align:center;">
+
+\-1.778\*\*\*
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+</td>
+
+<td style="text-align:center;">
+
+(0.144)
+
+</td>
+
+<td style="text-align:center;">
+
+</td>
+
+<td style="text-align:center;">
+
+</td>
+
+<td style="text-align:center;">
+
+(0.172)
 
 </td>
 
