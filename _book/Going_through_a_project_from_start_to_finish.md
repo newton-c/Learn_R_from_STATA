@@ -9,7 +9,8 @@ If a package exists on CRAN, it can be installed by writing
 `install.packages("package.name").` Most packages that you'll want to use will be hosted on CRAN, but occasionally, new packages that are being developed are only on GitHub. If this is the case, the authos will include instructions on how to install the package in the README.md file of the GitHub repository. 
 
 You only have to intall a package once, but you have to call it everytime you open up R. It's the norm to list all of the packages that you'll be using at the very top of you R script. You call a package with the command `library(package.name)`. For this example, were going to use the packages `gt`, `kableExtra`, and `modelsummary` for making regression tables, `dplyr` for data manipulation and pipes (`%>%`) which allow us to string commands together, `tidyr` for datat cleaning and wrangling, and `ggplot2` for making graphs. We can import `dplyr`. `tidyr`, and `ggplot2`,  by calling `tidyverse`^[For more information on the tidyverse and how to use the various packages, see [*R for Data Science*](https://r4ds.had.co.nz/index.html), by Hadley Wickham & Garrett Grolemund.], which automatically loads a collection of packages. So starting out, our script should look like this:
-```{r message = F}
+
+```r
 library(gt)
 library(kableExtra)
 library(modelsummary)
@@ -23,7 +24,8 @@ For this example, we'll use the *Titanic* dataset. This will be obnoxiously fami
 
 For this example, let's convert the table into a data frame. If you simple type `data.frame(Titanic)`, the table will be converted to a data frame, and then printed into the console. We don't want this. We want to store the data fame as an object that we can analyze. In R, you stare and object by first typing an object name of you choosing, followed by the assignment operation (`<-`) and then what you want to be stored in the object. It best to choose descriptive names for objects, so it's easy to remember what they are. Let's use `titanic.data`. The code should hten look like this:
 
-```{r}
+
+```r
 data("Titanic")
 titanic.data <- data.frame(Titanic)
 ```
@@ -37,7 +39,8 @@ As you can see, it's hard to glean any information from this as frequency is alr
 uncount(data, weights, .remote = TRUE, .id = NULL)
 ```
 where `data` is the data frome `weights` is the variable that has the count of rows to duplicate, `.remove` deletes the variable supplied to `weights` (TRUE by defalut) and `.id`  creates a new ID for each row. For our data, let's type:
-```{r message = F}
+
+```r
 titanic.expanded <- uncount(titanic.data, Freq)
 ```
 Now let's explore our expanded data. We already used `view()` to look at the full dataset, but with 2201 observations, it can be hard to tell much about what going on. Instead, we're going to generate summary statistics with `summary(titanic.expanded)`. This shows of the level of each variable, the number of ovservations at the level, and, implicitly, that there are no missing values. If there were missing values, the last row of each variable would read `NA's:` followed by the number of rows for which that variable didn't have a value. 
@@ -46,36 +49,82 @@ Now were have a data frame that we can analyze, we no longer need the original d
 
 ## Visualization
 Let's look at our data using some plots. First, we're going to check the distribution of our variables. Given that all of our variables are factors, a histogram it the was to go. Using `ggplot2`, we can do this:
-```{r}
+
+```r
 ggplot() +
     geom_histogram(data = titanic.expanded, 
         aes(x = Class), stat = 'count') +
     theme_bw()
 ```
+
+```
+## Warning: Ignoring unknown parameters: binwidth, bins, pad
+```
+
+![](Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-chunk-4-1.pdf)<!-- --> 
 The above calls a plot (`ggplot()`) and then says that we're going to make a histogram (`geom_histogram()`). We're going to use the `titanic.expanded` data, and we're want to see the variable `Class`. `aes()` is responsible for creating the mapping, in other words, with the variables that are being plotting. We include `stat = 'count'` as we're looking at the frequenqy of each level of the variable `Class`. Finally, `theme_bw()` styles the graph. This part is optional, and there are plent of other themes you can choose from,in including custom themes that you can make yourself. `ggplot2` uses the [*grammar of graphics*](http://vita.had.co.nz/papers/layered-grammar.pdf) which layers different aspects of a vizualiztion on top of each other. Each layer is connected with a `+`. While you could keep everything on one line and the code will still run, it is best to end each line with a `+` and the start on the next line with an indent. This keeps the code organized and easy to read. 
 
 Now say you also wanted to see how may within each class were chilren and how many were adults. This could be done by changing the `fill`. 
-```{r}
+
+```r
 ggplot() +
     geom_histogram(data = titanic.expanded, 
         aes(x = Class, fill = Age), stat = 'count') +
     theme_bw()
 ```
 
+```
+## Warning: Ignoring unknown parameters: binwidth, bins, pad
+```
+
+![](Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-chunk-5-1.pdf)<!-- --> 
+
 ## Modeling
 We're going to build a model to predict whether or not someone would survive bacsed on the variables we have. `Survived` is a binary variable, so we'll estimate a logit model. 
 
-```{r}
+
+```r
 titanic.logit <- glm(Survived ~ Class + Sex + Age, 
     data = titanic.expanded, family = 'binomial')
 summary(titanic.logit)
+```
+
+```
+## 
+## Call:
+## glm(formula = Survived ~ Class + Sex + Age, family = "binomial", 
+##     data = titanic.expanded)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -2.0812  -0.7149  -0.6656   0.6858   2.1278  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)   0.6853     0.2730   2.510   0.0121 *  
+## Class2nd     -1.0181     0.1960  -5.194 2.05e-07 ***
+## Class3rd     -1.7778     0.1716 -10.362  < 2e-16 ***
+## ClassCrew    -0.8577     0.1573  -5.451 5.00e-08 ***
+## SexFemale     2.4201     0.1404  17.236  < 2e-16 ***
+## AgeAdult     -1.0615     0.2440  -4.350 1.36e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 2769.5  on 2200  degrees of freedom
+## Residual deviance: 2210.1  on 2195  degrees of freedom
+## AIC: 2222.1
+## 
+## Number of Fisher Scoring iterations: 4
 ```
 Unpacking the above command, `glm()` calls a generalized linear model, with `Survived` as the dependent variable, `Class`, `Sex`, and `Age`, as inependent variables, using the `titanic.expanded` data frame. `family = 'binomial'` declares that the model is a logit, and we save this as an object called `titanic.logit`. The `summary()` command gives us the statistical information we're want to know about the model.
 
 ## Reporting
 Now have results, we need to communicate them. Let's start with a nice table. Typing `modelsummary(titanic.logit, stars = TRUE)` gives us a basic table, but the variable names aren't formated nicely. We can change this by creating an object with new names, and adding `coef_map = independent.var.names` to `modelsummary()`:
 
-```{r}
+
+```r
 independent.var.names = c(
     'Class2nd' = 'Second Class',
     'Class3rd' = 'Third Class',
@@ -87,8 +136,36 @@ independent.var.names = c(
 modelsummary(titanic.logit, stars = TRUE, 
     coef_map = independent.var.names)
 ```
+
+\begin{table}[H]
+\centering
+\begin{tabular}[t]{lc}
+\toprule
+  & Model 1\\
+\midrule
+Second Class & -1.018***\\
+ & (0.196)\\
+Third Class & -1.778***\\
+ & (0.172)\\
+Crew & -0.858***\\
+ & (0.157)\\
+Sex (Female) & 2.420***\\
+ & (0.140)\\
+Age (Adult) & -1.062***\\
+ & (0.244)\\
+\midrule
+Num.Obs. & 2201\\
+AIC & 2222.1\\
+BIC & 2256.2\\
+Log.Lik. & -1105.031\\
+\bottomrule
+\multicolumn{2}{l}{\textsuperscript{} * p < 0.1, ** p < 0.05, *** p}\\
+\multicolumn{2}{l}{< 0.01}\\
+\end{tabular}
+\end{table}
 And say we have multiple models, such as one for each independent variable plus our original model, we can report all of them like this:
-```{r}
+
+```r
 models = list(
     model1 <- glm(Survived ~ Class, 
         data = titanic.expanded, family = 'binomial'),
@@ -112,8 +189,35 @@ modelsummary(models, stars = TRUE,
     coef_map = independent.var.names)
 ```
 
+\begin{table}[H]
+\centering
+\begin{tabular}[t]{lcccc}
+\toprule
+  & Model 1 & Model 2 & Model 3 & Model 4\\
+\midrule
+Second Class & -0.856*** &  &  & -1.018***\\
+ & (0.166) &  &  & (0.196)\\
+Third Class & -1.596*** &  &  & -1.778***\\
+ & (0.144) &  &  & (0.172)\\
+Crew & -1.664*** &  &  & -0.858***\\
+ & (0.139) &  &  & (0.157)\\
+Sex (Female) &  & 2.317*** &  & 2.420***\\
+ &  & (0.120) &  & (0.140)\\
+Age (Adult) &  &  & -0.880*** & -1.062***\\
+ &  &  & (0.197) & (0.244)\\
+\midrule
+Num.Obs. & 2201 & 2201 & 2201 & 2201\\
+AIC & 2596.6 & 2339.0 & 2753.9 & 2222.1\\
+BIC & 2619.3 & 2350.4 & 2765.3 & 2256.2\\
+Log.Lik. & -1294.278 & -1167.494 & -1374.948 & -1105.031\\
+\bottomrule
+\multicolumn{5}{l}{\textsuperscript{} * p < 0.1, ** p < 0.05, *** p < 0.01}\\
+\end{tabular}
+\end{table}
+
 We can graph our results using `ggplot2`, but first we need to calculate the predicted probailities.
-```{r}
+
+```r
 titanic.predictions <- cbind(titanic.expanded, 
     predict(titanic.logit, newdata = titanic.expanded, 
         type = 'link', se = TRUE))
@@ -127,4 +231,6 @@ ggplot(titanic.predictions, aes(Class, predicted.probability)) +
     geom_point(aes(color = Age, shape = Sex), size = 4) +
     theme_bw()
 ```
+
+![](Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-chunk-9-1.pdf)<!-- --> 
 And there you have it. A complete project from start to finish in R. There are of course plently of other things we could have done, but this chapter is about getting a taste for R. In future chapters we'll go much futher in depth to each step and still only cover a portion of what's possible in R.

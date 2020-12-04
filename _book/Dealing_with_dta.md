@@ -6,7 +6,8 @@ The first step for moving from STATA to R is getting access to your .dta files. 
 Haven is not part of base-R, so it has to be installed if you haven't done so before. One a package has been installed on a system, however, you don't need to reinstall it. You should already know now to install packages, from the previous chapter. With have in stalled, put `library(haven)` at the top of you R script. R scripts (as with scripts in all programming languages) with the first line and goes through the program. As long as `library(haven)` appears in you file before you attept to use it, you should be fine. That being said, the convention is to put all packages used at the beginning of your script, with each being on a new line (ex: *figure 1*).
 
 *figure 1*
-```{r, fig.cap='figure 1', message=FALSE}
+
+```r
 library(dplyr)
 library(ggplot2)
 library(haven)

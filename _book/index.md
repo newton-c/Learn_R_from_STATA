@@ -6,6 +6,4 @@ github-repo: newton-c/R_for_STATA_Users
 documentclass: book
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
