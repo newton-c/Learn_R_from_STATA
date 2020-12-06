@@ -234,3 +234,10 @@ ggplot(titanic.predictions, aes(Class, predicted.probability)) +
 
 ![](Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-chunk-9-1.pdf)<!-- --> 
 And there you have it. A complete project from start to finish in R. There are of course plently of other things we could have done, but this chapter is about getting a taste for R. In future chapters we'll go much futher in depth to each step and still only cover a portion of what's possible in R.
+
+## Exercises
+1. We used `geom_histogram()` to look as the frequency of `Class` as well as the break down of `Age` within `Class`. Try to make more graphs that similarly describe the other variables. 
+
+2. Using `fill =`, we're able to change the color of the bars. We specified this within `aes()`. What happens if you move `fill =` outside of `aes()`?
+
+3. One of the best ways to learn a programing language is to start with a script that works, and then play with the commands until you break it. Once broken, figue out what went wrong, and try to understand both why it didn't work and what should be done instead. If you got this script to run from beginning to end, try to break it. Import your own data set, explore different variables, and run different models. When domething doesn't work, try to see how it's different from this script, why that won't work, and discover what will. 

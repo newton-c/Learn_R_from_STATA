@@ -4,6 +4,7 @@ If you've gotten this far, I'm assuming that you're already profeceint in STATA.
 
 The answer for many of you is: You shouldn't. Some people don't need to leard R, especially considering that they've already learned how to do everything they need to do in STATA. For everyone else, here are some good reasons to make the switch (or at least learn *some* R).
 
+## R advantages
 1. **R is free**
 
 R is an open source programing language available for Windows, Mac, and Linux operating systems. This means that anyone can download it, use it, publish results, develop packages, and other fun stuff without spending any money. Seriously, it's 100% free. 100%. All versions, updates, extra packages, even some books, free. No need for temporary lisences, shelling out for perpetual liscences, buyng new versions, getting your institution to buy it for you, or borrowing that sketchy thumb drive that one person has (not that any reader every pirated anything). It's all free.

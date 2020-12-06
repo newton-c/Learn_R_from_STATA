@@ -27,3 +27,5 @@ rmd_files:
     # Tables
     
     ]
+    
+# bookdown::render_book('_bookdown.yml', bookdown::pdf_book())
