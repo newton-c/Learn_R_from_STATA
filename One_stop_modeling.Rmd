@@ -1,0 +1,61 @@
+# One Stop Modeling: Zelig
+
+Zelig is a statistical software originally created by Kosuke Imai, Gary King, and Olivia Lau. It attampts to unify different models, 
+tests, vizualizations, and other statistical activities into a single framework. While there are variaous packages in R that you
+can use for different models, using Zelig keeps the syntax consistent. More information on Zelig can be found on its 
+[website](https://zeligproject.org/).
+
+In addition to running your typical statistical models, Zelig also replicates Clarify from STATA, integrates with 
+multiple imputation methods (through the package `Amelia`) as well as matching methods (through the packages `cem` and `MatchIt`)
+
+The generic syntax for statistical models in Zelig is as follows
+
+```
+zelig(y ~ x1 + x2 + x3, data = example.data, model = "model.type")
+```
+
+This syntax is very similar to most other models, but with the added arguement `model = ` in order to specifiy what you're running. If
+we wanted to replicate the model we estimated in Chapter 3, this is how it'd look.
+```{r message = FALSE, warning=FALSE}
+library(tidyverse)
+library(Zelig)
+
+data("Titanic")
+titanic.data <- data.frame(Titanic)
+titanic.expanded <- uncount(titanic.data, Freq)
+
+titanic.logit <- zelig(Survived ~ Class + Sex + Age, 
+    data = titanic.expanded, model = "logit")
+summary(titanic.logit)
+```
+
+Zelig models can be easily exported to a table for publication-ready results, but the require an additional command, `from_zelig_model()`. 
+If we wanted to campare the original logit from Chapter 3 to the one above so we can varify that they're the same, we'd run 
+```{r message = FALSE}
+library(modelsummary)
+
+models = list(
+    "Ch 3 model" = glm(Survived ~ Class + Sex + Age, 
+        data = titanic.expanded, family = 'binomial'),
+    # using titanic.logit we just estimated above
+    "Zelig model" = from_zelig_model(titanic.logit)
+)
+
+modelsummary(models, stars = TRUE)
+```
+As we can see, the output is identical, proving that either method will work. Now we can look at various different models by simple changing the
+`model = ` parpameter. Here's a compariason of a logit, and probit.
+
+```{r}
+models = list(
+    "Logit" = from_zelig_model(zelig(Survived ~ Class + Sex + Age, 
+                                      data = titanic.expanded, model = "logit", 
+                                      cite = F)),
+    "Probit" = from_zelig_model(zelig(Survived ~ Class + Sex + Age, 
+                                       data = titanic.expanded, 
+                                       model = "probit", cite = F))
+)
+
+modelsummary(models, stars = TRUE)
+```
+You can see all of the supported models, and their specific syntax in the [Zelig documentation](http://docs.zeligproject.org/articles/index.html#section-core-zelig-model-details).

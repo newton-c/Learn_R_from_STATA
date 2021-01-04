@@ -54,7 +54,7 @@ rm(example_data)
 ```
 
 ### .csv and other delimited files
-One of the most common ways of saving data is with delimited text files. The `readr` package, which is part of the `tidyverse`, comes with three functions for differnt seperators, as well as a generic delimited file importer. `read_csv()` imports comma seperated files, `read_csv2()` imports semicolon seperated, and `read_tsv()` imports tab seperated files. `read_delim()` handles everying else as you can specify which the delimiter is. You do this with `delim = 'delimiter'`. For example:
+One of the most common ways of saving data is with delimited text files. The `readr` package, which is part of the `tidyverse`, comes with three functions for different seperators, as well as a generic delimited file importer. `read_csv()` imports comma seperated files, `read_csv2()` imports semicolon seperated files, and `read_tsv()` imports tab seperated files. `read_delim()` handles everying else as you can specify which the delimiter is. You do this with `delim = 'delimiter'`. For example:
 
 ```
 # * delimited file

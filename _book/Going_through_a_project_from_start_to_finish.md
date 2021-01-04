@@ -11,8 +11,6 @@ If a package exists on CRAN, it can be installed by writing
 You only have to intall a package once, but you have to call it everytime you open up R. It's the norm to list all of the packages that you'll be using at the very top of you R script. You call a package with the command `library(package.name)`. For this example, were going to use the packages `gt`, `kableExtra`, and `modelsummary` for making regression tables, `dplyr` for data manipulation and pipes (`%>%`) which allow us to string commands together, `tidyr` for datat cleaning and wrangling, and `ggplot2` for making graphs. We can import `dplyr`. `tidyr`, and `ggplot2`,  by calling `tidyverse`^[For more information on the tidyverse and how to use the various packages, see [*R for Data Science*](https://r4ds.had.co.nz/index.html), by Hadley Wickham & Garrett Grolemund.], which automatically loads a collection of packages. So starting out, our script should look like this:
 
 ```r
-library(gt)
-library(kableExtra)
 library(modelsummary)
 library(tidyverse)
 ```

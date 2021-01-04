@@ -1,0 +1,56 @@
+# MLE
+
+## Binary Dependent Variables
+While STATA has seperate commands for different MLE models (`logit`, `nbreg`, etc.),  R combines some models into single commands, such as `glm()`. Which type of model you want to estimate is determined by passing the values `family = `, which specifies the error distribution and link function. We'll use the `iris` dataset for an example.
+
+```{r}
+library(tidyverse)
+head(iris)
+summary(iris)
+
+ggplot(iris) +
+    geom_point(aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
+    geom_hline(yintercept = 2.5) +
+    theme_bw()
+
+ggplot(iris) +
+    geom_point(aes(x = Sepal.Width, y = Petal.Width, color = Species)) +
+    geom_abline(intercept = -1.9) +
+    theme_bw()
+```
+
+This dataset, originally collected by Ronald Fisher, looks at three different species of iris, setosa, versicolor, and virginica, as provides information on the length and width or flowers' petal and sepals. Looking at the data, we can see that setosas are rather distinct, and easy to seperate graphically. Veriscolor and virginia are more similar, so we'll examine them statistically. 
+
+```{r}
+iris.binary <- filter(iris, Species != "setosa")
+```
+
+To predict whether a flower is setosa or virginica, we could use a logit model.
+```
+logit Species Sepal.Length Sepal.Width Petal.Length Petal.Width
+```
+In R, we estimate a logit by specifying `famility = binomial(link = "logit")`.
+```{r}
+iris.logit <- glm(Species ~ Sepal.Length + Sepal.Width + Petal.Length +
+                  Petal.Width, data = iris.binary, 
+                  family = binomial(link = "logit"))
+summary(iris.logit)
+```
+
+IF we want to instead estimate a probit model, in STATA, we change the command.
+```
+probit Species Sepal.Length Sepal.Width Petal.Length Petal.Width
+```
+In R, we change the link function.
+```{r}
+iris.probit <- glm(Species ~ Sepal.Length + Sepal.Width + Petal.Length +
+                  Petal.Width, data = iris.binary, 
+                  family = binomial(link = "probit"))
+summary(iris.probit)
+```
+
+## Counts
+Count models tend to fall into two categories: Poisson and negative binomial. Poisson model assume an even dispersion, with the mean equal to the variance, while negative binomial accout for overdispersed data. 
+```{r}
+summary(diamonds)
+```

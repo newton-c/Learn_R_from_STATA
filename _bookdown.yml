@@ -13,14 +13,15 @@ rmd_files:
     "Why_switch_to_R.Rmd",
     "Going_through_a_project_from_start_to_finish.Rmd",
     "Dealing_with_dta.Rmd",
+    "One_stop_modeling.Rmd",
     # Data types
     #Vizualining your data and summary statistics
-    # merging and wrangling
+    "Merging_and_wrangling.Rmd",
     # Intro to CS: functions, loops, and ifelse()
     #Zelig
-    "Linear_Regression.Rmd"
+    "Linear_Regression.Rmd",
     # Vizualizing your results
-    # MLE
+    "MLE.Rmd"
     # Survival models
     # PML and panel models
     # Clustered standard errors
