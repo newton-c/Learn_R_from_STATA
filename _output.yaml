@@ -13,7 +13,7 @@ bookdown::gitbook:
         toc:
             collapse: section
             before: |
-                <1i><strong><a href="./">R for STATA Users</a></strong></1i>
+                <li><strong><a href="./">R for STATA Users</a></strong></li>
             edit:
                 link: https://github.com/newton-c/R_for_STATA_Users/edit/main/%s
                 text: "Edit"
