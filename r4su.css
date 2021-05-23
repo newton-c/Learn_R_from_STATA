@@ -1,0 +1,12 @@
+.book .book-header h1 {
+    opacity: 1;
+    text-align: left'
+}
+
+#header .title {
+    margin-bottom: 0em;
+}
+#header h4.author {
+    margin: 0;
+    color: #666;
+}

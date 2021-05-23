@@ -32,3 +32,4 @@ rmd_files:
     ]
     
 # bookdown::render_book('_bookdown.yml', bookdown::pdf_book())
+before_chapter_script: "_common.R"
