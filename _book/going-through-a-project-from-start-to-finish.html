@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Going Through a Project from Start to Finish | R for STATA Users</title>
+  <meta name="description" content="3 Going Through a Project from Start to Finish | R for STATA Users" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Going Through a Project from Start to Finish | R for STATA Users" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="newton-c/R_for_STATA_Users" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Going Through a Project from Start to Finish | R for STATA Users" />
+  
+  
+  
+
+<meta name="author" content="Chris Newton" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="why-switch-to-r.html"/>
+<link rel="next" href="dealing-with-dta.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#who-is-this-book-for"><i class="fa fa-check"></i><b>1.1</b> Who is this book for?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#who-isnt-this-book-for"><i class="fa fa-check"></i><b>1.2</b> Who isn’t this book for?</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#setting-up-r"><i class="fa fa-check"></i><b>1.3</b> Setting up R</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="why-switch-to-r.html"><a href="why-switch-to-r.html"><i class="fa fa-check"></i><b>2</b> Why switch to R</a><ul>
+<li class="chapter" data-level="2.1" data-path="why-switch-to-r.html"><a href="why-switch-to-r.html#r-advantages"><i class="fa fa-check"></i><b>2.1</b> R advantages</a></li>
+<li class="chapter" data-level="2.2" data-path="why-switch-to-r.html"><a href="why-switch-to-r.html#in-conclusion"><i class="fa fa-check"></i><b>2.2</b> In conclusion…</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html"><i class="fa fa-check"></i><b>3</b> Going Through a Project from Start to Finish</a><ul>
+<li class="chapter" data-level="3.1" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#loading-packages"><i class="fa fa-check"></i><b>3.1</b> Loading packages</a></li>
+<li class="chapter" data-level="3.2" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#loading-and-prepping-the-data"><i class="fa fa-check"></i><b>3.2</b> Loading and prepping the data</a></li>
+<li class="chapter" data-level="3.3" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#visualization"><i class="fa fa-check"></i><b>3.3</b> Visualization</a></li>
+<li class="chapter" data-level="3.4" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#modeling"><i class="fa fa-check"></i><b>3.4</b> Modeling</a></li>
+<li class="chapter" data-level="3.5" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#reporting"><i class="fa fa-check"></i><b>3.5</b> Reporting</a></li>
+<li class="chapter" data-level="3.6" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#exercises"><i class="fa fa-check"></i><b>3.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html"><i class="fa fa-check"></i><b>4</b> Dealing with .dta</a><ul>
+<li class="chapter" data-level="4.1" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#using-haven-to-import-stata-files"><i class="fa fa-check"></i><b>4.1</b> Using haven to import STATA files</a></li>
+<li class="chapter" data-level="4.2" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#dealing-with-errors"><i class="fa fa-check"></i><b>4.2</b> Dealing with errors</a></li>
+<li class="chapter" data-level="4.3" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#but-theres-still-problems"><i class="fa fa-check"></i><b>4.3</b> But there’s still problems</a></li>
+<li class="chapter" data-level="4.4" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#other-data-formats"><i class="fa fa-check"></i><b>4.4</b> Other data formats</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#rdata"><i class="fa fa-check"></i><b>4.4.1</b> .Rdata</a></li>
+<li class="chapter" data-level="4.4.2" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#csv-and-other-delimited-files"><i class="fa fa-check"></i><b>4.4.2</b> .csv and other delimited files</a></li>
+<li class="chapter" data-level="4.4.3" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#excel-files"><i class="fa fa-check"></i><b>4.4.3</b> Excel files</a></li>
+<li class="chapter" data-level="4.4.4" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#json"><i class="fa fa-check"></i><b>4.4.4</b> .json</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#using-multiple-dataframes"><i class="fa fa-check"></i><b>4.5</b> Using multiple dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html"><i class="fa fa-check"></i><b>5</b> Merging and Wrangling</a><ul>
+<li class="chapter" data-level="5.1" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#base-r"><i class="fa fa-check"></i><b>5.1</b> base R</a></li>
+<li class="chapter" data-level="5.2" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#dplyr"><i class="fa fa-check"></i><b>5.2</b> dplyr</a></li>
+<li class="chapter" data-level="5.3" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#merge.stats"><i class="fa fa-check"></i><b>5.3</b> merge.stats</a></li>
+<li class="chapter" data-level="5.4" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#into-the-tidyverse"><i class="fa fa-check"></i><b>5.4</b> Into the tidyverse</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#filter"><i class="fa fa-check"></i><b>5.4.1</b> <code>filter()</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#mutate"><i class="fa fa-check"></i><b>5.4.2</b> <code>mutate()</code></a></li>
+<li class="chapter" data-level="5.4.3" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#group_by"><i class="fa fa-check"></i><b>5.4.3</b> <code>group_by()</code></a></li>
+<li class="chapter" data-level="5.4.4" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#select"><i class="fa fa-check"></i><b>5.4.4</b> <code>select()</code></a></li>
+<li class="chapter" data-level="5.4.5" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#section"><i class="fa fa-check"></i><b>5.4.5</b> <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="5.4.6" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#stringing-it-together"><i class="fa fa-check"></i><b>5.4.6</b> Stringing it Together</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="one-stop-modeling-zelig.html"><a href="one-stop-modeling-zelig.html"><i class="fa fa-check"></i><b>6</b> One Stop Modeling: Zelig</a><ul>
+<li class="chapter" data-level="6.1" data-path="one-stop-modeling-zelig.html"><a href="one-stop-modeling-zelig.html#simulation-and-counterfactuals"><i class="fa fa-check"></i><b>6.1</b> Simulation and Counterfactuals</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html"><i class="fa fa-check"></i><b>7</b> Visualizing and Describing your Data</a><ul>
+<li class="chapter" data-level="7.1" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html#ggplot2"><i class="fa fa-check"></i><b>7.1</b> ggplot2</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html#destriptive-visualitation"><i class="fa fa-check"></i><b>7.1.1</b> Destriptive visualitation</a></li>
+<li class="chapter" data-level="7.1.2" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html#communicating-results"><i class="fa fa-check"></i><b>7.1.2</b> Communicating Results</a></li>
+<li class="chapter" data-level="7.1.3" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html#other-vizualizations"><i class="fa fa-check"></i><b>7.1.3</b> Other Vizualizations</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html#base-r-1"><i class="fa fa-check"></i><b>7.2</b> base-R</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>8</b> Linear Regression</a><ul>
+<li class="chapter" data-level="8.1" data-path="linear-regression.html"><a href="linear-regression.html#which-way-should-you-write-your-model"><i class="fa fa-check"></i><b>8.1</b> Which way should you write your model?</a></li>
+<li class="chapter" data-level="8.2" data-path="linear-regression.html"><a href="linear-regression.html#viewing-the-results"><i class="fa fa-check"></i><b>8.2</b> Viewing the results</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="mle.html"><a href="mle.html"><i class="fa fa-check"></i><b>9</b> MLE</a><ul>
+<li class="chapter" data-level="9.1" data-path="mle.html"><a href="mle.html#binary-dependent-variables"><i class="fa fa-check"></i><b>9.1</b> Binary Dependent Variables</a></li>
+<li class="chapter" data-level="9.2" data-path="mle.html"><a href="mle.html#counts"><i class="fa fa-check"></i><b>9.2</b> Counts</a></li>
+<li class="chapter" data-level="9.3" data-path="mle.html"><a href="mle.html#rare-events-and-zero-inflation"><i class="fa fa-check"></i><b>9.3</b> Rare-events and Zero-inflation</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="bayesian-models.html"><a href="bayesian-models.html"><i class="fa fa-check"></i><b>10</b> Bayesian Models</a><ul>
+<li class="chapter" data-level="10.1" data-path="bayesian-models.html"><a href="bayesian-models.html#using-stan-in-r"><i class="fa fa-check"></i><b>10.1</b> Using STAN in R</a></li>
+<li class="chapter" data-level="10.2" data-path="bayesian-models.html"><a href="bayesian-models.html#mcelreath-and-rethinking"><i class="fa fa-check"></i><b>10.2</b> McElreath and Rethinking</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="panel-models.html"><a href="panel-models.html"><i class="fa fa-check"></i><b>11</b> Panel Models</a><ul>
+<li class="chapter" data-level="11.1" data-path="panel-models.html"><a href="panel-models.html#fixed-effects"><i class="fa fa-check"></i><b>11.1</b> Fixed-Effects</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="panel-models.html"><a href="panel-models.html#adjusting-standard-errors"><i class="fa fa-check"></i><b>11.1.1</b> Adjusting Standard Errors</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="panel-models.html"><a href="panel-models.html#random-effects"><i class="fa fa-check"></i><b>11.2</b> Random-Effects</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="panel-models.html"><a href="panel-models.html#pml"><i class="fa fa-check"></i><b>11.2.1</b> PML</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="panel-models.html"><a href="panel-models.html#mixed-models"><i class="fa fa-check"></i><b>11.3</b> Mixed Models</a></li>
+<li class="chapter" data-level="11.4" data-path="panel-models.html"><a href="panel-models.html#multilevelhierarchical-models"><i class="fa fa-check"></i><b>11.4</b> Multilevel/Hierarchical Models</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="missing-data-1.html"><a href="missing-data-1.html"><i class="fa fa-check"></i><b>12</b> Missing Data</a><ul>
+<li class="chapter" data-level="12.1" data-path="missing-data-1.html"><a href="missing-data-1.html#amelia-ii"><i class="fa fa-check"></i><b>12.1</b> Amelia II</a></li>
+<li class="chapter" data-level="12.2" data-path="missing-data-1.html"><a href="missing-data-1.html#k-nn-imputation"><i class="fa fa-check"></i><b>12.2</b> k-NN Imputation</a></li>
+<li class="chapter" data-level="12.3" data-path="missing-data-1.html"><a href="missing-data-1.html#machine-learning-for-missing-data"><i class="fa fa-check"></i><b>12.3</b> Machine Learning for Missing Data</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="matching.html"><a href="matching.html"><i class="fa fa-check"></i><b>13</b> Matching</a><ul>
+<li class="chapter" data-level="13.1" data-path="matching.html"><a href="matching.html#the-marchit-package"><i class="fa fa-check"></i><b>13.1</b> The MarchIt Package</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="gis.html"><a href="gis.html"><i class="fa fa-check"></i><b>14</b> GIS</a></li>
+<li class="chapter" data-level="15" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html"><i class="fa fa-check"></i><b>15</b> A Brief Introduction to Coding</a><ul>
+<li class="chapter" data-level="15.1" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#why-learn-to-code"><i class="fa fa-check"></i><b>15.1</b> Why Learn to Code?</a></li>
+<li class="chapter" data-level="15.2" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#coding-basics"><i class="fa fa-check"></i><b>15.2</b> Coding Basics</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#the-internet-is-your-friend"><i class="fa fa-check"></i><b>15.2.1</b> The Internet is your Friend</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#ifelse"><i class="fa fa-check"></i><b>15.3</b> <code>ifelse()</code></a></li>
+<li class="chapter" data-level="15.4" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#writing-a-function"><i class="fa fa-check"></i><b>15.4</b> Writing a Function</a></li>
+<li class="chapter" data-level="15.5" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#loops"><i class="fa fa-check"></i><b>15.5</b> Loops</a><ul>
+<li class="chapter" data-level="15.5.1" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#loops-in-loops"><i class="fa fa-check"></i><b>15.5.1</b> Loops in Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#parallelization-what-it-is-why-its-awesome-and-how-to-use-it."><i class="fa fa-check"></i><b>15.6</b> Parallelization: What it is, Why it’s Awesome, and How to Use it.</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for STATA Users</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="going-through-a-project-from-start-to-finish" class="section level1">
+<h1><span class="header-section-number">3</span> Going Through a Project from Start to Finish</h1>
+<p>To start off, we’re going to look at an example analysis. This will go step-by-step through loading data, exploring the dataset, running a regression, and commuicating the results. You may not understand everything and this point, but you’ll start to get familiar with R’s syntax and won’t have to wait 100 pages before trying out something useful. The following chapters will look at each step in detail to explain exactly what is happening, how it relates to STATA commands, and why we’re doing it this way.</p>
+<p><em>Note:</em> A great way to learn a programming language is to start with something that works and then break it. Modify a part of the code and see what
+changes. Did it do what you expected? Did you get an error message? Playing with the code can help you figure out what each component is doing,
+why it does it that way, and how you can manipulate it to do what you want.</p>
+<div id="loading-packages" class="section level2">
+<h2><span class="header-section-number">3.1</span> Loading packages</h2>
+<p>Once R is installed, you now have what is called base-R. Base-R comes ready to go with a number of statistical functions, visualizations, and even some sample datasets. There is, however, plenty more that can be done by loading additional packages. Packages are developed by the comunity of R users and typically hosted on CRAN (The <strong>C</strong>omprehensive <strong>R</strong> <strong>A</strong>rchive <strong>N</strong>etwork). For effeciency, additional packages have to be installed and then loaded when you want to use them. R doesn’t automatically install or load additional packages as this would take up <em>a lot</em> of memory with packages that you’ll never use.</p>
+<p>If a package exists on CRAN, it can be installed by writing</p>
+<p><code>install.packages("package.name").</code></p>
+<p>Most packages that you’ll want to use will be hosted on CRAN, but occasionally, new packages that are being developed are only on GitHub. If this is the case, the authors will include instructions on how to install the package in the README.md file of the GitHub repository.</p>
+<p>You only have to intall a package once, but you have to call it everytime you open R. It’s the norm to list all of the packages that you’ll be using at the very top of you R script. You call a package with the command</p>
+<p><code>library(package.name)</code></p>
+<p>For this example, were going to use the package <code>modelsummary</code> for making regression tables, <code>dplyr</code> for data manipulation and pipes (<code>%&gt;%</code>), which allow us to string commands together, <code>tidyr</code> for datat cleaning and wrangling, and <code>ggplot2</code> for making graphs. We can import <code>dplyr</code>. <code>tidyr</code>, and <code>ggplot2</code>, by calling <code>tidyverse</code><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, which automatically loads a collection of packages. So starting out, our script should look like this:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">library</span>(modelsummary)</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+</div>
+<div id="loading-and-prepping-the-data" class="section level2">
+<h2><span class="header-section-number">3.2</span> Loading and prepping the data</h2>
+<p>For this example, we are going to use one of the preloaded datasets that comes with R. While you’ll never use one of these datasets for actual research, it’s easier to use something that everyone already has to get started with an example. The next chapter will show you how to load data in STATA’s .dta format, as well as other common formats.</p>
+<p>For this example, we’ll use the <em>Titanic</em> dataset. This will be obnoxiously familiary for anyone that has done some tutiorials on machine learning. For those unfamiliar, it contains variables on the age, gender, and ticket class for those that were on the titanic, as well as whether or not they survived. To access the data, we type <code>data("Titanic")</code>. You should now see <code>Titanic</code> in the <code>Enivronment</code> tab in RStudio. It’s not quite ready yet, however, as it is not in a <code>data.frame</code> or <code>tibble</code> format. If we type <code>class(Titanic)</code>, we see that it’s <code>table</code>. This can be converted with the commands <code>data.frame(Titanic)</code> or <code>as_tibble(Titanic)</code></p>
+<p>For this example, let’s convert the table into a data frame. If you type <code>data.frame(Titanic)</code>, the table will be converted to a data frame, and then printed into the console. We don’t want this. We want to store the data frame as an object that we can analyze. In R, you store an object by first typing a name of you choosing, followed by the assignment operator (<code>&lt;-</code>) and then what you want to be stored as the object. It’s best to choose descriptive names for objects, so it’s easy to remember what they are. Let’s use <code>titanic.data</code>. The code should look like this:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">data</span>(<span class="st">&quot;Titanic&quot;</span>)</a>
+<a class="sourceLine" id="cb5-2" title="2">titanic.data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(Titanic)</a></code></pre></div>
+<p>You should now see an object called <code>titanic.data</code> in you <code>Environment</code> with 32 observations or 5 variables. If we want to look at the entire dataset, we can type <code>View(titanic.data)</code>. If we only want to see the first few rows, we can type <code>head(titanic.data)</code> and the last few rows can be seen with <code>tail(titanic.data)</code>. A frequency table can be seen with <code>table(titanic.data)</code>. Let’s check that out.</p>
+<pre><code>table(titanic.data)</code></pre>
+<p>As you can see, it’s hard to glean any information from this as frequency is already a variable, with the other variables being collapsed. We can treate a subset without frequency by typing <code>titanic.subset &lt;- titanic.data[(1:4)]</code>. This creates a new data frame called <code>titanic.subset</code> with only contains the first four columns of the <code>titanic.data</code> data frame. Now trying <code>table(titanic.subset)</code>, we see eveything has a ferequency of one. To use this data for a regression, let’s expand it so that we have one observation for everyone that was on board. We can do this using the <code>tidyr</code> function <code>uncount()</code>. This function expands
+the data frame, based on a variable. The syntax is</p>
+<pre><code>uncount(data, weights, .remote = TRUE, .id = NULL)</code></pre>
+<p>where <code>data</code> is the data frame <code>weights</code> is the variable that has the count of rows to duplicate, <code>.remove</code> deletes the variable supplied to <code>weights</code> (TRUE by defalut) and <code>.id</code> creates a new ID for each row. For our data, let’s type:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">titanic.expanded &lt;-<span class="st"> </span><span class="kw">uncount</span>(titanic.data, Freq)</a></code></pre></div>
+<p>Now let’s explore our expanded data. We already used <code>View()</code> to look at the full dataset, but with 2201 observations, it can be hard to tell much about what going on. Instead, we’re going to generate summary statistics with <code>summary(titanic.expanded)</code>. This shows of the level of each variable, the number of ovservations at the level, and, implicitly, that there are no missing values. If there were missing values, the last row of each variable would read <code>NA's:</code> followed by the number of rows for which that variable didn’t have a value.</p>
+<p>Now that we have a data frame that we can analyze, we no longer need the original data, or the subset we created. We can get rid of these with <code>rm(list = c('Titanic', 'titanic.data', 'titanic.subset'))</code>. R can use a lot of memory on your computer, so it’s best to get rid of any objects that you’re no longer using.</p>
+</div>
+<div id="visualization" class="section level2">
+<h2><span class="header-section-number">3.3</span> Visualization</h2>
+<p>Let’s look at our data using some plots. First, we’re going to check the distribution of our variables. Given that all of our variables are factors, a histogram is the was to go. Using <code>ggplot2</code>, we can do this:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">data =</span> titanic.expanded, </a>
+<a class="sourceLine" id="cb9-3" title="3">        <span class="kw">aes</span>(<span class="dt">x =</span> Class), <span class="dt">stat =</span> <span class="st">&#39;count&#39;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="st">    </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<pre><code>## Warning: Ignoring unknown parameters: binwidth, bins, pad</code></pre>
+<p><img src="Going_through_a_project_from_start_to_finish_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+The above calls a plot (<code>ggplot()</code>) and then says that we’re going to make a histogram (<code>geom_histogram()</code>). We’re going to use the <code>titanic.expanded</code> data, and we want to see the variable <code>Class</code>. <code>aes()</code> is responsible for creating the mapping, in other words, with the variables that are being plotted. We include <code>stat = 'count'</code> as we’re looking at the frequenqy of each level of the variable <code>Class</code>. Finally, <code>theme_bw()</code> styles the graph. This part is optional, and there are plenty of other themes you can choose from, including custom themes that you can make yourself. <code>ggplot2</code> uses the <a href="http://vita.had.co.nz/papers/layered-grammar.pdf"><em>grammar of graphics</em></a> which layers different aspects of a visualiztion on top of each other. Each layer is connected with a <code>+</code>. While you could keep everything on one line and the code will still run, it is best to end each line with a <code>+</code> and the start on the next line with an indent. This keeps the code organized and easy to read.</p>
+<p>Now say you also wanted to show how many within each class were chilren and how many were adults. This could be done by changing the <code>fill</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">data =</span> titanic.expanded, </a>
+<a class="sourceLine" id="cb11-3" title="3">        <span class="kw">aes</span>(<span class="dt">x =</span> Class, <span class="dt">fill =</span> Age), <span class="dt">stat =</span> <span class="st">&#39;count&#39;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb11-4" title="4"><span class="st">    </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<pre><code>## Warning: Ignoring unknown parameters: binwidth, bins, pad</code></pre>
+<p><img src="Going_through_a_project_from_start_to_finish_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="modeling" class="section level2">
+<h2><span class="header-section-number">3.4</span> Modeling</h2>
+<p>We’re going to build a model to predict whether or not someone would survive based on the variables we have. <code>Survived</code> is a binary variable, so we’ll estimate a logit model.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1">titanic.logit &lt;-<span class="st"> </span><span class="kw">glm</span>(Survived <span class="op">~</span><span class="st"> </span>Class <span class="op">+</span><span class="st"> </span>Sex <span class="op">+</span><span class="st"> </span>Age, </a>
+<a class="sourceLine" id="cb13-2" title="2">    <span class="dt">data =</span> titanic.expanded, <span class="dt">family =</span> <span class="st">&#39;binomial&#39;</span>)</a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="kw">summary</span>(titanic.logit)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = Survived ~ Class + Sex + Age, family = &quot;binomial&quot;, 
+##     data = titanic.expanded)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -2.0812  -0.7149  -0.6656   0.6858   2.1278  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)   0.6853     0.2730   2.510   0.0121 *  
+## Class2nd     -1.0181     0.1960  -5.194 2.05e-07 ***
+## Class3rd     -1.7778     0.1716 -10.362  &lt; 2e-16 ***
+## ClassCrew    -0.8577     0.1573  -5.451 5.00e-08 ***
+## SexFemale     2.4201     0.1404  17.236  &lt; 2e-16 ***
+## AgeAdult     -1.0615     0.2440  -4.350 1.36e-05 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 2769.5  on 2200  degrees of freedom
+## Residual deviance: 2210.1  on 2195  degrees of freedom
+## AIC: 2222.1
+## 
+## Number of Fisher Scoring iterations: 4</code></pre>
+<p>Unpacking the above command, <code>glm()</code> calls a generalized linear model, with <code>Survived</code> as the dependent variable, and <code>Class</code>, <code>Sex</code>, and <code>Age</code>, as inependent variables, using the <code>titanic.expanded</code> data frame. <code>family = 'binomial'</code> declares that the model is a logit, and we save this as an object called <code>titanic.logit</code>. The <code>summary()</code> command gives us the statistical information we want to know about the model.</p>
+</div>
+<div id="reporting" class="section level2">
+<h2><span class="header-section-number">3.5</span> Reporting</h2>
+<p>Now have results, we need to communicate them. Let’s start with a nice table. Typing <code>modelsummary(titanic.logit, stars = TRUE)</code> gives us a basic table, but the variable names aren’t formated nicely. We can change this by creating an object with new names, and adding <code>coef_map = independent.var.names</code> to <code>modelsummary()</code>:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">independent.var.names =<span class="st"> </span><span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb15-2" title="2">    <span class="st">&#39;Class2nd&#39;</span> =<span class="st"> &#39;Second Class&#39;</span>,</a>
+<a class="sourceLine" id="cb15-3" title="3">    <span class="st">&#39;Class3rd&#39;</span> =<span class="st"> &#39;Third Class&#39;</span>,</a>
+<a class="sourceLine" id="cb15-4" title="4">    <span class="st">&#39;ClassCrew&#39;</span> =<span class="st"> &#39;Crew&#39;</span>,</a>
+<a class="sourceLine" id="cb15-5" title="5">    <span class="st">&#39;SexFemale&#39;</span> =<span class="st"> &#39;Sex (Female)&#39;</span>,</a>
+<a class="sourceLine" id="cb15-6" title="6">    <span class="st">&#39;AgeAdult&#39;</span> =<span class="st"> &#39;Age (Adult)&#39;</span></a>
+<a class="sourceLine" id="cb15-7" title="7">)</a>
+<a class="sourceLine" id="cb15-8" title="8"></a>
+<a class="sourceLine" id="cb15-9" title="9"><span class="kw">modelsummary</span>(titanic.logit, <span class="dt">stars =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb15-10" title="10">    <span class="dt">coef_map =</span> independent.var.names)</a></code></pre></div>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Model 1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Second Class
+</td>
+<td style="text-align:center;">
+-1.018***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.196)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Third Class
+</td>
+<td style="text-align:center;">
+-1.778***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.172)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Crew
+</td>
+<td style="text-align:center;">
+-0.858***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.157)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sex (Female)
+</td>
+<td style="text-align:center;">
+2.420***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.140)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Age (Adult)
+</td>
+<td style="text-align:center;">
+-1.062***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1px">
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+(0.244)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+2201
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AIC
+</td>
+<td style="text-align:center;">
+2222.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BIC
+</td>
+<td style="text-align:center;">
+2256.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Log.Lik.
+</td>
+<td style="text-align:center;">
+-1105.031
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01
+</td>
+</tr>
+</tfoot>
+</table>
+<p>And say we have multiple models, such as one for each independent variable plus our original model, we can report all of them like this:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">models =<span class="st"> </span><span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb16-2" title="2">    <span class="st">`</span><span class="dt">Class</span><span class="st">`</span> =<span class="st"> </span><span class="kw">glm</span>(Survived <span class="op">~</span><span class="st"> </span>Class, </a>
+<a class="sourceLine" id="cb16-3" title="3">        <span class="dt">data =</span> titanic.expanded, <span class="dt">family =</span> <span class="st">&#39;binomial&#39;</span>),</a>
+<a class="sourceLine" id="cb16-4" title="4">    <span class="st">`</span><span class="dt">Sex</span><span class="st">`</span> =<span class="st"> </span><span class="kw">glm</span>(Survived <span class="op">~</span><span class="st"> </span>Sex, </a>
+<a class="sourceLine" id="cb16-5" title="5">        <span class="dt">data =</span> titanic.expanded, <span class="dt">family =</span> <span class="st">&#39;binomial&#39;</span>),</a>
+<a class="sourceLine" id="cb16-6" title="6">    <span class="st">`</span><span class="dt">Age</span><span class="st">`</span> =<span class="st"> </span><span class="kw">glm</span>(Survived <span class="op">~</span><span class="st"> </span>Age, </a>
+<a class="sourceLine" id="cb16-7" title="7">        <span class="dt">data =</span> titanic.expanded, <span class="dt">family =</span> <span class="st">&#39;binomial&#39;</span>),</a>
+<a class="sourceLine" id="cb16-8" title="8">    <span class="st">`</span><span class="dt">All</span><span class="st">`</span> =<span class="st"> </span><span class="kw">glm</span>(Survived <span class="op">~</span><span class="st"> </span>Class <span class="op">+</span><span class="st"> </span>Sex <span class="op">+</span><span class="st"> </span>Age, </a>
+<a class="sourceLine" id="cb16-9" title="9">        <span class="dt">data =</span> titanic.expanded, <span class="dt">family =</span> <span class="st">&#39;binomial&#39;</span>)</a>
+<a class="sourceLine" id="cb16-10" title="10">)</a>
+<a class="sourceLine" id="cb16-11" title="11"></a>
+<a class="sourceLine" id="cb16-12" title="12">independent.var.names =<span class="st"> </span><span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb16-13" title="13">    <span class="st">&#39;Class2nd&#39;</span> =<span class="st"> &#39;Second Class&#39;</span>,</a>
+<a class="sourceLine" id="cb16-14" title="14">    <span class="st">&#39;Class3rd&#39;</span> =<span class="st"> &#39;Third Class&#39;</span>,</a>
+<a class="sourceLine" id="cb16-15" title="15">    <span class="st">&#39;ClassCrew&#39;</span> =<span class="st"> &#39;Crew&#39;</span>,</a>
+<a class="sourceLine" id="cb16-16" title="16">    <span class="st">&#39;SexFemale&#39;</span> =<span class="st"> &#39;Sex (Female)&#39;</span>,</a>
+<a class="sourceLine" id="cb16-17" title="17">    <span class="st">&#39;AgeAdult&#39;</span> =<span class="st"> &#39;Age (Adult)&#39;</span></a>
+<a class="sourceLine" id="cb16-18" title="18">)</a>
+<a class="sourceLine" id="cb16-19" title="19"></a>
+<a class="sourceLine" id="cb16-20" title="20"><span class="kw">modelsummary</span>(models, <span class="dt">stars =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb16-21" title="21">    <span class="dt">coef_map =</span> independent.var.names)</a></code></pre></div>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Class
+</th>
+<th style="text-align:center;">
+Sex
+</th>
+<th style="text-align:center;">
+Age
+</th>
+<th style="text-align:center;">
+All
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Second Class
+</td>
+<td style="text-align:center;">
+-0.856***
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+-1.018***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.166)
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+(0.196)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Third Class
+</td>
+<td style="text-align:center;">
+-1.596***
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+-1.778***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.144)
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+(0.172)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Crew
+</td>
+<td style="text-align:center;">
+-1.664***
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+-0.858***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.139)
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+(0.157)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sex (Female)
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+2.317***
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+2.420***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+(0.120)
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+(0.140)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Age (Adult)
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+-0.880***
+</td>
+<td style="text-align:center;">
+-1.062***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1px">
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+(0.197)
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+(0.244)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+2201
+</td>
+<td style="text-align:center;">
+2201
+</td>
+<td style="text-align:center;">
+2201
+</td>
+<td style="text-align:center;">
+2201
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AIC
+</td>
+<td style="text-align:center;">
+2596.6
+</td>
+<td style="text-align:center;">
+2339.0
+</td>
+<td style="text-align:center;">
+2753.9
+</td>
+<td style="text-align:center;">
+2222.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BIC
+</td>
+<td style="text-align:center;">
+2619.3
+</td>
+<td style="text-align:center;">
+2350.4
+</td>
+<td style="text-align:center;">
+2765.3
+</td>
+<td style="text-align:center;">
+2256.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Log.Lik.
+</td>
+<td style="text-align:center;">
+-1294.278
+</td>
+<td style="text-align:center;">
+-1167.494
+</td>
+<td style="text-align:center;">
+-1374.948
+</td>
+<td style="text-align:center;">
+-1105.031
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01
+</td>
+</tr>
+</tfoot>
+</table>
+<p>We can graph our results using <code>ggplot2</code>, but first we need to calculate the predicted probailities.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">titanic.predictions &lt;-<span class="st"> </span><span class="kw">cbind</span>(titanic.expanded, </a>
+<a class="sourceLine" id="cb17-2" title="2">    <span class="kw">predict</span>(titanic.logit, <span class="dt">newdata =</span> titanic.expanded, </a>
+<a class="sourceLine" id="cb17-3" title="3">        <span class="dt">type =</span> <span class="st">&#39;link&#39;</span>, <span class="dt">se =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb17-4" title="4"></a>
+<a class="sourceLine" id="cb17-5" title="5">titanic.predictions &lt;-<span class="st"> </span><span class="kw">within</span>(titanic.predictions, {</a>
+<a class="sourceLine" id="cb17-6" title="6">    predicted.probability &lt;-<span class="st"> </span><span class="kw">plogis</span>(fit)</a>
+<a class="sourceLine" id="cb17-7" title="7">    }</a>
+<a class="sourceLine" id="cb17-8" title="8">)</a>
+<a class="sourceLine" id="cb17-9" title="9"></a>
+<a class="sourceLine" id="cb17-10" title="10"><span class="kw">ggplot</span>(titanic.predictions, <span class="kw">aes</span>(Class, predicted.probability)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb17-11" title="11"><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Age, <span class="dt">shape =</span> Sex), <span class="dt">size =</span> <span class="dv">4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb17-12" title="12"><span class="st">    </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<p><img src="Going_through_a_project_from_start_to_finish_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+And there you have it. A complete project from start to finish in R. There are of course plently of other things we could have done, but this chapter is about getting a taste for R. In future chapters we’ll go much futher in depth to each step and still only cover a portion of what’s possible in R. Some of this code
+may not make sense yet – that’s okay. As the book goes on, we’ll get into the detail about why we do differnt things. The important part in this chapter
+is running the code and seeing what it produces.</p>
+</div>
+<div id="exercises" class="section level2">
+<h2><span class="header-section-number">3.6</span> Exercises</h2>
+<ol style="list-style-type: decimal">
+<li><p>We used <code>geom_histogram()</code> to look as the frequency of <code>Class</code> as well as the break down of <code>Age</code> within <code>Class</code>. Try to make more graphs that similarly describe the other variables.</p></li>
+<li><p>Using <code>fill =</code>, we’re able to change the color of the bars. We specified this within <code>aes()</code>. What happens if you move <code>fill =</code> outside of <code>aes()</code>?</p></li>
+<li><p>As mentioned above, one of the best ways to learn a programing language is to start with a script that works, and then play with the commands until you break it. Once broken, figue out what went wrong, and try to understand both why it didn’t work and what should be done instead. If you got this script to run from beginning to end, try to break it. Import your own data set, explore different variables, and run different models. When domething doesn’t work, try to see how it’s different from this script, why that won’t work, and discover what will.</p></li>
+</ol>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>For more information on the tidyverse and how to use the various packages, see <a href="https://r4ds.had.co.nz/index.html"><em>R for Data Science</em></a>, by Hadley Wickham &amp; Garrett Grolemund.<a href="going-through-a-project-from-start-to-finish.html#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="why-switch-to-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="dealing-with-dta.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,31 +1,16 @@
+
+
 # MLE
 
 ## Binary Dependent Variables
-While STATA has seperate commands for different MLE models (`logit`, `nbreg`, etc.),  R combines some models into single commands, such as `glm()`. Which type of model you want to estimate is determined by passing the values `family = `, which specifies the error distribution and link function. We'll use the `iris` dataset for an example.
+While STATA has seperate commands for different MLE models (`logit`, `nbreg`, etc.),  R combines some models into single commands. We can use `zelig()`, the command we learned earlier, and just change the `model = ` portion. Alternatively, there are commands such as `glm()`, which do the same thing outside of the Zeligverse.  We'll loog at some examples with the `iris` dataset.
 
 
 ```r
+library(modelsummary)
 library(tidyverse)
-```
+library(Zelig)
 
-```
-## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --
-```
-
-```
-## v ggplot2 3.3.2     v purrr   0.3.4
-## v tibble  3.0.4     v dplyr   1.0.2
-## v tidyr   1.1.1     v stringr 1.4.0
-## v readr   1.3.1     v forcats 0.5.0
-```
-
-```
-## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
-```
-
-```r
 head(iris)
 ```
 
@@ -67,7 +52,7 @@ ggplot(iris) +
     theme_bw()
 ```
 
-![](MLE_files/figure-latex/unnamed-chunk-1-1.pdf)<!-- --> 
+<img src="MLE_files/figure-html/unnamed-chunk-1-1.png" width="672" />
 
 ```r
 ggplot(iris) +
@@ -76,9 +61,9 @@ ggplot(iris) +
     theme_bw()
 ```
 
-![](MLE_files/figure-latex/unnamed-chunk-1-2.pdf)<!-- --> 
+<img src="MLE_files/figure-html/unnamed-chunk-1-2.png" width="672" />
 
-This dataset, originally collected by Ronald Fisher, looks at three different species of iris, setosa, versicolor, and virginica, as provides information on the length and width or flowers' petal and sepals. Looking at the data, we can see that setosas are rather distinct, and easy to seperate graphically. Veriscolor and virginia are more similar, so we'll examine them statistically. 
+This dataset, originally collected by Ronald Fisher, looks at three different species of iris: setosa, versicolor, and virginica. It provides information on the length and width of flowers' petal and sepals. Looking at the data, we can see that setosas are rather distinct, and easy to seperate graphically. Veriscolor and virginia are more similar, so we'll examine them statistically. We can create a new dataframe with the `filter()` command we learned in *Modeling and Wrangling*.
 
 
 ```r
@@ -89,95 +74,126 @@ To predict whether a flower is setosa or virginica, we could use a logit model.
 ```
 logit Species Sepal.Length Sepal.Width Petal.Length Petal.Width
 ```
-In R, we estimate a logit by specifying `famility = binomial(link = "logit")`.
+In R, we estimate a logit by specifying `model = "logit"` in `zelig()`.
 
 ```r
-iris.logit <- glm(Species ~ Sepal.Length + Sepal.Width + Petal.Length +
+iris.logit <- zelig(Species ~ Sepal.Length + Sepal.Width + Petal.Length +
                   Petal.Width, data = iris.binary, 
-                  family = binomial(link = "logit"))
-summary(iris.logit)
-```
-
-```
-## 
-## Call:
-## glm(formula = Species ~ Sepal.Length + Sepal.Width + Petal.Length + 
-##     Petal.Width, family = binomial(link = "logit"), data = iris.binary)
-## 
-## Deviance Residuals: 
-##      Min        1Q    Median        3Q       Max  
-## -2.01105  -0.00541  -0.00001   0.00677   1.78065  
-## 
-## Coefficients:
-##              Estimate Std. Error z value Pr(>|z|)  
-## (Intercept)   -42.638     25.707  -1.659   0.0972 .
-## Sepal.Length   -2.465      2.394  -1.030   0.3032  
-## Sepal.Width    -6.681      4.480  -1.491   0.1359  
-## Petal.Length    9.429      4.737   1.991   0.0465 *
-## Petal.Width    18.286      9.743   1.877   0.0605 .
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## (Dispersion parameter for binomial family taken to be 1)
-## 
-##     Null deviance: 138.629  on 99  degrees of freedom
-## Residual deviance:  11.899  on 95  degrees of freedom
-## AIC: 21.899
-## 
-## Number of Fisher Scoring iterations: 10
+                  model = "logit", cite = FALSE)
 ```
 
 IF we want to instead estimate a probit model, in STATA, we change the command.
 ```
 probit Species Sepal.Length Sepal.Width Petal.Length Petal.Width
 ```
-In R, we change the link function.
+In R, we change `model = `.
 
 ```r
-iris.probit <- glm(Species ~ Sepal.Length + Sepal.Width + Petal.Length +
+iris.probit <- zelig(Species ~ Sepal.Length + Sepal.Width + Petal.Length +
                   Petal.Width, data = iris.binary, 
-                  family = binomial(link = "probit"))
-```
-
-```
-## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+                  model = "probit", cite = FALSE)
 ```
 
 ```r
-summary(iris.probit)
+models = list(
+    `Logit` = from_zelig_model(iris.logit),
+    
+    `Probit` = from_zelig_model(iris.probit)
+)
+
+modelsummary(models = models, stars = TRUE)
 ```
 
-```
-## 
-## Call:
-## glm(formula = Species ~ Sepal.Length + Sepal.Width + Petal.Length + 
-##     Petal.Width, family = binomial(link = "probit"), data = iris.binary)
-## 
-## Deviance Residuals: 
-##      Min        1Q    Median        3Q       Max  
-## -1.96857  -0.00002   0.00000   0.00004   1.75878  
-## 
-## Coefficients:
-##              Estimate Std. Error z value Pr(>|z|)  
-## (Intercept)   -23.985     13.843  -1.733   0.0832 .
-## Sepal.Length   -1.440      1.272  -1.133   0.2574  
-## Sepal.Width    -3.778      2.556  -1.478   0.1393  
-## Petal.Length    5.316      2.435   2.183   0.0290 *
-## Petal.Width    10.486      5.614   1.868   0.0618 .
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## (Dispersion parameter for binomial family taken to be 1)
-## 
-##     Null deviance: 138.629  on 99  degrees of freedom
-## Residual deviance:  11.753  on 95  degrees of freedom
-## AIC: 21.753
-## 
-## Number of Fisher Scoring iterations: 12
-```
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> Logit </th>
+   <th style="text-align:center;"> Probit </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:center;"> -42.638* </td>
+   <td style="text-align:center;"> -23.985* </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (25.707) </td>
+   <td style="text-align:center;"> (13.843) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sepal.Length </td>
+   <td style="text-align:center;"> -2.465 </td>
+   <td style="text-align:center;"> -1.440 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (2.394) </td>
+   <td style="text-align:center;"> (1.272) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sepal.Width </td>
+   <td style="text-align:center;"> -6.681 </td>
+   <td style="text-align:center;"> -3.778 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (4.480) </td>
+   <td style="text-align:center;"> (2.556) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Petal.Length </td>
+   <td style="text-align:center;"> 9.429** </td>
+   <td style="text-align:center;"> 5.316** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (4.737) </td>
+   <td style="text-align:center;"> (2.435) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Petal.Width </td>
+   <td style="text-align:center;"> 18.286* </td>
+   <td style="text-align:center;"> 10.486* </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;box-shadow: 0px 1px">  </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (9.743) </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (5.614) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Num.Obs. </td>
+   <td style="text-align:center;"> 100 </td>
+   <td style="text-align:center;"> 100 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AIC </td>
+   <td style="text-align:center;"> 21.9 </td>
+   <td style="text-align:center;"> 21.8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BIC </td>
+   <td style="text-align:center;"> 34.9 </td>
+   <td style="text-align:center;"> 34.8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Log.Lik. </td>
+   <td style="text-align:center;"> -5.949 </td>
+   <td style="text-align:center;"> -5.876 </td>
+  </tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
+</tr>
+</tfoot>
+</table>
 
 ## Counts
-Count models tend to fall into two categories: Poisson and negative binomial. Poisson model assume an even dispersion, with the mean equal to the variance, while negative binomial accout for overdispersed data. 
+Count models tend to fall into two categories: Poisson and negative binomial. Poisson models assume an even dispersion, with the mean equal to the variance, while negative binomial accout for overdispersed data. 
 
 ```r
 summary(diamonds)
@@ -209,3 +225,5 @@ summary(diamonds)
 ##  Max.   :31.800  
 ## 
 ```
+
+## Rare-events and Zero-inflation

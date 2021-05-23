@@ -1,3 +1,5 @@
+
+
 new_session: yes
 delete_merged_file: yes
 
@@ -8,25 +10,25 @@ delete_merged_file: yes
 rmd_files:
     [
     "index.Rmd",
-    
     "intro.Rmd",
     "Why_switch_to_R.Rmd",
     "Going_through_a_project_from_start_to_finish.Rmd",
     "Dealing_with_dta.Rmd",
-    "One_stop_modeling.Rmd",
-    # Data types
-    #Vizualining your data and summary statistics
     "Merging_and_wrangling.Rmd",
-    # Intro to CS: functions, loops, and ifelse()
-    #Zelig
+    "One_stop_modeling.Rmd",
+    'Viz_and_description.Rmd',
+    # Data types
     "Linear_Regression.Rmd",
-    # Vizualizing your results
-    "MLE.Rmd"
+    "MLE.Rmd",
+    "Bayesian.Rmd",
+    "Panel_models.Rmd",
+    "Missing_data.Rmd",
+    "Matching.Rmd",
+    "GIS.Rmd",
     # Survival models
     # PML and panel models
-    # Clustered standard errors
     # Tables
-    
+    "A_brief_intro_to_coding.Rmd"
     ]
     
 # bookdown::render_book('_bookdown.yml', bookdown::pdf_book())

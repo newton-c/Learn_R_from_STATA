@@ -1,13 +1,13 @@
 # Dealing with .dta
 
-There are multiple packages that can read and write .dta files, we're going to use `haven`. Haven is not part of base-R, so it has to be installed if you haven't done so before. With it installed, put `library(haven)` at the top of you R script. 
+There are multiple packages that can read and write .dta files; we're going to use `haven`. Haven is not part of base-R, so it has to be installed if you haven't done so before. With it installed, put `library(haven)` at the top of you R script. 
 
 ```{r, message=FALSE}
 library(haven)
 ```
 
 ## Using haven to import STATA files
-Now will import your data. This is done with the command `read_dta()`. As you probably want to actually load the data into the environment, and not just print the observations in the console, you'll have to assign the data a name. In R, names can contain uppercase and lowercase letter, numbers, underscores, and periods. An object name cannot, contain spaces, begin with a number, or contain symbols such as $ or %. Also, names cannot be the same as a function in base-R or any of the packages you are using.
+Now you import your data. This is done with the command `read_dta()`. As you probably want to actually load the data into the environment, and not just print the observations in the console, you'll have to assign the data a name. In R, names can contain uppercase and lowercase letters, numbers, underscores, and periods. An object name cannot contain spaces, begin with a number, or contain symbols such as $ or %. Also, names cannot be the same as a function in base-R or any of the packages you are using.
 
 ```
 my.data <- read_dta('data.dta') # this works
@@ -22,14 +22,14 @@ data2 <- read_dta('data.dat') # this is fine
 
 Names are assigned by using `<-`, typically with a space before and after (though this isn't necessary, it keeps the code clean and easy to read). To load your data, give it a name (that conforms with R's rules) followed by `<-` and then `read_dta()`. If your data is in your working directory, you can simply write the file name inside either single ('') or double ("") quotes. To find you working directory, type `getwd()` into the console. 
 
-If your file is in a subdirectory of your workind directory, you can simple specify the subdirectiory. For example, if you keep all of your datasets in a folder 'data', and you have a file `data.dta`, you would type `read_dta('data/data.dta')`. If you data is outside of your working directory, you can specify the complete file path. for example `read_dta('~/home/user/Desktop/datasets/data.dta')`. 
+If your file is in a subdirectory of your working directory, you can simply specify the subdirectiory. For example, if you keep all of your datasets in a folder 'data', and you have a file `data.dta`, you would type `read_dta('data/data.dta')`. If your data is outside of your working directory, you can specify the complete file path. for example `read_dta('~/home/user/Desktop/datasets/data.dta')`. 
 
 ## Dealing with errors
 The `read_dta()` function supports STATA versions 8-15. If you import your file and it doesn't look right, there may be an issue with interpreting the version. This can be fixed by adding a comma after the file name, followed by `version = ` and then the version of STATA that wrote the file. For example, importing a file from STATA 10 would look like this:
 ```
 stata.data <- read_dta('data/data.dta', version = 10)
 ```
-If there's still an issue, it might be the econding. Before STATA 14, files relied on the default decoding of the system when writing a file. This means that a file written on Windows may not have the same encoding as one written on Mac or Linux. If you get the meggage `"Unable to convert string to the requested encoding"`, it's probably because STATA saved the default Windows encoding, windows-1252. To fix this, add `encoding = "latin1"` after the version (again seperated with a comma). 
+If there's still an issue, it might be the econding. Before STATA 14, files relied on the default encoding of the system when writing a file. This means that a file written on Windows may not have the same encoding as one written on Mac or Linux. If you get the message `"Unable to convert string to the requested encoding"`, it's probably because STATA saved the default Windows encoding, windows-1252. To fix this, add `encoding = "latin1"` after the version (again seperated with a comma). 
 ```
 stata.data <- read_dta('data/data.dta', version = 10, 
                         encoding = "latin1")

@@ -1,25 +1,25 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.12.2)  3 JAN 2021 19:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.2.11)  22 APR 2021 10:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **_main.tex
 (./_main.tex
-LaTeX2e <2020-10-01> patch level 2
-L3 programming layer <2020-10-27> xparse <2020-03-03> (/home/christopher/.TinyT
-eX/texmf-dist/tex/latex/base/book.cls
+LaTeX2e <2020-10-01> patch level 4
+L3 programming layer <2021-02-06> (/home/christopher/.TinyTeX/texmf-dist/tex/la
+tex/base/book.cls
 Document Class: book 2020/04/10 v1.4m Standard LaTeX document class
 (/home/christopher/.TinyTeX/texmf-dist/tex/latex/base/bk10.clo
 File: bk10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 )
-\c@part=\count175
-\c@chapter=\count176
-\c@section=\count177
-\c@subsection=\count178
-\c@subsubsection=\count179
-\c@paragraph=\count180
-\c@subparagraph=\count181
-\c@figure=\count182
-\c@table=\count183
+\c@part=\count177
+\c@chapter=\count178
+\c@section=\count179
+\c@subsection=\count180
+\c@subsubsection=\count181
+\c@paragraph=\count182
+\c@subparagraph=\count183
+\c@figure=\count184
+\c@table=\count185
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen138
@@ -83,13 +83,13 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 ) (/home/christopher/.TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count184
+\inf@bad=\count186
 LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count185
-\leftroot@=\count186
+\uproot@=\count187
+\leftroot@=\count188
 LaTeX Info: Redefining \overline on input line 399.
-\classnum@=\count187
-\DOTSCASE@=\count188
+\classnum@=\count189
+\DOTSCASE@=\count190
 LaTeX Info: Redefining \ldots on input line 496.
 LaTeX Info: Redefining \dots on input line 499.
 LaTeX Info: Redefining \cdots on input line 620.
@@ -98,15 +98,15 @@ LaTeX Info: Redefining \cdots on input line 620.
 \big@size=\dimen141
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count189
-\c@MaxMatrixCols=\count190
+\macc@depth=\count191
+\c@MaxMatrixCols=\count192
 \dotsspace@=\muskip16
-\c@parentequation=\count191
-\dspbrk@lvl=\count192
+\c@parentequation=\count193
+\dspbrk@lvl=\count194
 \tag@help=\toks17
-\row@=\count193
-\column@=\count194
-\maxfields@=\count195
+\row@=\count195
+\column@=\count196
+\maxfields@=\count197
 \andhelp@=\toks18
 \eqnshift@=\dimen142
 \alignsep@=\dimen143
@@ -148,7 +148,7 @@ Package: inputenc 2020/08/01 v1.3d Input encoding file
 ) (/home/christopher/.TinyTeX/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 ) (/home/christopher/.TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2020-05-15 v7.00e Hypertext links for LaTeX
+Package: hyperref 2021-02-08 v7.00i Hypertext links for LaTeX
 (/home/christopher/.TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
 ) (/home/christopher/.TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
@@ -181,37 +181,42 @@ Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 )
 \@linkdim=\dimen148
-\Hy@linkcounter=\count196
-\Hy@pagecounter=\count197
+\Hy@linkcounter=\count198
+\Hy@pagecounter=\count199
 (/home/christopher/.TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2020-05-15 v7.00e Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2021-02-08 v7.00i Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
+)
+(/home/christopher/.TinyTeX/texmf-dist/tex/latex/hyperref/hyperref-langpatches.
+def
+File: hyperref-langpatches.def 2021-02-08 v7.00i Hyperref: patches for babel la
+nguages
 ) (/home/christopher/.TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 ) (/home/christopher/.TinyTeX/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count198
-Package hyperref Info: Option `unicode' set `true' on input line 4338.
+\Hy@SavedSpaceFactor=\count266
+Package hyperref Info: Option `unicode' set `true' on input line 4058.
 (/home/christopher/.TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2020-05-15 v7.00e Hyperref: PDF Unicode definition (HO)
+File: puenc.def 2021-02-08 v7.00i Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
-Package hyperref Info: Hyper figures OFF on input line 4464.
-Package hyperref Info: Link nesting OFF on input line 4469.
-Package hyperref Info: Hyper index ON on input line 4472.
-Package hyperref Info: Plain pages OFF on input line 4479.
-Package hyperref Info: Backreferencing OFF on input line 4484.
+Package hyperref Info: Hyper figures OFF on input line 4180.
+Package hyperref Info: Link nesting OFF on input line 4185.
+Package hyperref Info: Hyper index ON on input line 4188.
+Package hyperref Info: Plain pages OFF on input line 4195.
+Package hyperref Info: Backreferencing OFF on input line 4200.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4717.
-\c@Hy@tempcnt=\count199
+Package hyperref Info: Bookmarks ON on input line 4433.
+\c@Hy@tempcnt=\count267
 (/home/christopher/.TinyTeX/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 5076.
+LaTeX Info: Redefining \url on input line 4792.
 \XeTeXLinkMargin=\dimen149
 (/home/christopher/.TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -219,37 +224,37 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count266
+\Fld@menulength=\count268
 \Field@Width=\dimen150
 \Fld@charsize=\dimen151
-Package hyperref Info: Hyper figures OFF on input line 6347.
-Package hyperref Info: Link nesting OFF on input line 6352.
-Package hyperref Info: Hyper index ON on input line 6355.
-Package hyperref Info: backreferencing OFF on input line 6362.
-Package hyperref Info: Link coloring OFF on input line 6367.
-Package hyperref Info: Link coloring with OCG OFF on input line 6372.
-Package hyperref Info: PDF/A mode OFF on input line 6377.
-LaTeX Info: Redefining \ref on input line 6417.
-LaTeX Info: Redefining \pageref on input line 6421.
+Package hyperref Info: Hyper figures OFF on input line 6063.
+Package hyperref Info: Link nesting OFF on input line 6068.
+Package hyperref Info: Hyper index ON on input line 6071.
+Package hyperref Info: backreferencing OFF on input line 6078.
+Package hyperref Info: Link coloring OFF on input line 6083.
+Package hyperref Info: Link coloring with OCG OFF on input line 6088.
+Package hyperref Info: PDF/A mode OFF on input line 6093.
+LaTeX Info: Redefining \ref on input line 6133.
+LaTeX Info: Redefining \pageref on input line 6137.
 (/home/christopher/.TinyTeX/texmf-dist/tex/latex/base/atbegshi-ltx.sty
 Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi packa
 ge
 with kernel methods
 )
-\Hy@abspage=\count267
-\c@Item=\count268
-\c@Hfootnote=\count269
+\Hy@abspage=\count269
+\c@Item=\count270
+\c@Hfootnote=\count271
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 (/home/christopher/.TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2020-05-15 v7.00e Hyperref driver for pdfTeX
+File: hpdftex.def 2021-02-08 v7.00i Hyperref driver for pdfTeX
 (/home/christopher/.TinyTeX/texmf-dist/tex/latex/base/atveryend-ltx.sty
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery packag
 e
 with kernel methods
 )
-\Fld@listcount=\count270
-\c@bookmark@seq@number=\count271
+\Fld@listcount=\count272
+\c@bookmark@seq@number=\count273
 
 (/home/christopher/.TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.
 sty
@@ -274,12 +279,12 @@ Package color Info: Driver file: pdftex.def on input line 147.
 (/home/christopher/.TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 )) (/home/christopher/.TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Package: fancyvrb 2020/05/03 v3.6 verbatim text (tvz,hv)
-\FV@CodeLineNo=\count272
+Package: fancyvrb 2021/01/20 v3.7 verbatim text (tvz,hv)
+\FV@CodeLineNo=\count274
 \FV@InFile=\read2
 \FV@TabBox=\box49
-\c@FancyVerbLine=\count273
-\FV@StepNumber=\count274
+\c@FancyVerbLine=\count275
+\FV@StepNumber=\count276
 \FV@OutFile=\write3
 ) (/home/christopher/.TinyTeX/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
@@ -294,16 +299,16 @@ Package: longtable 2020/01/07 v4.13 Multi-page Table package (DPC)
 \LTright=\skip55
 \LTpre=\skip56
 \LTpost=\skip57
-\LTchunksize=\count275
+\LTchunksize=\count277
 \LTcapwidth=\dimen156
 \LT@head=\box50
 \LT@firsthead=\box51
 \LT@foot=\box52
 \LT@lastfoot=\box53
-\LT@cols=\count276
-\LT@rows=\count277
-\c@LT@tables=\count278
-\c@LT@chunks=\count279
+\LT@cols=\count278
+\LT@rows=\count279
+\c@LT@tables=\count280
+\c@LT@chunks=\count281
 \LT@p@ftn=\toks24
 ) (/home/christopher/.TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
@@ -317,12 +322,12 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \cmidrulesep=\dimen164
 \cmidrulekern=\dimen165
 \defaultaddspace=\dimen166
-\@cmidla=\count280
-\@cmidlb=\count281
+\@cmidla=\count282
+\@cmidlb=\count283
 \@aboverulesep=\dimen167
 \@belowrulesep=\dimen168
-\@thisruleclass=\count282
-\@lastruleclass=\count283
+\@thisruleclass=\count284
+\@lastruleclass=\count285
 \@thisrulewidth=\dimen169
 ) (/home/christopher/.TinyTeX/texmf-dist/tex/latex/mdwtools/footnote.sty
 Package: footnote 1997/01/28 1.13 Save footnotes around boxes
@@ -356,21 +361,21 @@ Package: array 2020/10/01 v2.5c Tabular extension package (FMi)
 \backup@length=\skip59
 \ar@cellbox=\box56
 ) (/home/christopher/.TinyTeX/texmf-dist/tex/latex/multirow/multirow.sty
-Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
+Package: multirow 2021/01/29 v2.7 Span multiple rows of a table
 \multirow@colwidth=\skip60
-\multirow@cntb=\count284
+\multirow@cntb=\count286
 \multirow@dima=\skip61
 \bigstrutjot=\dimen175
 ) (/home/christopher/.TinyTeX/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 \wrapoverhang=\dimen176
 \WF@size=\dimen177
-\c@WF@wrappedlines=\count285
+\c@WF@wrappedlines=\count287
 \WF@box=\box57
 \WF@everypar=\toks26
 Package: wrapfig 2003/01/31  v 3.6
 ) (/home/christopher/.TinyTeX/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count286
+\c@float@type=\count288
 \float@exts=\toks27
 \float@box=\box58
 \@float@everytoks=\toks28
@@ -390,16 +395,16 @@ Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
 (/home/christopher/.TinyTeX/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \@vwid@box=\box60
-\sift@deathcycles=\count287
+\sift@deathcycles=\count289
 \@vwid@loff=\dimen178
 \@vwid@roff=\dimen179
 )
-\c@taburow=\count288
-\tabu@nbcols=\count289
-\tabu@cnt=\count290
-\tabu@Xcol=\count291
-\tabu@alloc=\count292
-\tabu@nested=\count293
+\c@taburow=\count290
+\tabu@nbcols=\count291
+\tabu@cnt=\count292
+\tabu@Xcol=\count293
+\tabu@alloc=\count294
+\tabu@nested=\count295
 \tabu@target=\dimen180
 \tabu@spreadtarget=\dimen181
 \tabu@naturalX=\dimen182
@@ -437,7 +442,7 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \UL@skip=\skip65
 \UL@hook=\toks32
 \UL@height=\dimen189
-\UL@pe=\count294
+\UL@pe=\count296
 \UL@pixel=\dimen190
 \ULC@box=\box68
 Package: ulem 2019/11/18
@@ -445,7 +450,7 @@ Package: ulem 2019/11/18
 ) (/home/christopher/.TinyTeX/texmf-dist/tex/latex/makecell/makecell.sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 \rotheadsize=\dimen192
-\c@nlinenum=\count295
+\c@nlinenum=\count297
 \TeXr@lab=\toks33
 ) (/home/christopher/.TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
@@ -465,8 +470,8 @@ Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
 (/home/christopher/.TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
-\l__kernel_color_stack_int=\count296
+File: l3backend-pdftex.def 2021-02-06 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count298
 \l__pdf_internal_box=\box69
 ) (./_main.aux)
 \openout1 = `_main.aux'.
@@ -491,7 +496,7 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 127.
 LaTeX Font Info:    ... okay on input line 127.
 Package hyperref Info: Link coloring OFF on input line 127.
 (/home/christopher/.TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
-Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
+Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 (/home/christopher/.TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 )
@@ -499,7 +504,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 g.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count297
+\c@section@level=\count299
 )
 LaTeX Info: Redefining \ref on input line 127.
 LaTeX Info: Redefining \pageref on input line 127.
@@ -564,106 +569,43 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line 2.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 2.
-[3])
+[3] [4]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 8
+1.
+(/home/christopher/.TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+))
 \tf@toc=\write5
 \openout5 = `_main.toc'.
 
-[4]
-Chapter 1.
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-41.
-(/home/christopher/.TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [5
+[5] [6
 
 ]
+Chapter 1.
+[7]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-79.
+80.
 (/home/christopher/.TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [6]
+) [8]
 Chapter 2.
-[7
+[9
 
-] [8] [9] [10
+] [10] [11] [12
 
 ]
 Chapter 3.
+[13]
 
-Overfull \hbox (78.71068pt too wide) in paragraph at lines 280--282
-[]\T1/lmr/m/n/10 If a pack-age ex-ists on CRAN, it can be in-stalled by writ-in
-g \T1/lmtt/m/n/10 install.packages("package.name").
- []
-
-[11]
-
-Package xcolor Warning: Incompatible color definition on input line 285.
+Package xcolor Warning: Incompatible color definition on input line 298.
 
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 287.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 300.
 
-Package xcolor Warning: Incompatible color definition on input line 290.
-
-
-Package xcolor Warning: Incompatible color definition on input line 290.
+Package xcolor Warning: Incompatible color definition on input line 303.
 
 
-Package xcolor Warning: Incompatible color definition on input line 301.
-
-
-Package xcolor Warning: Incompatible color definition on input line 306.
-
-
-Package xcolor Warning: Incompatible color definition on input line 306.
-
-
-Overfull \hbox (2.88383pt too wide) has occurred while \output is active
-\T1/lmr/m/n/10 12 \T1/lmr/m/sl/10 CHAPTER 3.  GOING THROUGH A PROJECT FROM STAR
-T TO FINISH
- []
-
-[12]
-Underfull \hbox (badness 1460) in paragraph at lines 314--315
-\T1/lmr/m/n/10 This cre-ates a new data frame called \T1/lmtt/m/n/10 titanic.su
-bset \T1/lmr/m/n/10 with only con-
- []
-
-
-Package xcolor Warning: Incompatible color definition on input line 322.
-
-
-Package xcolor Warning: Incompatible color definition on input line 326.
-
-
-Package xcolor Warning: Incompatible color definition on input line 326.
-
-LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-328.
-(/home/christopher/.TinyTeX/texmf-dist/tex/latex/lm/ts1lmtt.fd
-File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [13]
-
-Package xcolor Warning: Incompatible color definition on input line 337.
-
-
-Package xcolor Warning: Incompatible color definition on input line 344.
-
-
-Package xcolor Warning: Incompatible color definition on input line 344.
-
-<Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-chunk-
-4-1.pdf, id=257, 469.755pt x 325.215pt>
-File: Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-c
-hunk-4-1.pdf Graphic file (type pdf)
-<use Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-ch
-unk-4-1.pdf>
-Package pdftex.def Info: Going_through_a_project_from_start_to_finish_files/fig
-ure-latex/unnamed-chunk-4-1.pdf  used on input line 350.
-(pdftex.def)             Requested size: 344.997pt x 238.84406pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 350--352
-[][]
- []
+Package xcolor Warning: Incompatible color definition on input line 303.
 
 
 Overfull \hbox (2.88383pt too wide) has occurred while \output is active
@@ -671,54 +613,58 @@ Overfull \hbox (2.88383pt too wide) has occurred while \output is active
 T TO FINISH
  []
 
-[14 <./Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-
-chunk-4-1.pdf>]
+[14]
 
-Package xcolor Warning: Incompatible color definition on input line 355.
-
-
-Package xcolor Warning: Incompatible color definition on input line 362.
+Package xcolor Warning: Incompatible color definition on input line 314.
 
 
-Package xcolor Warning: Incompatible color definition on input line 362.
-
-<Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-chunk-
-5-1.pdf, id=268, 469.755pt x 325.215pt>
-File: Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-c
-hunk-5-1.pdf Graphic file (type pdf)
-<use Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-ch
-unk-5-1.pdf>
-Package pdftex.def Info: Going_through_a_project_from_start_to_finish_files/fig
-ure-latex/unnamed-chunk-5-1.pdf  used on input line 368.
-(pdftex.def)             Requested size: 344.997pt x 238.84406pt.
-
-Package xcolor Warning: Incompatible color definition on input line 375.
+Package xcolor Warning: Incompatible color definition on input line 319.
 
 
-Package xcolor Warning: Incompatible color definition on input line 381.
+Package xcolor Warning: Incompatible color definition on input line 319.
 
 
-Package xcolor Warning: Incompatible color definition on input line 381.
-
-
-Overfull \hbox (6.74898pt too wide) in paragraph at lines 411--411
-[]\T1/lmtt/m/n/10 ## glm(formula = Survived ~ Class + Sex + Age, family = "bino
-mial",[] 
+Underfull \hbox (badness 1460) in paragraph at lines 327--329
+\T1/lmr/m/n/10 This cre-ates a new data frame called \T1/lmtt/m/n/10 titanic.su
+bset \T1/lmr/m/n/10 with only con-
  []
 
-[15 <./Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-
-chunk-5-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 420.
+Package xcolor Warning: Incompatible color definition on input line 336.
 
 
-Package xcolor Warning: Incompatible color definition on input line 433.
+Package xcolor Warning: Incompatible color definition on input line 340.
 
 
-Package xcolor Warning: Incompatible color definition on input line 433.
+Package xcolor Warning: Incompatible color definition on input line 340.
+
+LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
+342.
+(/home/christopher/.TinyTeX/texmf-dist/tex/latex/lm/ts1lmtt.fd
+File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [15]
+
+Package xcolor Warning: Incompatible color definition on input line 351.
 
 
-Package xcolor Warning: Incompatible color definition on input line 433.
+Package xcolor Warning: Incompatible color definition on input line 358.
+
+
+Package xcolor Warning: Incompatible color definition on input line 358.
+
+<Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-chunk-
+4-1.pdf, id=405, 469.755pt x 325.215pt>
+File: Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-c
+hunk-4-1.pdf Graphic file (type pdf)
+<use Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-ch
+unk-4-1.pdf>
+Package pdftex.def Info: Going_through_a_project_from_start_to_finish_files/fig
+ure-latex/unnamed-chunk-4-1.pdf  used on input line 364.
+(pdftex.def)             Requested size: 344.997pt x 238.84406pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 364--366
+[][]
+ []
 
 
 Overfull \hbox (2.88383pt too wide) has occurred while \output is active
@@ -726,53 +672,41 @@ Overfull \hbox (2.88383pt too wide) has occurred while \output is active
 T TO FINISH
  []
 
-[16]
+[16 <./Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-
+chunk-4-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 433.
-
-
-Package xcolor Warning: Incompatible color definition on input line 433.
+Package xcolor Warning: Incompatible color definition on input line 369.
 
 
-Package xcolor Warning: Incompatible color definition on input line 464.
+Package xcolor Warning: Incompatible color definition on input line 376.
 
 
-Package xcolor Warning: Incompatible color definition on input line 488.
-
-
-Package xcolor Warning: Incompatible color definition on input line 488.
-
-
-Package xcolor Warning: Incompatible color definition on input line 488.
-
-[17]
-
-Package xcolor Warning: Incompatible color definition on input line 488.
-
-
-Package xcolor Warning: Incompatible color definition on input line 488.
-
-
-Package xcolor Warning: Incompatible color definition on input line 518.
-
-
-Package xcolor Warning: Incompatible color definition on input line 533.
-
-
-Package xcolor Warning: Incompatible color definition on input line 533.
+Package xcolor Warning: Incompatible color definition on input line 376.
 
 <Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-chunk-
-9-1.pdf, id=288, 469.755pt x 325.215pt>
+5-1.pdf, id=417, 469.755pt x 325.215pt>
 File: Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-c
-hunk-9-1.pdf Graphic file (type pdf)
+hunk-5-1.pdf Graphic file (type pdf)
 <use Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-ch
-unk-9-1.pdf>
+unk-5-1.pdf>
 Package pdftex.def Info: Going_through_a_project_from_start_to_finish_files/fig
-ure-latex/unnamed-chunk-9-1.pdf  used on input line 535.
+ure-latex/unnamed-chunk-5-1.pdf  used on input line 382.
 (pdftex.def)             Requested size: 344.997pt x 238.84406pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 535--537
-[][]
+Package xcolor Warning: Incompatible color definition on input line 389.
+
+[17 <./Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-
+chunk-5-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 395.
+
+
+Package xcolor Warning: Incompatible color definition on input line 395.
+
+
+Overfull \hbox (6.74898pt too wide) in paragraph at lines 425--425
+[]\T1/lmtt/m/n/10 ## glm(formula = Survived ~ Class + Sex + Age, family = "bino
+mial",[] 
  []
 
 
@@ -781,407 +715,621 @@ Overfull \hbox (2.88383pt too wide) has occurred while \output is active
 T TO FINISH
  []
 
-[18] [19 <./Going_through_a_project_from_start_to_finish_files/figure-latex/unn
-amed-chunk-9-1.pdf>]
+[18]
+
+Package xcolor Warning: Incompatible color definition on input line 434.
+
+
+Package xcolor Warning: Incompatible color definition on input line 447.
+
+
+Package xcolor Warning: Incompatible color definition on input line 447.
+
+
+Package xcolor Warning: Incompatible color definition on input line 478.
+
+
+Package xcolor Warning: Incompatible color definition on input line 502.
+
+
+Package xcolor Warning: Incompatible color definition on input line 502.
+
+
+Package xcolor Warning: Incompatible color definition on input line 502.
+
+[19]
+
+Package xcolor Warning: Incompatible color definition on input line 502.
+
+
+Package xcolor Warning: Incompatible color definition on input line 502.
+
+
+Package xcolor Warning: Incompatible color definition on input line 532.
+
+
+Package xcolor Warning: Incompatible color definition on input line 547.
+
+
+Package xcolor Warning: Incompatible color definition on input line 547.
+
+
+Package xcolor Warning: Incompatible color definition on input line 547.
+
+
 Overfull \hbox (2.88383pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10 20 \T1/lmr/m/sl/10 CHAPTER 3.  GOING THROUGH A PROJECT FROM STAR
 T TO FINISH
  []
 
-[20
+[20]
 
-]
+Package xcolor Warning: Incompatible color definition on input line 547.
+
+
+Package xcolor Warning: Incompatible color definition on input line 547.
+
+<Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-chunk-
+9-1.pdf, id=443, 469.755pt x 325.215pt>
+File: Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-c
+hunk-9-1.pdf Graphic file (type pdf)
+<use Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-ch
+unk-9-1.pdf>
+Package pdftex.def Info: Going_through_a_project_from_start_to_finish_files/fig
+ure-latex/unnamed-chunk-9-1.pdf  used on input line 549.
+(pdftex.def)             Requested size: 344.997pt x 238.84406pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 549--553
+[][]
+ []
+
+[21 <./Going_through_a_project_from_start_to_finish_files/figure-latex/unnamed-
+chunk-9-1.pdf>]
+Overfull \hbox (2.88383pt too wide) has occurred while \output is active
+\T1/lmr/m/n/10 22 \T1/lmr/m/sl/10 CHAPTER 3.  GOING THROUGH A PROJECT FROM STAR
+T TO FINISH
+ []
+
+[22]
 Chapter 4.
 
-Package xcolor Warning: Incompatible color definition on input line 556.
+Package xcolor Warning: Incompatible color definition on input line 572.
 
 
-Package xcolor Warning: Incompatible color definition on input line 560.
+Package xcolor Warning: Incompatible color definition on input line 576.
 
 
-Package xcolor Warning: Incompatible color definition on input line 560.
+Package xcolor Warning: Incompatible color definition on input line 576.
 
-[21] [22] [23] [24]
+[23
+
+] [24] [25] [26]
 Chapter 5.
 
-Overfull \hbox (1.499pt too wide) in paragraph at lines 666--666
+Overfull \hbox (27.74892pt too wide) in paragraph at lines 675--675
+[]\T1/lmtt/m/n/10 merged_data <- merge(data1, data2, by = c("time", "space"), a
+ll = TRUE)[] 
+ []
+
+
+Overfull \hbox (74.99878pt too wide) in paragraph at lines 684--684
+[]\T1/lmtt/m/n/10 joined_data <- inner_join(data1, data2, by ("time" = "time", 
+"space" = "space"))[] 
+ []
+
+
+Overfull \hbox (69.7488pt too wide) in paragraph at lines 684--684
+[]\T1/lmtt/m/n/10 joined_data <- left_join(data1, data2, by ("time" = "time", "
+space" = "space"))[] 
+ []
+
+
+Overfull \hbox (69.7488pt too wide) in paragraph at lines 684--684
+[]\T1/lmtt/m/n/10 joined_data <- full_join(data1, data2, by ("time" = "time", "
+space" = "space"))[] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 692.
+
+
+Package xcolor Warning: Incompatible color definition on input line 696.
+
+
+Package xcolor Warning: Incompatible color definition on input line 696.
+
+[27
+
+]
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <12> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 708.
+[28]
+Chapter 6.
+
+Overfull \hbox (1.499pt too wide) in paragraph at lines 743--743
 []\T1/lmtt/m/n/10 zelig(y ~ x1 + x2 + x3, data = example.data, model = "model.t
 ype")[] 
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 671.
+Package xcolor Warning: Incompatible color definition on input line 748.
 
 
-Package xcolor Warning: Incompatible color definition on input line 683.
+Package xcolor Warning: Incompatible color definition on input line 762.
 
 
-Package xcolor Warning: Incompatible color definition on input line 683.
+Package xcolor Warning: Incompatible color definition on input line 762.
 
 
-Overfull \hbox (6.74898pt too wide) in paragraph at lines 691--691
+Package xcolor Warning: Incompatible color definition on input line 762.
+
+[29
+
+]
+
+Package xcolor Warning: Incompatible color definition on input line 762.
+
+
+Package xcolor Warning: Incompatible color definition on input line 762.
+
+
+Overfull \hbox (6.74898pt too wide) in paragraph at lines 770--770
 []\T1/lmtt/m/n/10 ##   logit: Logistic Regression for Dichotomous Dependent Var
 iables[] 
  []
 
-[25
 
-]
-Overfull \hbox (190.49844pt too wide) in paragraph at lines 691--691
+Overfull \hbox (190.49844pt too wide) in paragraph at lines 770--770
 []\T1/lmtt/m/n/10 ##   in Christine Choirat, Christopher Gandrud, James Honaker
 , Kosuke Imai, Gary King, and Olivia Lau,[] 
  []
 
 
-Overfull \hbox (27.74892pt too wide) in paragraph at lines 691--691
+Overfull \hbox (27.74892pt too wide) in paragraph at lines 770--770
 []\T1/lmtt/m/n/10 ##   "Zelig: Everyone's Statistical Software," http://zeligpr
 oject.org/[] 
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 693.
+Package xcolor Warning: Incompatible color definition on input line 776.
 
 
-Package xcolor Warning: Incompatible color definition on input line 697.
+Package xcolor Warning: Incompatible color definition on input line 780.
 
 
-Package xcolor Warning: Incompatible color definition on input line 697.
+Package xcolor Warning: Incompatible color definition on input line 780.
 
 
-Overfull \hbox (53.99884pt too wide) in paragraph at lines 727--727
+Overfull \hbox (53.99884pt too wide) in paragraph at lines 810--810
 []\T1/lmtt/m/n/10 ## z5$zelig(formula = Survived ~ Class + Sex + Age, data = ti
 tanic.expanded)[] 
  []
 
-
-Package xcolor Warning: Incompatible color definition on input line 732.
-
-
-Package xcolor Warning: Incompatible color definition on input line 745.
-
-
-Package xcolor Warning: Incompatible color definition on input line 745.
+[30]
+Underfull \hbox (badness 2384) in paragraph at lines 816--816
+\T1/lmr/m/n/8 Al-ter-na-tively, you can wrap the code in-side of \T1/lmtt/m/n/8
+ from_zelig_model()\T1/lmr/m/n/8 . For ex-am-
+ []
 
 
-Package xcolor Warning: Incompatible color definition on input line 745.
-
-[26]
-
-Package xcolor Warning: Incompatible color definition on input line 745.
-
-
-Package xcolor Warning: Incompatible color definition on input line 745.
+Underfull \hbox (badness 2343) in paragraph at lines 816--816
+\T1/lmr/m/n/8 ple \T1/lmtt/m/n/8 from_zelig_model(zelig(Survived ~ Class + Sex 
++ Age, data = titanic.expanded,
+ []
 
 
-Package xcolor Warning: Incompatible color definition on input line 778.
+Package xcolor Warning: Incompatible color definition on input line 818.
 
 
-Package xcolor Warning: Incompatible color definition on input line 791.
+Package xcolor Warning: Incompatible color definition on input line 834.
 
 
-Package xcolor Warning: Incompatible color definition on input line 791.
+Package xcolor Warning: Incompatible color definition on input line 834.
 
 
-Underfull \vbox (badness 6188) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[27] [28]
-Chapter 6.
+[31]
 
-Package xcolor Warning: Incompatible color definition on input line 838.
-
-
-Package xcolor Warning: Incompatible color definition on input line 842.
+Package xcolor Warning: Incompatible color definition on input line 867.
 
 
-Package xcolor Warning: Incompatible color definition on input line 842.
+Package xcolor Warning: Incompatible color definition on input line 882.
 
-[29
 
-] [30
+Package xcolor Warning: Incompatible color definition on input line 882.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[32]
+
+Package xcolor Warning: Incompatible color definition on input line 921.
+
+
+Package xcolor Warning: Incompatible color definition on input line 926.
+
+
+Package xcolor Warning: Incompatible color definition on input line 926.
+
+
+Overfull \hbox (27.74892pt too wide) in paragraph at lines 936--936
+[]\T1/lmtt/m/n/10 ##                    mpg cyl disp  hp drat    wt  qsec vs am
+ gear carb[] 
+ []
+
+
+Overfull \hbox (27.74892pt too wide) in paragraph at lines 936--936
+[]\T1/lmtt/m/n/10 ## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1
+    4    4[] 
+ []
+
+
+Overfull \hbox (27.74892pt too wide) in paragraph at lines 936--936
+[]\T1/lmtt/m/n/10 ## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1
+    4    4[] 
+ []
+
+
+Overfull \hbox (27.74892pt too wide) in paragraph at lines 936--936
+[]\T1/lmtt/m/n/10 ## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1
+    4    1[] 
+ []
+
+
+Overfull \hbox (27.74892pt too wide) in paragraph at lines 936--936
+[]\T1/lmtt/m/n/10 ## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0
+    3    1[] 
+ []
+
+
+Overfull \hbox (27.74892pt too wide) in paragraph at lines 936--936
+[]\T1/lmtt/m/n/10 ## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0
+    3    2[] 
+ []
+
+
+Overfull \hbox (27.74892pt too wide) in paragraph at lines 936--936
+[]\T1/lmtt/m/n/10 ## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0
+    3    1[] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 941.
+
+[33]
+
+Package xcolor Warning: Incompatible color definition on input line 945.
+
+
+Package xcolor Warning: Incompatible color definition on input line 945.
+
+
+Package xcolor Warning: Incompatible color definition on input line 953.
+
+
+Package xcolor Warning: Incompatible color definition on input line 958.
+
+
+Package xcolor Warning: Incompatible color definition on input line 958.
+
+<One_stop_modeling_files/figure-latex/unnamed-chunk-6-1.pdf, id=548, 469.755pt 
+x 325.215pt>
+File: One_stop_modeling_files/figure-latex/unnamed-chunk-6-1.pdf Graphic file (
+type pdf)
+<use One_stop_modeling_files/figure-latex/unnamed-chunk-6-1.pdf>
+Package pdftex.def Info: One_stop_modeling_files/figure-latex/unnamed-chunk-6-1
+.pdf  used on input line 960.
+(pdftex.def)             Requested size: 344.997pt x 238.84406pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 960--964
+[][]
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 965.
+
+
+Package xcolor Warning: Incompatible color definition on input line 971.
+
+
+Package xcolor Warning: Incompatible color definition on input line 971.
+
+[34 <./One_stop_modeling_files/figure-latex/unnamed-chunk-6-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1005.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1016.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1016.
+
+<One_stop_modeling_files/figure-latex/unnamed-chunk-8-1.pdf, id=561, 361.35pt x
+ 216.81pt>
+File: One_stop_modeling_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (
+type pdf)
+<use One_stop_modeling_files/figure-latex/unnamed-chunk-8-1.pdf>
+Package pdftex.def Info: One_stop_modeling_files/figure-latex/unnamed-chunk-8-1
+.pdf  used on input line 1018.
+(pdftex.def)             Requested size: 345.00084pt x 207.00049pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[35] [36 <./One_stop_modeling_files/figure-latex/unnamed-chunk-8-1.pdf>]
+Chapter 7.
+[37
+
+] [38]
+Chapter 8.
+[39
 
 ]
-Chapter 7.
-[31]
-Overfull \hbox (9.6381pt too wide) in paragraph at lines 877--878
+Overfull \hbox (9.6381pt too wide) in paragraph at lines 1105--1106
 []\T1/lmr/m/n/10 If you want to switch to an-other dataframe, you sim-ply write
  \T1/lmtt/m/n/10 detach(stata.data)
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 886.
+Package xcolor Warning: Incompatible color definition on input line 1114.
 
 
-Package xcolor Warning: Incompatible color definition on input line 894.
+Package xcolor Warning: Incompatible color definition on input line 1122.
 
 
-Package xcolor Warning: Incompatible color definition on input line 894.
+Package xcolor Warning: Incompatible color definition on input line 1122.
 
-[32] [33] [34
+[40]
+
+Package xcolor Warning: Incompatible color definition on input line 1148.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1159.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1159.
+
+[41] [42
 
 ]
-Chapter 8.
+Chapter 9.
 
-Package xcolor Warning: Incompatible color definition on input line 928.
-
-
-Package xcolor Warning: Incompatible color definition on input line 932.
+Package xcolor Warning: Incompatible color definition on input line 1193.
 
 
-Package xcolor Warning: Incompatible color definition on input line 932.
+Package xcolor Warning: Incompatible color definition on input line 1201.
 
 
-Overfull \hbox (90.74873pt too wide) in paragraph at lines 936--936
-[]\T1/lmtt/m/n/10 ## -- Attaching packages ------------------------------------
---- tidyverse 1.3.0 --[] 
- []
+Package xcolor Warning: Incompatible color definition on input line 1201.
 
 
-Overfull \hbox (90.74873pt too wide) in paragraph at lines 949--949
-[]\T1/lmtt/m/n/10 ## -- Conflicts ------------------------------------------ ti
-dyverse_conflicts() --[] 
- []
+Package xcolor Warning: Incompatible color definition on input line 1213.
 
 
-Package xcolor Warning: Incompatible color definition on input line 951.
+Package xcolor Warning: Incompatible color definition on input line 1217.
 
 
-Package xcolor Warning: Incompatible color definition on input line 955.
+Package xcolor Warning: Incompatible color definition on input line 1217.
+
+[43]
+
+Package xcolor Warning: Incompatible color definition on input line 1236.
 
 
-Package xcolor Warning: Incompatible color definition on input line 955.
-
-[35]
-
-Package xcolor Warning: Incompatible color definition on input line 967.
+Package xcolor Warning: Incompatible color definition on input line 1243.
 
 
-Package xcolor Warning: Incompatible color definition on input line 971.
+Package xcolor Warning: Incompatible color definition on input line 1243.
 
-
-Package xcolor Warning: Incompatible color definition on input line 971.
-
-
-Package xcolor Warning: Incompatible color definition on input line 990.
-
-
-Package xcolor Warning: Incompatible color definition on input line 997.
-
-
-Package xcolor Warning: Incompatible color definition on input line 997.
-
-<MLE_files/figure-latex/unnamed-chunk-1-1.pdf, id=403, 469.755pt x 325.215pt>
+<MLE_files/figure-latex/unnamed-chunk-1-1.pdf, id=643, 469.755pt x 325.215pt>
 File: MLE_files/figure-latex/unnamed-chunk-1-1.pdf Graphic file (type pdf)
 <use MLE_files/figure-latex/unnamed-chunk-1-1.pdf>
 Package pdftex.def Info: MLE_files/figure-latex/unnamed-chunk-1-1.pdf  used on 
-input line 999.
+input line 1245.
 (pdftex.def)             Requested size: 344.997pt x 238.84406pt.
 
-Package xcolor Warning: Incompatible color definition on input line 1001.
-
-[36 <./MLE_files/figure-latex/unnamed-chunk-1-1.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 1008.
+Package xcolor Warning: Incompatible color definition on input line 1247.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1008.
+Package xcolor Warning: Incompatible color definition on input line 1254.
 
-<MLE_files/figure-latex/unnamed-chunk-1-2.pdf, id=413, 469.755pt x 325.215pt>
+
+Package xcolor Warning: Incompatible color definition on input line 1254.
+
+<MLE_files/figure-latex/unnamed-chunk-1-2.pdf, id=644, 469.755pt x 325.215pt>
 File: MLE_files/figure-latex/unnamed-chunk-1-2.pdf Graphic file (type pdf)
 <use MLE_files/figure-latex/unnamed-chunk-1-2.pdf>
 Package pdftex.def Info: MLE_files/figure-latex/unnamed-chunk-1-2.pdf  used on 
-input line 1010.
+input line 1256.
 (pdftex.def)             Requested size: 344.997pt x 238.84406pt.
 
-Package xcolor Warning: Incompatible color definition on input line 1014.
+Underfull \vbox (badness 5908) has occurred while \output is active []
+
+[44 <./MLE_files/figure-latex/unnamed-chunk-1-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1260.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1018.
+Package xcolor Warning: Incompatible color definition on input line 1264.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1018.
+Package xcolor Warning: Incompatible color definition on input line 1264.
 
 
-Underfull \hbox (badness 1990) in paragraph at lines 1026--1027
-[]\T1/lmr/m/n/10 In R, we es-ti-mate a logit by spec-i-fy-ing \T1/lmtt/m/n/10 f
-amility = binomial(link =
- []
+Package xcolor Warning: Incompatible color definition on input line 1274.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1028.
+Package xcolor Warning: Incompatible color definition on input line 1280.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1035.
+Package xcolor Warning: Incompatible color definition on input line 1280.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1035.
+Package xcolor Warning: Incompatible color definition on input line 1290.
 
-[37 <./MLE_files/figure-latex/unnamed-chunk-1-2.pdf>]
-Overfull \hbox (22.49893pt too wide) in paragraph at lines 1064--1064
-[]\T1/lmtt/m/n/10 ## glm(formula = Species ~ Sepal.Length + Sepal.Width + Petal
-.Length +[] 
- []
+[45 <./MLE_files/figure-latex/unnamed-chunk-1-2.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1296.
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1064--1064
-[]\T1/lmtt/m/n/10 ##     Petal.Width, family = binomial(link = "logit"), data =
- iris.binary)[] 
- []
+Package xcolor Warning: Incompatible color definition on input line 1296.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1074.
+Package xcolor Warning: Incompatible color definition on input line 1298.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1080.
+Package xcolor Warning: Incompatible color definition on input line 1308.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1080.
+Package xcolor Warning: Incompatible color definition on input line 1308.
 
 
-Overfull \hbox (17.24895pt too wide) in paragraph at lines 1084--1084
-[]\T1/lmtt/m/n/10 ## Warning: glm.fit: fitted probabilities numerically 0 or 1 
-occurred[] 
- []
+Package xcolor Warning: Incompatible color definition on input line 1342.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1086.
+Package xcolor Warning: Incompatible color definition on input line 1346.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1090.
+Package xcolor Warning: Incompatible color definition on input line 1346.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1090.
-
-
-Overfull \hbox (22.49893pt too wide) in paragraph at lines 1119--1119
-[]\T1/lmtt/m/n/10 ## glm(formula = Species ~ Sepal.Length + Sepal.Width + Petal
-.Length +[] 
- []
-
-
-Overfull \hbox (48.74886pt too wide) in paragraph at lines 1119--1119
-[]\T1/lmtt/m/n/10 ##     Petal.Width, family = binomial(link = "probit"), data 
-= iris.binary)[] 
- []
-
-[38]
-
-Package xcolor Warning: Incompatible color definition on input line 1126.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1130.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1130.
-
-
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1157--1157
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1373--1373
 []\T1/lmtt/m/n/10 ##      carat               cut        color        clarity  
         depth[] 
  []
 
 
-Overfull \hbox (64.49881pt too wide) in paragraph at lines 1157--1157
+Overfull \hbox (64.49881pt too wide) in paragraph at lines 1373--1373
 []\T1/lmtt/m/n/10 ##  Min.   :0.2000   Fair     : 1610   D: 6775   SI1    :1306
 5   Min.   :43.00[] 
  []
 
 
-Overfull \hbox (64.49881pt too wide) in paragraph at lines 1157--1157
+Overfull \hbox (64.49881pt too wide) in paragraph at lines 1373--1373
 []\T1/lmtt/m/n/10 ##  1st Qu.:0.4000   Good     : 4906   E: 9797   VS2    :1225
 8   1st Qu.:61.00[] 
  []
 
-
-Overfull \hbox (64.49881pt too wide) in paragraph at lines 1157--1157
+[46]
+Overfull \hbox (64.49881pt too wide) in paragraph at lines 1373--1373
 []\T1/lmtt/m/n/10 ##  Median :0.7000   Very Good:12082   F: 9542   SI2    : 919
 4   Median :61.80[] 
  []
 
 
-Overfull \hbox (64.49881pt too wide) in paragraph at lines 1157--1157
+Overfull \hbox (64.49881pt too wide) in paragraph at lines 1373--1373
 []\T1/lmtt/m/n/10 ##  Mean   :0.7979   Premium  :13791   G:11292   VS1    : 817
 1   Mean   :61.75[] 
  []
 
 
-Overfull \hbox (64.49881pt too wide) in paragraph at lines 1157--1157
+Overfull \hbox (64.49881pt too wide) in paragraph at lines 1373--1373
 []\T1/lmtt/m/n/10 ##  3rd Qu.:1.0400   Ideal    :21551   H: 8304   VVS2   : 506
 6   3rd Qu.:62.50[] 
  []
 
 
-Overfull \hbox (64.49881pt too wide) in paragraph at lines 1157--1157
+Overfull \hbox (64.49881pt too wide) in paragraph at lines 1373--1373
 []\T1/lmtt/m/n/10 ##  Max.   :5.0100                     I: 5422   VVS1   : 365
 5   Max.   :79.00[] 
  []
 
 
-Overfull \hbox (6.74898pt too wide) in paragraph at lines 1157--1157
+Overfull \hbox (6.74898pt too wide) in paragraph at lines 1373--1373
 []\T1/lmtt/m/n/10 ##  Min.   :43.00   Min.   :  326   Min.   : 0.000   Min.   :
  0.000[] 
  []
 
 
-Overfull \hbox (6.74898pt too wide) in paragraph at lines 1157--1157
+Overfull \hbox (6.74898pt too wide) in paragraph at lines 1373--1373
 []\T1/lmtt/m/n/10 ##  1st Qu.:56.00   1st Qu.:  950   1st Qu.: 4.710   1st Qu.:
  4.720[] 
  []
 
-[39]
-Overfull \hbox (6.74898pt too wide) in paragraph at lines 1157--1157
+
+Overfull \hbox (6.74898pt too wide) in paragraph at lines 1373--1373
 []\T1/lmtt/m/n/10 ##  Median :57.00   Median : 2401   Median : 5.700   Median :
  5.710[] 
  []
 
 
-Overfull \hbox (6.74898pt too wide) in paragraph at lines 1157--1157
+Overfull \hbox (6.74898pt too wide) in paragraph at lines 1373--1373
 []\T1/lmtt/m/n/10 ##  Mean   :57.46   Mean   : 3933   Mean   : 5.731   Mean   :
  5.735[] 
  []
 
 
-Overfull \hbox (6.74898pt too wide) in paragraph at lines 1157--1157
+Overfull \hbox (6.74898pt too wide) in paragraph at lines 1373--1373
 []\T1/lmtt/m/n/10 ##  3rd Qu.:59.00   3rd Qu.: 5324   3rd Qu.: 6.540   3rd Qu.:
  6.540[] 
  []
 
 
-Overfull \hbox (6.74898pt too wide) in paragraph at lines 1157--1157
+Overfull \hbox (6.74898pt too wide) in paragraph at lines 1373--1373
 []\T1/lmtt/m/n/10 ##  Max.   :95.00   Max.   :18823   Max.   :10.740   Max.   :
 58.900[] 
  []
 
-[40] (./_main.aux)
+[47] [48
+
+]
+Chapter 10.
+[49] [50
+
+]
+Chapter 11.
+[51] [52
+
+]
+Chapter 12.
+[53] [54
+
+]
+Chapter 13.
+[55] [56
+
+]
+Chapter 14.
+[57] [58
+
+]
+Chapter 15.
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 1480.
+[59] (./_main.aux)
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: 7A768EF169155C3A57F4EFE945CE4992;4551.
+(rerunfilecheck)             Checksum: 21AD1960EAE24A0312732EF87E6209B7;8795.
  ) 
 Here is how much of TeX's memory you used:
- 12292 strings out of 481433
- 177522 string characters out of 5920117
- 471427 words of memory out of 5000000
- 28654 multiletter control sequences out of 15000+600000
- 614655 words of font info for 83 fonts, out of 8000000 for 9000
+ 12086 strings out of 481250
+ 177438 string characters out of 5915147
+ 474792 words of memory out of 5000000
+ 28506 multiletter control sequences out of 15000+600000
+ 483954 words of font info for 84 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 66i,13n,72p,1156b,470s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,13n,74p,1151b,469s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/home/christopher/.TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/home/ch
-ristopher/.TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}</home/christopher/
-.TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></home/christopher/.TinyTe
-X/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></home/christopher/.TinyTeX/texmf
--dist/fonts/type1/public/lm/lmr10.pfb></home/christopher/.TinyTeX/texmf-dist/fo
-nts/type1/public/lm/lmr12.pfb></home/christopher/.TinyTeX/texmf-dist/fonts/type
-1/public/lm/lmr17.pfb></home/christopher/.TinyTeX/texmf-dist/fonts/type1/public
-/lm/lmr6.pfb></home/christopher/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmr7.
-pfb></home/christopher/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmr8.pfb></hom
-e/christopher/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb></home/chris
-topher/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmri8.pfb></home/christopher/.
-TinyTeX/texmf-dist/fonts/type1/public/lm/lmro10.pfb></home/christopher/.TinyTeX
-/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></home/christopher/.TinyTeX/texmf-
-dist/fonts/type1/public/lm/lmtt10.pfb></home/christopher/.TinyTeX/texmf-dist/fo
-nts/type1/public/lm/lmtti10.pfb>
-Output written on _main.pdf (40 pages, 435159 bytes).
+ristopher/.TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/home/christoph
+er/.TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}</home/christopher/.TinyTe
+X/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></home/christopher/.TinyTeX/texmf
+-dist/fonts/type1/public/lm/lmbx12.pfb></home/christopher/.TinyTeX/texmf-dist/f
+onts/type1/public/lm/lmmi10.pfb></home/christopher/.TinyTeX/texmf-dist/fonts/ty
+pe1/public/lm/lmr10.pfb></home/christopher/.TinyTeX/texmf-dist/fonts/type1/publ
+ic/lm/lmr12.pfb></home/christopher/.TinyTeX/texmf-dist/fonts/type1/public/lm/lm
+r17.pfb></home/christopher/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmr6.pfb><
+/home/christopher/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmr7.pfb></home/chr
+istopher/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmr8.pfb></home/christopher/
+.TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb></home/christopher/.TinyTe
+X/texmf-dist/fonts/type1/public/lm/lmri8.pfb></home/christopher/.TinyTeX/texmf-
+dist/fonts/type1/public/lm/lmro10.pfb></home/christopher/.TinyTeX/texmf-dist/fo
+nts/type1/public/lm/lmtk10.pfb></home/christopher/.TinyTeX/texmf-dist/fonts/typ
+e1/public/lm/lmtt10.pfb></home/christopher/.TinyTeX/texmf-dist/fonts/type1/publ
+ic/lm/lmtt8.pfb></home/christopher/.TinyTeX/texmf-dist/fonts/type1/public/lm/lm
+tti10.pfb>
+Output written on _main.pdf (59 pages, 527194 bytes).
 PDF statistics:
- 517 PDF objects out of 1000 (max. 8388607)
- 446 compressed objects within 5 object streams
- 123 named destinations out of 1000 (max. 500000)
- 274 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 867 PDF objects out of 1000 (max. 8388607)
+ 768 compressed objects within 8 object streams
+ 243 named destinations out of 1000 (max. 500000)
+ 508 words of extra memory for PDF output out of 10000 (max. 10000000)
 

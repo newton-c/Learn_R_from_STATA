@@ -1,9 +1,16 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dev = 'pdf')
+```
+
 # One Stop Modeling: Zelig
 
 Zelig is a statistical software originally created by Kosuke Imai, Gary King, and Olivia Lau. It attampts to unify different models, 
-tests, vizualizations, and other statistical activities into a single framework. While there are variaous packages in R that you
-can use for different models, using Zelig keeps the syntax consistent. More information on Zelig can be found on its 
-[website](https://zeligproject.org/).
+tests, vizualizations, and other statistical activities into a single framework. R is not a piece of software, it is an open source 
+programing language. As such, as it has adapted and grown, different people have created different packages. This is a strength
+as it keeps R flexible and on the cutting-edge of statistics, but it means that there is often inconsistency. There are variaous 
+packages in R that you can use for different models; Zelig was created to keep the syntax consistent and make using different models as
+simple as changind a single command. More information on Zelig can be found on its 
+[\textcolor{blue}{website}](https://zeligproject.org/).
 
 In addition to running your typical statistical models, Zelig also replicates Clarify from STATA, integrates with 
 multiple imputation methods (through the package `Amelia`) as well as matching methods (through the packages `cem` and `MatchIt`)
@@ -20,42 +27,111 @@ we wanted to replicate the model we estimated in Chapter 3, this is how it'd loo
 library(tidyverse)
 library(Zelig)
 
+theme_set(theme_classic())
+
 data("Titanic")
 titanic.data <- data.frame(Titanic)
 titanic.expanded <- uncount(titanic.data, Freq)
 
 titanic.logit <- zelig(Survived ~ Class + Sex + Age, 
     data = titanic.expanded, model = "logit")
+```
+As you can see, Zelig automatically prints the citation for the model your using. This can be very useful when preparing your 
+references for a project, but very annoying when you're running a bunch of models. Adding `cite = FALSE` (or `cite = F`)
+will stop this. 
+```{r}
 summary(titanic.logit)
 ```
 
 Zelig models can be easily exported to a table for publication-ready results, but the require an additional command, `from_zelig_model()`. 
-If we wanted to campare the original logit from Chapter 3 to the one above so we can varify that they're the same, we'd run 
+We can compare the original logit from Chapter 3 to the one above to varify that they're the same.[^1] 
 ```{r message = FALSE}
 library(modelsummary)
 
 models = list(
     "Ch 3 model" = glm(Survived ~ Class + Sex + Age, 
         data = titanic.expanded, family = 'binomial'),
+    
     # using titanic.logit we just estimated above
-    "Zelig model" = from_zelig_model(titanic.logit)
+    "Zelig model" = zelig(Survived ~ Class + Sex + Age, 
+    data = titanic.expanded, model = "logit", cite = FALSE) %>% 
+        from_zelig_model()
 )
 
 modelsummary(models, stars = TRUE)
 ```
-As we can see, the output is identical, proving that either method will work. Now we can look at various different models by simple changing the
+As we can see, the output is identical, proving that either method will work. Now we can look at various different models by simply changing the
 `model = ` parpameter. Here's a compariason of a logit, and probit.
 
 ```{r}
 models = list(
-    "Logit" = from_zelig_model(zelig(Survived ~ Class + Sex + Age, 
-                                      data = titanic.expanded, model = "logit", 
-                                      cite = F)),
-    "Probit" = from_zelig_model(zelig(Survived ~ Class + Sex + Age, 
-                                       data = titanic.expanded, 
-                                       model = "probit", cite = F))
+    "Logit" = zelig(Survived ~ Class + Sex + Age,
+                    data = titanic.expanded, 
+                    model = "logit", cite = F) %>% 
+        from_zelig_model(),
+    "Probit" = zelig(Survived ~ Class + Sex + Age,
+                     data = titanic.expanded,
+                     model = "probit", cite = F) %>% 
+        from_zelig_model()
 )
 
 modelsummary(models, stars = TRUE)
 ```
-You can see all of the supported models, and their specific syntax in the [Zelig documentation](http://docs.zeligproject.org/articles/index.html#section-core-zelig-model-details).
+You can see all of the supported models, and their specific syntax in the [\textcolor{blue}{Zelig documentation}](http://docs.zeligproject.org/articles/index.html#section-core-zelig-model-details).
+
+## Simulation and Counterfactuals
+Zelig can take a model and generate simulated values. This can be particularly useful for plotting counterfactuals.
+We'll use the `mtcars` dataset. This is a dataset of various car features for 32 models, from a Motor Trend magazine's 1974
+issue. 
+
+```{r}
+data("mtcars")
+head(mtcars)
+```
+
+Let's say we're interested in the effect the that number of cylinders has on a car's fuel effeciency. We'll
+start by looking at the data.
+
+```{r}
+table(mtcars$cyl)
+
+ggplot(mtcars, aes(x = mpg)) +
+    geom_density(fill = "blue", color = "blue", alpha = .3)
+```
+To look at the effect of cylinders *all else equal*, we need to estimate a model.
+Miles per gallon is roughly countious and regularly distributed, so we'll use OLS. In addition to the number of cylinders
+lets adjust for the weight, horsepower, and the number of gears a car has. 
+```{r}
+m1 <- zelig(mpg ~ cyl + wt + hp + gear, data = mtcars, 
+            model = "ls", cite = FALSE)
+summary(m1)
+```
+The table shows that adding a cylinder to the engine decreases the average miles per gallon by 0.8. Now we can simulate some values
+and visualize the relationship. 
+
+First we have to set the values of interest. Let's see a 4 cylinder vs 8 cylinder car. This is done with the
+`setx()` and `setx1()` commands. We then simulate values with `sim()`, and finally plot the results with `plot()`.
+This can all be chained together with `%>%`.
+
+
+```{r fig.height = 3, fig.width = 5}
+par(mar = rep(2, 4))
+
+zelig(mpg ~ cyl + wt + hp + gear, data = mtcars, 
+            model = "ls", cite = FALSE) %>% 
+    setx(cyl = 4) %>% 
+    setx1(cyl = 8) %>% 
+    sim() %>% 
+    plot()
+
+
+```
+
+We can see from the graphs that a car with 8 cylinders (in blue) is expected to have a lower mgp when
+compared to a car with 4 cylinders. That said, there is some overlap in the comparison. 
+
+
+[^1]: There are two options for converting Zelig's output to a format that's readable for `modelsummary()`. As seen above
+you can add a pipe (`%>%`) followed by `from_zelig_model()`. Alternatively, you can wrap the code inside of `from_zelig_model()`. 
+For example `from_zelig_model(zelig(Survived ~ Class + Sex + Age, data = titanic.expanded, model = "logit"))`.
+Both methods do the same thing, the difference is ultimately asthetic. Choose the method you find most readable. 

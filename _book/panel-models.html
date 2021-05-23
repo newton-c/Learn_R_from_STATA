@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>11 Panel Models | R for STATA Users</title>
+  <meta name="description" content="11 Panel Models | R for STATA Users" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="11 Panel Models | R for STATA Users" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="newton-c/R_for_STATA_Users" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="11 Panel Models | R for STATA Users" />
+  
+  
+  
+
+<meta name="author" content="Chris Newton" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="bayesian-models.html"/>
+<link rel="next" href="missing-data-1.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#who-is-this-book-for"><i class="fa fa-check"></i><b>1.1</b> Who is this book for?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#who-isnt-this-book-for"><i class="fa fa-check"></i><b>1.2</b> Who isn’t this book for?</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#setting-up-r"><i class="fa fa-check"></i><b>1.3</b> Setting up R</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="why-switch-to-r.html"><a href="why-switch-to-r.html"><i class="fa fa-check"></i><b>2</b> Why switch to R</a><ul>
+<li class="chapter" data-level="2.1" data-path="why-switch-to-r.html"><a href="why-switch-to-r.html#r-advantages"><i class="fa fa-check"></i><b>2.1</b> R advantages</a></li>
+<li class="chapter" data-level="2.2" data-path="why-switch-to-r.html"><a href="why-switch-to-r.html#in-conclusion"><i class="fa fa-check"></i><b>2.2</b> In conclusion…</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html"><i class="fa fa-check"></i><b>3</b> Going Through a Project from Start to Finish</a><ul>
+<li class="chapter" data-level="3.1" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#loading-packages"><i class="fa fa-check"></i><b>3.1</b> Loading packages</a></li>
+<li class="chapter" data-level="3.2" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#loading-and-prepping-the-data"><i class="fa fa-check"></i><b>3.2</b> Loading and prepping the data</a></li>
+<li class="chapter" data-level="3.3" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#visualization"><i class="fa fa-check"></i><b>3.3</b> Visualization</a></li>
+<li class="chapter" data-level="3.4" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#modeling"><i class="fa fa-check"></i><b>3.4</b> Modeling</a></li>
+<li class="chapter" data-level="3.5" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#reporting"><i class="fa fa-check"></i><b>3.5</b> Reporting</a></li>
+<li class="chapter" data-level="3.6" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#exercises"><i class="fa fa-check"></i><b>3.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html"><i class="fa fa-check"></i><b>4</b> Dealing with .dta</a><ul>
+<li class="chapter" data-level="4.1" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#using-haven-to-import-stata-files"><i class="fa fa-check"></i><b>4.1</b> Using haven to import STATA files</a></li>
+<li class="chapter" data-level="4.2" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#dealing-with-errors"><i class="fa fa-check"></i><b>4.2</b> Dealing with errors</a></li>
+<li class="chapter" data-level="4.3" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#but-theres-still-problems"><i class="fa fa-check"></i><b>4.3</b> But there’s still problems</a></li>
+<li class="chapter" data-level="4.4" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#other-data-formats"><i class="fa fa-check"></i><b>4.4</b> Other data formats</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#rdata"><i class="fa fa-check"></i><b>4.4.1</b> .Rdata</a></li>
+<li class="chapter" data-level="4.4.2" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#csv-and-other-delimited-files"><i class="fa fa-check"></i><b>4.4.2</b> .csv and other delimited files</a></li>
+<li class="chapter" data-level="4.4.3" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#excel-files"><i class="fa fa-check"></i><b>4.4.3</b> Excel files</a></li>
+<li class="chapter" data-level="4.4.4" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#json"><i class="fa fa-check"></i><b>4.4.4</b> .json</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#using-multiple-dataframes"><i class="fa fa-check"></i><b>4.5</b> Using multiple dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html"><i class="fa fa-check"></i><b>5</b> Merging and Wrangling</a><ul>
+<li class="chapter" data-level="5.1" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#base-r"><i class="fa fa-check"></i><b>5.1</b> base R</a></li>
+<li class="chapter" data-level="5.2" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#dplyr"><i class="fa fa-check"></i><b>5.2</b> dplyr</a></li>
+<li class="chapter" data-level="5.3" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#merge.stats"><i class="fa fa-check"></i><b>5.3</b> merge.stats</a></li>
+<li class="chapter" data-level="5.4" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#into-the-tidyverse"><i class="fa fa-check"></i><b>5.4</b> Into the tidyverse</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#filter"><i class="fa fa-check"></i><b>5.4.1</b> <code>filter()</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#mutate"><i class="fa fa-check"></i><b>5.4.2</b> <code>mutate()</code></a></li>
+<li class="chapter" data-level="5.4.3" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#group_by"><i class="fa fa-check"></i><b>5.4.3</b> <code>group_by()</code></a></li>
+<li class="chapter" data-level="5.4.4" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#select"><i class="fa fa-check"></i><b>5.4.4</b> <code>select()</code></a></li>
+<li class="chapter" data-level="5.4.5" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#section"><i class="fa fa-check"></i><b>5.4.5</b> <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="5.4.6" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#stringing-it-together"><i class="fa fa-check"></i><b>5.4.6</b> Stringing it Together</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="one-stop-modeling-zelig.html"><a href="one-stop-modeling-zelig.html"><i class="fa fa-check"></i><b>6</b> One Stop Modeling: Zelig</a><ul>
+<li class="chapter" data-level="6.1" data-path="one-stop-modeling-zelig.html"><a href="one-stop-modeling-zelig.html#simulation-and-counterfactuals"><i class="fa fa-check"></i><b>6.1</b> Simulation and Counterfactuals</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html"><i class="fa fa-check"></i><b>7</b> Visualizing and Describing your Data</a><ul>
+<li class="chapter" data-level="7.1" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html#ggplot2"><i class="fa fa-check"></i><b>7.1</b> ggplot2</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html#destriptive-visualitation"><i class="fa fa-check"></i><b>7.1.1</b> Destriptive visualitation</a></li>
+<li class="chapter" data-level="7.1.2" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html#communicating-results"><i class="fa fa-check"></i><b>7.1.2</b> Communicating Results</a></li>
+<li class="chapter" data-level="7.1.3" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html#other-vizualizations"><i class="fa fa-check"></i><b>7.1.3</b> Other Vizualizations</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html#base-r-1"><i class="fa fa-check"></i><b>7.2</b> base-R</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>8</b> Linear Regression</a><ul>
+<li class="chapter" data-level="8.1" data-path="linear-regression.html"><a href="linear-regression.html#which-way-should-you-write-your-model"><i class="fa fa-check"></i><b>8.1</b> Which way should you write your model?</a></li>
+<li class="chapter" data-level="8.2" data-path="linear-regression.html"><a href="linear-regression.html#viewing-the-results"><i class="fa fa-check"></i><b>8.2</b> Viewing the results</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="mle.html"><a href="mle.html"><i class="fa fa-check"></i><b>9</b> MLE</a><ul>
+<li class="chapter" data-level="9.1" data-path="mle.html"><a href="mle.html#binary-dependent-variables"><i class="fa fa-check"></i><b>9.1</b> Binary Dependent Variables</a></li>
+<li class="chapter" data-level="9.2" data-path="mle.html"><a href="mle.html#counts"><i class="fa fa-check"></i><b>9.2</b> Counts</a></li>
+<li class="chapter" data-level="9.3" data-path="mle.html"><a href="mle.html#rare-events-and-zero-inflation"><i class="fa fa-check"></i><b>9.3</b> Rare-events and Zero-inflation</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="bayesian-models.html"><a href="bayesian-models.html"><i class="fa fa-check"></i><b>10</b> Bayesian Models</a><ul>
+<li class="chapter" data-level="10.1" data-path="bayesian-models.html"><a href="bayesian-models.html#using-stan-in-r"><i class="fa fa-check"></i><b>10.1</b> Using STAN in R</a></li>
+<li class="chapter" data-level="10.2" data-path="bayesian-models.html"><a href="bayesian-models.html#mcelreath-and-rethinking"><i class="fa fa-check"></i><b>10.2</b> McElreath and Rethinking</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="panel-models.html"><a href="panel-models.html"><i class="fa fa-check"></i><b>11</b> Panel Models</a><ul>
+<li class="chapter" data-level="11.1" data-path="panel-models.html"><a href="panel-models.html#fixed-effects"><i class="fa fa-check"></i><b>11.1</b> Fixed-Effects</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="panel-models.html"><a href="panel-models.html#adjusting-standard-errors"><i class="fa fa-check"></i><b>11.1.1</b> Adjusting Standard Errors</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="panel-models.html"><a href="panel-models.html#random-effects"><i class="fa fa-check"></i><b>11.2</b> Random-Effects</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="panel-models.html"><a href="panel-models.html#pml"><i class="fa fa-check"></i><b>11.2.1</b> PML</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="panel-models.html"><a href="panel-models.html#mixed-models"><i class="fa fa-check"></i><b>11.3</b> Mixed Models</a></li>
+<li class="chapter" data-level="11.4" data-path="panel-models.html"><a href="panel-models.html#multilevelhierarchical-models"><i class="fa fa-check"></i><b>11.4</b> Multilevel/Hierarchical Models</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="missing-data-1.html"><a href="missing-data-1.html"><i class="fa fa-check"></i><b>12</b> Missing Data</a><ul>
+<li class="chapter" data-level="12.1" data-path="missing-data-1.html"><a href="missing-data-1.html#amelia-ii"><i class="fa fa-check"></i><b>12.1</b> Amelia II</a></li>
+<li class="chapter" data-level="12.2" data-path="missing-data-1.html"><a href="missing-data-1.html#k-nn-imputation"><i class="fa fa-check"></i><b>12.2</b> k-NN Imputation</a></li>
+<li class="chapter" data-level="12.3" data-path="missing-data-1.html"><a href="missing-data-1.html#machine-learning-for-missing-data"><i class="fa fa-check"></i><b>12.3</b> Machine Learning for Missing Data</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="matching.html"><a href="matching.html"><i class="fa fa-check"></i><b>13</b> Matching</a><ul>
+<li class="chapter" data-level="13.1" data-path="matching.html"><a href="matching.html#the-marchit-package"><i class="fa fa-check"></i><b>13.1</b> The MarchIt Package</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="gis.html"><a href="gis.html"><i class="fa fa-check"></i><b>14</b> GIS</a></li>
+<li class="chapter" data-level="15" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html"><i class="fa fa-check"></i><b>15</b> A Brief Introduction to Coding</a><ul>
+<li class="chapter" data-level="15.1" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#why-learn-to-code"><i class="fa fa-check"></i><b>15.1</b> Why Learn to Code?</a></li>
+<li class="chapter" data-level="15.2" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#coding-basics"><i class="fa fa-check"></i><b>15.2</b> Coding Basics</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#the-internet-is-your-friend"><i class="fa fa-check"></i><b>15.2.1</b> The Internet is your Friend</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#ifelse"><i class="fa fa-check"></i><b>15.3</b> <code>ifelse()</code></a></li>
+<li class="chapter" data-level="15.4" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#writing-a-function"><i class="fa fa-check"></i><b>15.4</b> Writing a Function</a></li>
+<li class="chapter" data-level="15.5" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#loops"><i class="fa fa-check"></i><b>15.5</b> Loops</a><ul>
+<li class="chapter" data-level="15.5.1" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#loops-in-loops"><i class="fa fa-check"></i><b>15.5.1</b> Loops in Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#parallelization-what-it-is-why-its-awesome-and-how-to-use-it."><i class="fa fa-check"></i><b>15.6</b> Parallelization: What it is, Why it’s Awesome, and How to Use it.</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for STATA Users</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="panel-models" class="section level1">
+<h1><span class="header-section-number">11</span> Panel Models</h1>
+<div id="fixed-effects" class="section level2">
+<h2><span class="header-section-number">11.1</span> Fixed-Effects</h2>
+<div id="adjusting-standard-errors" class="section level3">
+<h3><span class="header-section-number">11.1.1</span> Adjusting Standard Errors</h3>
+</div>
+</div>
+<div id="random-effects" class="section level2">
+<h2><span class="header-section-number">11.2</span> Random-Effects</h2>
+<div id="pml" class="section level3">
+<h3><span class="header-section-number">11.2.1</span> PML</h3>
+</div>
+</div>
+<div id="mixed-models" class="section level2">
+<h2><span class="header-section-number">11.3</span> Mixed Models</h2>
+</div>
+<div id="multilevelhierarchical-models" class="section level2">
+<h2><span class="header-section-number">11.4</span> Multilevel/Hierarchical Models</h2>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="bayesian-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="missing-data-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

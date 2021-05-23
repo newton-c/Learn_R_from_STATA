@@ -1,10 +1,17 @@
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
 # MLE
 
 ## Binary Dependent Variables
-While STATA has seperate commands for different MLE models (`logit`, `nbreg`, etc.),  R combines some models into single commands, such as `glm()`. Which type of model you want to estimate is determined by passing the values `family = `, which specifies the error distribution and link function. We'll use the `iris` dataset for an example.
+While STATA has seperate commands for different MLE models (`logit`, `nbreg`, etc.),  R combines some models into single commands. We can use `zelig()`, the command we learned earlier, and just change the `model = ` portion. Alternatively, there are commands such as `glm()`, which do the same thing outside of the Zeligverse.  We'll loog at some examples with the `iris` dataset.
 
 ```{r}
+library(modelsummary)
 library(tidyverse)
+library(Zelig)
+
 head(iris)
 summary(iris)
 
@@ -19,7 +26,7 @@ ggplot(iris) +
     theme_bw()
 ```
 
-This dataset, originally collected by Ronald Fisher, looks at three different species of iris, setosa, versicolor, and virginica, as provides information on the length and width or flowers' petal and sepals. Looking at the data, we can see that setosas are rather distinct, and easy to seperate graphically. Veriscolor and virginia are more similar, so we'll examine them statistically. 
+This dataset, originally collected by Ronald Fisher, looks at three different species of iris: setosa, versicolor, and virginica. It provides information on the length and width of flowers' petal and sepals. Looking at the data, we can see that setosas are rather distinct, and easy to seperate graphically. Veriscolor and virginia are more similar, so we'll examine them statistically. We can create a new dataframe with the `filter()` command we learned in *Modeling and Wrangling*.
 
 ```{r}
 iris.binary <- filter(iris, Species != "setosa")
@@ -29,28 +36,37 @@ To predict whether a flower is setosa or virginica, we could use a logit model.
 ```
 logit Species Sepal.Length Sepal.Width Petal.Length Petal.Width
 ```
-In R, we estimate a logit by specifying `famility = binomial(link = "logit")`.
+In R, we estimate a logit by specifying `model = "logit"` in `zelig()`.
 ```{r}
-iris.logit <- glm(Species ~ Sepal.Length + Sepal.Width + Petal.Length +
+iris.logit <- zelig(Species ~ Sepal.Length + Sepal.Width + Petal.Length +
                   Petal.Width, data = iris.binary, 
-                  family = binomial(link = "logit"))
-summary(iris.logit)
+                  model = "logit", cite = FALSE)
 ```
 
 IF we want to instead estimate a probit model, in STATA, we change the command.
 ```
 probit Species Sepal.Length Sepal.Width Petal.Length Petal.Width
 ```
-In R, we change the link function.
+In R, we change `model = `.
 ```{r}
-iris.probit <- glm(Species ~ Sepal.Length + Sepal.Width + Petal.Length +
+iris.probit <- zelig(Species ~ Sepal.Length + Sepal.Width + Petal.Length +
                   Petal.Width, data = iris.binary, 
-                  family = binomial(link = "probit"))
-summary(iris.probit)
+                  model = "probit", cite = FALSE)
+```
+```{r}
+models = list(
+    `Logit` = from_zelig_model(iris.logit),
+    
+    `Probit` = from_zelig_model(iris.probit)
+)
+
+modelsummary(models = models, stars = TRUE)
 ```
 
 ## Counts
-Count models tend to fall into two categories: Poisson and negative binomial. Poisson model assume an even dispersion, with the mean equal to the variance, while negative binomial accout for overdispersed data. 
+Count models tend to fall into two categories: Poisson and negative binomial. Poisson models assume an even dispersion, with the mean equal to the variance, while negative binomial accout for overdispersed data. 
 ```{r}
 summary(diamonds)
 ```
+
+## Rare-events and Zero-inflation

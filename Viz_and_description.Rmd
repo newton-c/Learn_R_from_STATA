@@ -1,0 +1,23 @@
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+# Visualizing and Describing your Data
+
+## ggplot2
+
+### Destriptive visualitation
+#### Box and Whisker Plots
+#### Histograms
+#### Density Plots
+##### Stacking Plots: Histogram and Density in one Frame
+#### Missing Data
+
+### Communicating Results
+#### Dot Plots
+##### Plotting Regression over the Data
+
+### Other Vizualizations
+#### GIS Maps
+#### Animation
+
+## base-R

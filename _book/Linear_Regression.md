@@ -3,7 +3,16 @@
 Now we'll look at plain old OLS.  In STATA this is done using the command `reg`. In R, OLS is run using the command `lm()`. This is part of base-R, so there are no packages to install, you just start R and you're ready to go. 
 
 While STATA seperates each part of the regression with a space, R wraps everything in parentheses. You don't have to include any spaces between the elements inside the pathenses, but it best to do so, for readability. You do have to add `~`, `+`, and `:`. `~` goes between the dependent variabale, and the rest of the equation, `+` seperates the rest of the variables in an additive model, and `:` indicates a multiplitcative interation. So 
-`lm(y ~ x1 + x2 + x1:x2, data = stata.data)` is the same as `gen x1x2 = x1*x2` followed by `reg y x1 x2 x1x2` in STATA.
+
+```lm(y ~ x1 + x2 + x1:x2, data = stata.data)```
+
+in R is the same as 
+
+```
+gen x1x2 = x1*x2
+reg y x1 x2 x1x2
+``` 
+in STATA.
 
 This R code could also be written: 
 ```
@@ -17,7 +26,7 @@ lm(y ~ x1 + x2 + x1:x2)
 ```
 
 ## Which way should you write your model?
-Starting with `attach(stata.data)` is likely to be most comfortable for STATA users. This method loads a single dataframe into the environment (in this case stata.data) and now any variable you reference is assumed to belong to that dataframe. If you call a variable that doesn't exist in the dataframe, you see the message `Error in eval(predvars, data, env) : object 'variable' not found` where `'variable` is that name of the non-existant variable you tried to call. 
+Starting with `attach(stata.data)` is likely to be most comfortable for STATA users. This method loads a single dataframe into the environment (in this case stata.data) and now any variable you reference is assumed to belong to that dataframe. If you call a variable that doesn't exist in the dataframe, you see the message `Error in eval(predvars, data, env) : object 'variable' not found` where `'variable'` is that name of the non-existant variable you tried to call. 
 
 If you want to switch to another dataframe, you simply write `detach(stata.data)` and then attach another dataframe (i.e. `attach(stata.data2)`). Note that `detach()` will not remove the data from the environment, it only removes it from being the default for calling variables. If you want to remove the data completly, type `rm(stata.data)`.
 
@@ -57,4 +66,77 @@ summary(model)
 ## F-statistic: 67.72 on 2 and 57 DF,  p-value: 8.716e-16
 ```
 
-You can combine the results of numerous models into a single (publication ready) table. This will be covered in a later chapter. 
+You can combine the results of numerous models into a single (publication ready) table as we've seen before.
+
+
+```r
+library(modelsummary)
+
+cn = c(
+    "suppVC" = "Supplement Type",
+    "dose" = "Dose (mg/day)"
+)
+
+modelsummary(models = model, coef_map = cn, stars = TRUE)
+```
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> Model 1 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Supplement Type </td>
+   <td style="text-align:center;"> -3.700*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (1.094) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Dose (mg/day) </td>
+   <td style="text-align:center;"> 9.764*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;box-shadow: 0px 1px">  </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.877) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Num.Obs. </td>
+   <td style="text-align:center;"> 60 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 </td>
+   <td style="text-align:center;"> 0.704 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 Adj. </td>
+   <td style="text-align:center;"> 0.693 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AIC </td>
+   <td style="text-align:center;"> 348.4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BIC </td>
+   <td style="text-align:center;"> 356.8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Log.Lik. </td>
+   <td style="text-align:center;"> -170.208 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:center;"> 67.718 </td>
+  </tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
+</tr>
+</tfoot>
+</table>

@@ -1,0 +1,12 @@
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+# Panel Models
+
+## Fixed-Effects
+### Adjusting Standard Errors
+## Random-Effects
+### PML
+## Mixed Models
+## Multilevel/Hierarchical Models
