@@ -2,6 +2,7 @@
 
 new_session: yes
 delete_merged_file: yes
+output_dir: "docs"
 
 #Something to consider about the order. It may make sense to go throught the
 #steps the way one would in a project (load data, wrangle, merge, summary,

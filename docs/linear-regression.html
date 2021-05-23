@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>8 Linear Regression | R for STATA Users</title>
+  <meta name="description" content="8 Linear Regression | R for STATA Users" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="8 Linear Regression | R for STATA Users" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://newton-c.github.io/R_for_STATA_Users/" />
+  
+  
+  <meta name="github-repo" content="newton-c/R_for_STATA_Users" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="8 Linear Regression | R for STATA Users" />
+  
+  
+  
+
+<meta name="author" content="Chris Newton" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="visualizing-and-describing-your-data.html"/>
+<link rel="next" href="mle.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<!-- gtag.js, from Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115082821-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguements);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-115082821-1');
+    </script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<1i><strong><a href="./">R for STATA Users</a></strong></1i>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#who-is-this-book-for"><i class="fa fa-check"></i><b>1.1</b> Who is this book for?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#who-isnt-this-book-for"><i class="fa fa-check"></i><b>1.2</b> Who isn’t this book for?</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#setting-up-r"><i class="fa fa-check"></i><b>1.3</b> Setting up R</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="why-switch-to-r.html"><a href="why-switch-to-r.html"><i class="fa fa-check"></i><b>2</b> Why switch to R</a><ul>
+<li class="chapter" data-level="2.1" data-path="why-switch-to-r.html"><a href="why-switch-to-r.html#r-advantages"><i class="fa fa-check"></i><b>2.1</b> R advantages</a></li>
+<li class="chapter" data-level="2.2" data-path="why-switch-to-r.html"><a href="why-switch-to-r.html#in-conclusion"><i class="fa fa-check"></i><b>2.2</b> In conclusion…</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html"><i class="fa fa-check"></i><b>3</b> Going Through a Project from Start to Finish</a><ul>
+<li class="chapter" data-level="3.1" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#loading-packages"><i class="fa fa-check"></i><b>3.1</b> Loading packages</a></li>
+<li class="chapter" data-level="3.2" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#loading-and-prepping-the-data"><i class="fa fa-check"></i><b>3.2</b> Loading and prepping the data</a></li>
+<li class="chapter" data-level="3.3" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#visualization"><i class="fa fa-check"></i><b>3.3</b> Visualization</a></li>
+<li class="chapter" data-level="3.4" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#modeling"><i class="fa fa-check"></i><b>3.4</b> Modeling</a></li>
+<li class="chapter" data-level="3.5" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#reporting"><i class="fa fa-check"></i><b>3.5</b> Reporting</a></li>
+<li class="chapter" data-level="3.6" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#exercises"><i class="fa fa-check"></i><b>3.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html"><i class="fa fa-check"></i><b>4</b> Dealing with .dta</a><ul>
+<li class="chapter" data-level="4.1" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#using-haven-to-import-stata-files"><i class="fa fa-check"></i><b>4.1</b> Using haven to import STATA files</a></li>
+<li class="chapter" data-level="4.2" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#dealing-with-errors"><i class="fa fa-check"></i><b>4.2</b> Dealing with errors</a></li>
+<li class="chapter" data-level="4.3" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#but-theres-still-problems"><i class="fa fa-check"></i><b>4.3</b> But there’s still problems</a></li>
+<li class="chapter" data-level="4.4" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#other-data-formats"><i class="fa fa-check"></i><b>4.4</b> Other data formats</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#rdata"><i class="fa fa-check"></i><b>4.4.1</b> .Rdata</a></li>
+<li class="chapter" data-level="4.4.2" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#csv-and-other-delimited-files"><i class="fa fa-check"></i><b>4.4.2</b> .csv and other delimited files</a></li>
+<li class="chapter" data-level="4.4.3" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#excel-files"><i class="fa fa-check"></i><b>4.4.3</b> Excel files</a></li>
+<li class="chapter" data-level="4.4.4" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#json"><i class="fa fa-check"></i><b>4.4.4</b> .json</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#using-multiple-dataframes"><i class="fa fa-check"></i><b>4.5</b> Using multiple dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html"><i class="fa fa-check"></i><b>5</b> Merging and Wrangling</a><ul>
+<li class="chapter" data-level="5.1" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#base-r"><i class="fa fa-check"></i><b>5.1</b> base R</a></li>
+<li class="chapter" data-level="5.2" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#dplyr"><i class="fa fa-check"></i><b>5.2</b> dplyr</a></li>
+<li class="chapter" data-level="5.3" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#merge.stats"><i class="fa fa-check"></i><b>5.3</b> merge.stats</a></li>
+<li class="chapter" data-level="5.4" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#into-the-tidyverse"><i class="fa fa-check"></i><b>5.4</b> Into the tidyverse</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#filter"><i class="fa fa-check"></i><b>5.4.1</b> <code>filter()</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#mutate"><i class="fa fa-check"></i><b>5.4.2</b> <code>mutate()</code></a></li>
+<li class="chapter" data-level="5.4.3" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#group_by"><i class="fa fa-check"></i><b>5.4.3</b> <code>group_by()</code></a></li>
+<li class="chapter" data-level="5.4.4" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#select"><i class="fa fa-check"></i><b>5.4.4</b> <code>select()</code></a></li>
+<li class="chapter" data-level="5.4.5" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#section"><i class="fa fa-check"></i><b>5.4.5</b> <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="5.4.6" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#stringing-it-together"><i class="fa fa-check"></i><b>5.4.6</b> Stringing it Together</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="one-stop-modeling-zelig.html"><a href="one-stop-modeling-zelig.html"><i class="fa fa-check"></i><b>6</b> One Stop Modeling: Zelig</a><ul>
+<li class="chapter" data-level="6.1" data-path="one-stop-modeling-zelig.html"><a href="one-stop-modeling-zelig.html#simulation-and-counterfactuals"><i class="fa fa-check"></i><b>6.1</b> Simulation and Counterfactuals</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html"><i class="fa fa-check"></i><b>7</b> Visualizing and Describing your Data</a><ul>
+<li class="chapter" data-level="7.1" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html#ggplot2"><i class="fa fa-check"></i><b>7.1</b> ggplot2</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html#destriptive-visualitation"><i class="fa fa-check"></i><b>7.1.1</b> Destriptive visualitation</a></li>
+<li class="chapter" data-level="7.1.2" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html#communicating-results"><i class="fa fa-check"></i><b>7.1.2</b> Communicating Results</a></li>
+<li class="chapter" data-level="7.1.3" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html#other-vizualizations"><i class="fa fa-check"></i><b>7.1.3</b> Other Vizualizations</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html#base-r-1"><i class="fa fa-check"></i><b>7.2</b> base-R</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>8</b> Linear Regression</a><ul>
+<li class="chapter" data-level="8.1" data-path="linear-regression.html"><a href="linear-regression.html#which-way-should-you-write-your-model"><i class="fa fa-check"></i><b>8.1</b> Which way should you write your model?</a></li>
+<li class="chapter" data-level="8.2" data-path="linear-regression.html"><a href="linear-regression.html#viewing-the-results"><i class="fa fa-check"></i><b>8.2</b> Viewing the results</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="mle.html"><a href="mle.html"><i class="fa fa-check"></i><b>9</b> MLE</a><ul>
+<li class="chapter" data-level="9.1" data-path="mle.html"><a href="mle.html#binary-dependent-variables"><i class="fa fa-check"></i><b>9.1</b> Binary Dependent Variables</a></li>
+<li class="chapter" data-level="9.2" data-path="mle.html"><a href="mle.html#counts"><i class="fa fa-check"></i><b>9.2</b> Counts</a></li>
+<li class="chapter" data-level="9.3" data-path="mle.html"><a href="mle.html#rare-events-and-zero-inflation"><i class="fa fa-check"></i><b>9.3</b> Rare-events and Zero-inflation</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="bayesian-models.html"><a href="bayesian-models.html"><i class="fa fa-check"></i><b>10</b> Bayesian Models</a><ul>
+<li class="chapter" data-level="10.1" data-path="bayesian-models.html"><a href="bayesian-models.html#using-stan-in-r"><i class="fa fa-check"></i><b>10.1</b> Using STAN in R</a></li>
+<li class="chapter" data-level="10.2" data-path="bayesian-models.html"><a href="bayesian-models.html#mcelreath-and-rethinking"><i class="fa fa-check"></i><b>10.2</b> McElreath and Rethinking</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="panel-models.html"><a href="panel-models.html"><i class="fa fa-check"></i><b>11</b> Panel Models</a><ul>
+<li class="chapter" data-level="11.1" data-path="panel-models.html"><a href="panel-models.html#fixed-effects"><i class="fa fa-check"></i><b>11.1</b> Fixed-Effects</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="panel-models.html"><a href="panel-models.html#adjusting-standard-errors"><i class="fa fa-check"></i><b>11.1.1</b> Adjusting Standard Errors</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="panel-models.html"><a href="panel-models.html#random-effects"><i class="fa fa-check"></i><b>11.2</b> Random-Effects</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="panel-models.html"><a href="panel-models.html#pml"><i class="fa fa-check"></i><b>11.2.1</b> PML</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="panel-models.html"><a href="panel-models.html#mixed-models"><i class="fa fa-check"></i><b>11.3</b> Mixed Models</a></li>
+<li class="chapter" data-level="11.4" data-path="panel-models.html"><a href="panel-models.html#multilevelhierarchical-models"><i class="fa fa-check"></i><b>11.4</b> Multilevel/Hierarchical Models</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="missing-data-1.html"><a href="missing-data-1.html"><i class="fa fa-check"></i><b>12</b> Missing Data</a><ul>
+<li class="chapter" data-level="12.1" data-path="missing-data-1.html"><a href="missing-data-1.html#amelia-ii"><i class="fa fa-check"></i><b>12.1</b> Amelia II</a></li>
+<li class="chapter" data-level="12.2" data-path="missing-data-1.html"><a href="missing-data-1.html#k-nn-imputation"><i class="fa fa-check"></i><b>12.2</b> k-NN Imputation</a></li>
+<li class="chapter" data-level="12.3" data-path="missing-data-1.html"><a href="missing-data-1.html#machine-learning-for-missing-data"><i class="fa fa-check"></i><b>12.3</b> Machine Learning for Missing Data</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="matching.html"><a href="matching.html"><i class="fa fa-check"></i><b>13</b> Matching</a><ul>
+<li class="chapter" data-level="13.1" data-path="matching.html"><a href="matching.html#the-marchit-package"><i class="fa fa-check"></i><b>13.1</b> The MarchIt Package</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="gis.html"><a href="gis.html"><i class="fa fa-check"></i><b>14</b> GIS</a></li>
+<li class="chapter" data-level="15" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html"><i class="fa fa-check"></i><b>15</b> A Brief Introduction to Coding</a><ul>
+<li class="chapter" data-level="15.1" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#why-learn-to-code"><i class="fa fa-check"></i><b>15.1</b> Why Learn to Code?</a></li>
+<li class="chapter" data-level="15.2" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#coding-basics"><i class="fa fa-check"></i><b>15.2</b> Coding Basics</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#the-internet-is-your-friend"><i class="fa fa-check"></i><b>15.2.1</b> The Internet is your Friend</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#ifelse"><i class="fa fa-check"></i><b>15.3</b> <code>ifelse()</code></a></li>
+<li class="chapter" data-level="15.4" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#writing-a-function"><i class="fa fa-check"></i><b>15.4</b> Writing a Function</a></li>
+<li class="chapter" data-level="15.5" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#loops"><i class="fa fa-check"></i><b>15.5</b> Loops</a><ul>
+<li class="chapter" data-level="15.5.1" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#loops-in-loops"><i class="fa fa-check"></i><b>15.5.1</b> Loops in Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#parallelization-what-it-is-why-its-awesome-and-how-to-use-it."><i class="fa fa-check"></i><b>15.6</b> Parallelization: What it is, Why it’s Awesome, and How to Use it.</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for STATA Users</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="linear-regression" class="section level1">
+<h1><span class="header-section-number">8</span> Linear Regression</h1>
+<p>Now we’ll look at plain old OLS. In STATA this is done using the command <code>reg</code>. In R, OLS is run using the command <code>lm()</code>. This is part of base-R, so there are no packages to install, you just start R and you’re ready to go.</p>
+<p>While STATA seperates each part of the regression with a space, R wraps everything in parentheses. You don’t have to include any spaces between the elements inside the pathenses, but it best to do so, for readability. You do have to add <code>~</code>, <code>+</code>, and <code>:</code>. <code>~</code> goes between the dependent variabale, and the rest of the equation, <code>+</code> seperates the rest of the variables in an additive model, and <code>:</code> indicates a multiplitcative interation. So</p>
+<p><code>lm(y ~ x1 + x2 + x1:x2, data = stata.data)</code></p>
+<p>in R is the same as</p>
+<pre><code>gen x1x2 = x1*x2
+reg y x1 x2 x1x2</code></pre>
+<p>in STATA.</p>
+<p>This R code could also be written:</p>
+<pre><code>lm(stata.data$y ~ stata.data$x1 + stata.data$x2 + 
+    stata.data$x1:stata.data$x2)</code></pre>
+<p>And just to add even more variety, one could also write:</p>
+<pre><code>attach(stata.data)
+lm(y ~ x1 + x2 + x1:x2)</code></pre>
+<div id="which-way-should-you-write-your-model" class="section level2">
+<h2><span class="header-section-number">8.1</span> Which way should you write your model?</h2>
+<p>Starting with <code>attach(stata.data)</code> is likely to be most comfortable for STATA users. This method loads a single dataframe into the environment (in this case stata.data) and now any variable you reference is assumed to belong to that dataframe. If you call a variable that doesn’t exist in the dataframe, you see the message <code>Error in eval(predvars, data, env) : object 'variable' not found</code> where <code>'variable'</code> is that name of the non-existant variable you tried to call.</p>
+<p>If you want to switch to another dataframe, you simply write <code>detach(stata.data)</code> and then attach another dataframe (i.e. <code>attach(stata.data2)</code>). Note that <code>detach()</code> will not remove the data from the environment, it only removes it from being the default for calling variables. If you want to remove the data completly, type <code>rm(stata.data)</code>.</p>
+<p>While this may be the most similar to the way you’re used to working with dataframes in STATA, one of the advantages of R is that you can work with various different dataframes at the same time. You can alsways indicate which dataframe a variable belongs to by writeing <code>dataframe$variable</code>. This is seen in the second example above and is quite specific, but requires specifying the dataframe for every variable. This can be tedious. Adding <code>data = dataframe</code> is a nice balance where you only have to specify the data once per model, but you can still access different dataframes without constantly typing <code>detach()</code> and <code>attach()</code>.</p>
+</div>
+<div id="viewing-the-results" class="section level2">
+<h2><span class="header-section-number">8.2</span> Viewing the results</h2>
+<p>If you simply run the <code>lm()</code> command without assigning it to an object, the results will print in the console. If you do assign you model to an object, you can access the results with the <code>summary()</code> command. Here’s an example using the <code>ToothGrowth</code> dataset, which examines the role of vitimins in the rate of guinea pigs’ tooth growth.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="kw">data</span>(<span class="st">&quot;ToothGrowth&quot;</span>)</a>
+<a class="sourceLine" id="cb36-2" title="2">dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(ToothGrowth)</a>
+<a class="sourceLine" id="cb36-3" title="3"></a>
+<a class="sourceLine" id="cb36-4" title="4">model &lt;-<span class="st"> </span><span class="kw">lm</span>(len <span class="op">~</span><span class="st"> </span>supp <span class="op">+</span><span class="st"> </span>dose, <span class="dt">data =</span> dat)</a>
+<a class="sourceLine" id="cb36-5" title="5"><span class="kw">summary</span>(model)</a>
+<a class="sourceLine" id="cb36-6" title="6"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb36-7" title="7"><span class="co">#&gt; Call:</span></a>
+<a class="sourceLine" id="cb36-8" title="8"><span class="co">#&gt; lm(formula = len ~ supp + dose, data = dat)</span></a>
+<a class="sourceLine" id="cb36-9" title="9"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb36-10" title="10"><span class="co">#&gt; Residuals:</span></a>
+<a class="sourceLine" id="cb36-11" title="11"><span class="co">#&gt;    Min     1Q Median     3Q    Max </span></a>
+<a class="sourceLine" id="cb36-12" title="12"><span class="co">#&gt; -6.600 -3.700  0.373  2.116  8.800 </span></a>
+<a class="sourceLine" id="cb36-13" title="13"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb36-14" title="14"><span class="co">#&gt; Coefficients:</span></a>
+<a class="sourceLine" id="cb36-15" title="15"><span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    </span></a>
+<a class="sourceLine" id="cb36-16" title="16"><span class="co">#&gt; (Intercept)   9.2725     1.2824   7.231 1.31e-09 ***</span></a>
+<a class="sourceLine" id="cb36-17" title="17"><span class="co">#&gt; suppVC       -3.7000     1.0936  -3.383   0.0013 ** </span></a>
+<a class="sourceLine" id="cb36-18" title="18"><span class="co">#&gt; dose          9.7636     0.8768  11.135 6.31e-16 ***</span></a>
+<a class="sourceLine" id="cb36-19" title="19"><span class="co">#&gt; ---</span></a>
+<a class="sourceLine" id="cb36-20" title="20"><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></a>
+<a class="sourceLine" id="cb36-21" title="21"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb36-22" title="22"><span class="co">#&gt; Residual standard error: 4.236 on 57 degrees of freedom</span></a>
+<a class="sourceLine" id="cb36-23" title="23"><span class="co">#&gt; Multiple R-squared:  0.7038, Adjusted R-squared:  0.6934 </span></a>
+<a class="sourceLine" id="cb36-24" title="24"><span class="co">#&gt; F-statistic: 67.72 on 2 and 57 DF,  p-value: 8.716e-16</span></a></code></pre></div>
+<p>You can combine the results of numerous models into a single (publication ready) table as we’ve seen before.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="kw">library</span>(modelsummary)</a>
+<a class="sourceLine" id="cb37-2" title="2"></a>
+<a class="sourceLine" id="cb37-3" title="3">cn =<span class="st"> </span><span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb37-4" title="4">    <span class="st">&quot;suppVC&quot;</span> =<span class="st"> &quot;Supplement Type&quot;</span>,</a>
+<a class="sourceLine" id="cb37-5" title="5">    <span class="st">&quot;dose&quot;</span> =<span class="st"> &quot;Dose (mg/day)&quot;</span></a>
+<a class="sourceLine" id="cb37-6" title="6">)</a>
+<a class="sourceLine" id="cb37-7" title="7"></a>
+<a class="sourceLine" id="cb37-8" title="8"><span class="kw">modelsummary</span>(<span class="dt">models =</span> model, <span class="dt">coef_map =</span> cn, <span class="dt">stars =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Model 1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Supplement Type
+</td>
+<td style="text-align:center;">
+-3.700***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(1.094)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dose (mg/day)
+</td>
+<td style="text-align:center;">
+9.764***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1px">
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+(0.877)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2
+</td>
+<td style="text-align:center;">
+0.704
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2 Adj.
+</td>
+<td style="text-align:center;">
+0.693
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AIC
+</td>
+<td style="text-align:center;">
+348.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BIC
+</td>
+<td style="text-align:center;">
+356.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Log.Lik.
+</td>
+<td style="text-align:center;">
+-170.208
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:center;">
+67.718
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01
+</td>
+</tr>
+</tfoot>
+</table>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="visualizing-and-describing-your-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="mle.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"edit": {
+"link": "https://github.com/newton-c/R_for_STATA_Users/edit/main/%s",
+"text": "Edit"
+},
+"sharing": false
+},
+"css": "r4su.css"
+});
+});
+</script>
+
+</body>
+
+</html>

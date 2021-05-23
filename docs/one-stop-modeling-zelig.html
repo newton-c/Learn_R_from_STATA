@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 One Stop Modeling: Zelig | R for STATA Users</title>
+  <meta name="description" content="6 One Stop Modeling: Zelig | R for STATA Users" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6 One Stop Modeling: Zelig | R for STATA Users" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://newton-c.github.io/R_for_STATA_Users/" />
+  
+  
+  <meta name="github-repo" content="newton-c/R_for_STATA_Users" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 One Stop Modeling: Zelig | R for STATA Users" />
+  
+  
+  
+
+<meta name="author" content="Chris Newton" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="merging-and-wrangling.html"/>
+<link rel="next" href="visualizing-and-describing-your-data.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<!-- gtag.js, from Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115082821-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguements);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-115082821-1');
+    </script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<1i><strong><a href="./">R for STATA Users</a></strong></1i>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#who-is-this-book-for"><i class="fa fa-check"></i><b>1.1</b> Who is this book for?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#who-isnt-this-book-for"><i class="fa fa-check"></i><b>1.2</b> Who isn’t this book for?</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#setting-up-r"><i class="fa fa-check"></i><b>1.3</b> Setting up R</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="why-switch-to-r.html"><a href="why-switch-to-r.html"><i class="fa fa-check"></i><b>2</b> Why switch to R</a><ul>
+<li class="chapter" data-level="2.1" data-path="why-switch-to-r.html"><a href="why-switch-to-r.html#r-advantages"><i class="fa fa-check"></i><b>2.1</b> R advantages</a></li>
+<li class="chapter" data-level="2.2" data-path="why-switch-to-r.html"><a href="why-switch-to-r.html#in-conclusion"><i class="fa fa-check"></i><b>2.2</b> In conclusion…</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html"><i class="fa fa-check"></i><b>3</b> Going Through a Project from Start to Finish</a><ul>
+<li class="chapter" data-level="3.1" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#loading-packages"><i class="fa fa-check"></i><b>3.1</b> Loading packages</a></li>
+<li class="chapter" data-level="3.2" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#loading-and-prepping-the-data"><i class="fa fa-check"></i><b>3.2</b> Loading and prepping the data</a></li>
+<li class="chapter" data-level="3.3" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#visualization"><i class="fa fa-check"></i><b>3.3</b> Visualization</a></li>
+<li class="chapter" data-level="3.4" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#modeling"><i class="fa fa-check"></i><b>3.4</b> Modeling</a></li>
+<li class="chapter" data-level="3.5" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#reporting"><i class="fa fa-check"></i><b>3.5</b> Reporting</a></li>
+<li class="chapter" data-level="3.6" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#exercises"><i class="fa fa-check"></i><b>3.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html"><i class="fa fa-check"></i><b>4</b> Dealing with .dta</a><ul>
+<li class="chapter" data-level="4.1" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#using-haven-to-import-stata-files"><i class="fa fa-check"></i><b>4.1</b> Using haven to import STATA files</a></li>
+<li class="chapter" data-level="4.2" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#dealing-with-errors"><i class="fa fa-check"></i><b>4.2</b> Dealing with errors</a></li>
+<li class="chapter" data-level="4.3" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#but-theres-still-problems"><i class="fa fa-check"></i><b>4.3</b> But there’s still problems</a></li>
+<li class="chapter" data-level="4.4" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#other-data-formats"><i class="fa fa-check"></i><b>4.4</b> Other data formats</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#rdata"><i class="fa fa-check"></i><b>4.4.1</b> .Rdata</a></li>
+<li class="chapter" data-level="4.4.2" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#csv-and-other-delimited-files"><i class="fa fa-check"></i><b>4.4.2</b> .csv and other delimited files</a></li>
+<li class="chapter" data-level="4.4.3" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#excel-files"><i class="fa fa-check"></i><b>4.4.3</b> Excel files</a></li>
+<li class="chapter" data-level="4.4.4" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#json"><i class="fa fa-check"></i><b>4.4.4</b> .json</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#using-multiple-dataframes"><i class="fa fa-check"></i><b>4.5</b> Using multiple dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html"><i class="fa fa-check"></i><b>5</b> Merging and Wrangling</a><ul>
+<li class="chapter" data-level="5.1" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#base-r"><i class="fa fa-check"></i><b>5.1</b> base R</a></li>
+<li class="chapter" data-level="5.2" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#dplyr"><i class="fa fa-check"></i><b>5.2</b> dplyr</a></li>
+<li class="chapter" data-level="5.3" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#merge.stats"><i class="fa fa-check"></i><b>5.3</b> merge.stats</a></li>
+<li class="chapter" data-level="5.4" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#into-the-tidyverse"><i class="fa fa-check"></i><b>5.4</b> Into the tidyverse</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#filter"><i class="fa fa-check"></i><b>5.4.1</b> <code>filter()</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#mutate"><i class="fa fa-check"></i><b>5.4.2</b> <code>mutate()</code></a></li>
+<li class="chapter" data-level="5.4.3" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#group_by"><i class="fa fa-check"></i><b>5.4.3</b> <code>group_by()</code></a></li>
+<li class="chapter" data-level="5.4.4" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#select"><i class="fa fa-check"></i><b>5.4.4</b> <code>select()</code></a></li>
+<li class="chapter" data-level="5.4.5" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#section"><i class="fa fa-check"></i><b>5.4.5</b> <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="5.4.6" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#stringing-it-together"><i class="fa fa-check"></i><b>5.4.6</b> Stringing it Together</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="one-stop-modeling-zelig.html"><a href="one-stop-modeling-zelig.html"><i class="fa fa-check"></i><b>6</b> One Stop Modeling: Zelig</a><ul>
+<li class="chapter" data-level="6.1" data-path="one-stop-modeling-zelig.html"><a href="one-stop-modeling-zelig.html#simulation-and-counterfactuals"><i class="fa fa-check"></i><b>6.1</b> Simulation and Counterfactuals</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html"><i class="fa fa-check"></i><b>7</b> Visualizing and Describing your Data</a><ul>
+<li class="chapter" data-level="7.1" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html#ggplot2"><i class="fa fa-check"></i><b>7.1</b> ggplot2</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html#destriptive-visualitation"><i class="fa fa-check"></i><b>7.1.1</b> Destriptive visualitation</a></li>
+<li class="chapter" data-level="7.1.2" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html#communicating-results"><i class="fa fa-check"></i><b>7.1.2</b> Communicating Results</a></li>
+<li class="chapter" data-level="7.1.3" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html#other-vizualizations"><i class="fa fa-check"></i><b>7.1.3</b> Other Vizualizations</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="visualizing-and-describing-your-data.html"><a href="visualizing-and-describing-your-data.html#base-r-1"><i class="fa fa-check"></i><b>7.2</b> base-R</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>8</b> Linear Regression</a><ul>
+<li class="chapter" data-level="8.1" data-path="linear-regression.html"><a href="linear-regression.html#which-way-should-you-write-your-model"><i class="fa fa-check"></i><b>8.1</b> Which way should you write your model?</a></li>
+<li class="chapter" data-level="8.2" data-path="linear-regression.html"><a href="linear-regression.html#viewing-the-results"><i class="fa fa-check"></i><b>8.2</b> Viewing the results</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="mle.html"><a href="mle.html"><i class="fa fa-check"></i><b>9</b> MLE</a><ul>
+<li class="chapter" data-level="9.1" data-path="mle.html"><a href="mle.html#binary-dependent-variables"><i class="fa fa-check"></i><b>9.1</b> Binary Dependent Variables</a></li>
+<li class="chapter" data-level="9.2" data-path="mle.html"><a href="mle.html#counts"><i class="fa fa-check"></i><b>9.2</b> Counts</a></li>
+<li class="chapter" data-level="9.3" data-path="mle.html"><a href="mle.html#rare-events-and-zero-inflation"><i class="fa fa-check"></i><b>9.3</b> Rare-events and Zero-inflation</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="bayesian-models.html"><a href="bayesian-models.html"><i class="fa fa-check"></i><b>10</b> Bayesian Models</a><ul>
+<li class="chapter" data-level="10.1" data-path="bayesian-models.html"><a href="bayesian-models.html#using-stan-in-r"><i class="fa fa-check"></i><b>10.1</b> Using STAN in R</a></li>
+<li class="chapter" data-level="10.2" data-path="bayesian-models.html"><a href="bayesian-models.html#mcelreath-and-rethinking"><i class="fa fa-check"></i><b>10.2</b> McElreath and Rethinking</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="panel-models.html"><a href="panel-models.html"><i class="fa fa-check"></i><b>11</b> Panel Models</a><ul>
+<li class="chapter" data-level="11.1" data-path="panel-models.html"><a href="panel-models.html#fixed-effects"><i class="fa fa-check"></i><b>11.1</b> Fixed-Effects</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="panel-models.html"><a href="panel-models.html#adjusting-standard-errors"><i class="fa fa-check"></i><b>11.1.1</b> Adjusting Standard Errors</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="panel-models.html"><a href="panel-models.html#random-effects"><i class="fa fa-check"></i><b>11.2</b> Random-Effects</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="panel-models.html"><a href="panel-models.html#pml"><i class="fa fa-check"></i><b>11.2.1</b> PML</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="panel-models.html"><a href="panel-models.html#mixed-models"><i class="fa fa-check"></i><b>11.3</b> Mixed Models</a></li>
+<li class="chapter" data-level="11.4" data-path="panel-models.html"><a href="panel-models.html#multilevelhierarchical-models"><i class="fa fa-check"></i><b>11.4</b> Multilevel/Hierarchical Models</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="missing-data-1.html"><a href="missing-data-1.html"><i class="fa fa-check"></i><b>12</b> Missing Data</a><ul>
+<li class="chapter" data-level="12.1" data-path="missing-data-1.html"><a href="missing-data-1.html#amelia-ii"><i class="fa fa-check"></i><b>12.1</b> Amelia II</a></li>
+<li class="chapter" data-level="12.2" data-path="missing-data-1.html"><a href="missing-data-1.html#k-nn-imputation"><i class="fa fa-check"></i><b>12.2</b> k-NN Imputation</a></li>
+<li class="chapter" data-level="12.3" data-path="missing-data-1.html"><a href="missing-data-1.html#machine-learning-for-missing-data"><i class="fa fa-check"></i><b>12.3</b> Machine Learning for Missing Data</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="matching.html"><a href="matching.html"><i class="fa fa-check"></i><b>13</b> Matching</a><ul>
+<li class="chapter" data-level="13.1" data-path="matching.html"><a href="matching.html#the-marchit-package"><i class="fa fa-check"></i><b>13.1</b> The MarchIt Package</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="gis.html"><a href="gis.html"><i class="fa fa-check"></i><b>14</b> GIS</a></li>
+<li class="chapter" data-level="15" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html"><i class="fa fa-check"></i><b>15</b> A Brief Introduction to Coding</a><ul>
+<li class="chapter" data-level="15.1" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#why-learn-to-code"><i class="fa fa-check"></i><b>15.1</b> Why Learn to Code?</a></li>
+<li class="chapter" data-level="15.2" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#coding-basics"><i class="fa fa-check"></i><b>15.2</b> Coding Basics</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#the-internet-is-your-friend"><i class="fa fa-check"></i><b>15.2.1</b> The Internet is your Friend</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#ifelse"><i class="fa fa-check"></i><b>15.3</b> <code>ifelse()</code></a></li>
+<li class="chapter" data-level="15.4" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#writing-a-function"><i class="fa fa-check"></i><b>15.4</b> Writing a Function</a></li>
+<li class="chapter" data-level="15.5" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#loops"><i class="fa fa-check"></i><b>15.5</b> Loops</a><ul>
+<li class="chapter" data-level="15.5.1" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#loops-in-loops"><i class="fa fa-check"></i><b>15.5.1</b> Loops in Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="a-brief-introduction-to-coding.html"><a href="a-brief-introduction-to-coding.html#parallelization-what-it-is-why-its-awesome-and-how-to-use-it."><i class="fa fa-check"></i><b>15.6</b> Parallelization: What it is, Why it’s Awesome, and How to Use it.</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for STATA Users</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="one-stop-modeling-zelig" class="section level1">
+<h1><span class="header-section-number">6</span> One Stop Modeling: Zelig</h1>
+<p>Zelig is a statistical software originally created by Kosuke Imai, Gary King, and Olivia Lau. It attampts to unify different models,
+tests, vizualizations, and other statistical activities into a single framework. R is not a piece of software, it is an open source
+programing language. As such, as it has adapted and grown, different people have created different packages. This is a strength
+as it keeps R flexible and on the cutting-edge of statistics, but it means that there is often inconsistency. There are variaous
+packages in R that you can use for different models; Zelig was created to keep the syntax consistent and make using different models as
+simple as changind a single command. More information on Zelig can be found on its
+<a href="https://zeligproject.org/"></a>.</p>
+<p>In addition to running your typical statistical models, Zelig also replicates Clarify from STATA, integrates with
+multiple imputation methods (through the package <code>Amelia</code>) as well as matching methods (through the packages <code>cem</code> and <code>MatchIt</code>)</p>
+<p>The generic syntax for statistical models in Zelig is as follows</p>
+<pre><code>zelig(y ~ x1 + x2 + x3, data = example.data, model = &quot;model.type&quot;)</code></pre>
+<p>This syntax is very similar to most other models, but with the added arguement <code>model =</code> in order to specifiy what you’re running. If
+we wanted to replicate the model we estimated in Chapter 3, this is how it’d look.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb25-2" title="2"><span class="kw">library</span>(Zelig)</a>
+<a class="sourceLine" id="cb25-3" title="3"></a>
+<a class="sourceLine" id="cb25-4" title="4"><span class="kw">theme_set</span>(<span class="kw">theme_classic</span>())</a>
+<a class="sourceLine" id="cb25-5" title="5"></a>
+<a class="sourceLine" id="cb25-6" title="6"><span class="kw">data</span>(<span class="st">&quot;Titanic&quot;</span>)</a>
+<a class="sourceLine" id="cb25-7" title="7">titanic.data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(Titanic)</a>
+<a class="sourceLine" id="cb25-8" title="8">titanic.expanded &lt;-<span class="st"> </span><span class="kw">uncount</span>(titanic.data, Freq)</a>
+<a class="sourceLine" id="cb25-9" title="9"></a>
+<a class="sourceLine" id="cb25-10" title="10">titanic.logit &lt;-<span class="st"> </span><span class="kw">zelig</span>(Survived <span class="op">~</span><span class="st"> </span>Class <span class="op">+</span><span class="st"> </span>Sex <span class="op">+</span><span class="st"> </span>Age, </a>
+<a class="sourceLine" id="cb25-11" title="11">    <span class="dt">data =</span> titanic.expanded, <span class="dt">model =</span> <span class="st">&quot;logit&quot;</span>)</a>
+<a class="sourceLine" id="cb25-12" title="12"><span class="co">#&gt; How to cite this model in Zelig:</span></a>
+<a class="sourceLine" id="cb25-13" title="13"><span class="co">#&gt;   R Core Team. 2007.</span></a>
+<a class="sourceLine" id="cb25-14" title="14"><span class="co">#&gt;   logit: Logistic Regression for Dichotomous Dependent Variables</span></a>
+<a class="sourceLine" id="cb25-15" title="15"><span class="co">#&gt;   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,</span></a>
+<a class="sourceLine" id="cb25-16" title="16"><span class="co">#&gt;   &quot;Zelig: Everyone&#39;s Statistical Software,&quot; http://zeligproject.org/</span></a></code></pre></div>
+<p>As you can see, Zelig automatically prints the citation for the model your using. This can be very useful when preparing your
+references for a project, but very annoying when you’re running a bunch of models. Adding <code>cite = FALSE</code> (or <code>cite = F</code>)
+will stop this.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="kw">summary</span>(titanic.logit)</a>
+<a class="sourceLine" id="cb26-2" title="2"><span class="co">#&gt; Model: </span></a>
+<a class="sourceLine" id="cb26-3" title="3"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb26-4" title="4"><span class="co">#&gt; Call:</span></a>
+<a class="sourceLine" id="cb26-5" title="5"><span class="co">#&gt; z5$zelig(formula = Survived ~ Class + Sex + Age, data = titanic.expanded)</span></a>
+<a class="sourceLine" id="cb26-6" title="6"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb26-7" title="7"><span class="co">#&gt; Deviance Residuals: </span></a>
+<a class="sourceLine" id="cb26-8" title="8"><span class="co">#&gt;     Min       1Q   Median       3Q      Max  </span></a>
+<a class="sourceLine" id="cb26-9" title="9"><span class="co">#&gt; -2.0812  -0.7149  -0.6656   0.6858   2.1278  </span></a>
+<a class="sourceLine" id="cb26-10" title="10"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb26-11" title="11"><span class="co">#&gt; Coefficients:</span></a>
+<a class="sourceLine" id="cb26-12" title="12"><span class="co">#&gt;             Estimate Std. Error z value Pr(&gt;|z|)</span></a>
+<a class="sourceLine" id="cb26-13" title="13"><span class="co">#&gt; (Intercept)   0.6853     0.2730   2.510   0.0121</span></a>
+<a class="sourceLine" id="cb26-14" title="14"><span class="co">#&gt; Class2nd     -1.0181     0.1960  -5.194 2.05e-07</span></a>
+<a class="sourceLine" id="cb26-15" title="15"><span class="co">#&gt; Class3rd     -1.7778     0.1716 -10.362  &lt; 2e-16</span></a>
+<a class="sourceLine" id="cb26-16" title="16"><span class="co">#&gt; ClassCrew    -0.8577     0.1573  -5.451 5.00e-08</span></a>
+<a class="sourceLine" id="cb26-17" title="17"><span class="co">#&gt; SexFemale     2.4201     0.1404  17.236  &lt; 2e-16</span></a>
+<a class="sourceLine" id="cb26-18" title="18"><span class="co">#&gt; AgeAdult     -1.0615     0.2440  -4.350 1.36e-05</span></a>
+<a class="sourceLine" id="cb26-19" title="19"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb26-20" title="20"><span class="co">#&gt; (Dispersion parameter for binomial family taken to be 1)</span></a>
+<a class="sourceLine" id="cb26-21" title="21"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb26-22" title="22"><span class="co">#&gt;     Null deviance: 2769.5  on 2200  degrees of freedom</span></a>
+<a class="sourceLine" id="cb26-23" title="23"><span class="co">#&gt; Residual deviance: 2210.1  on 2195  degrees of freedom</span></a>
+<a class="sourceLine" id="cb26-24" title="24"><span class="co">#&gt; AIC: 2222.1</span></a>
+<a class="sourceLine" id="cb26-25" title="25"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb26-26" title="26"><span class="co">#&gt; Number of Fisher Scoring iterations: 4</span></a>
+<a class="sourceLine" id="cb26-27" title="27"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb26-28" title="28"><span class="co">#&gt; Next step: Use &#39;setx&#39; method</span></a></code></pre></div>
+<p>Zelig models can be easily exported to a table for publication-ready results, but the require an additional command, <code>from_zelig_model()</code>.
+We can compare the original logit from Chapter 3 to the one above to varify that they’re the same.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="kw">library</span>(modelsummary)</a>
+<a class="sourceLine" id="cb27-2" title="2"></a>
+<a class="sourceLine" id="cb27-3" title="3">models =<span class="st"> </span><span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb27-4" title="4">    <span class="st">&quot;Ch 3 model&quot;</span> =<span class="st"> </span><span class="kw">glm</span>(Survived <span class="op">~</span><span class="st"> </span>Class <span class="op">+</span><span class="st"> </span>Sex <span class="op">+</span><span class="st"> </span>Age, </a>
+<a class="sourceLine" id="cb27-5" title="5">        <span class="dt">data =</span> titanic.expanded, <span class="dt">family =</span> <span class="st">&#39;binomial&#39;</span>),</a>
+<a class="sourceLine" id="cb27-6" title="6">    </a>
+<a class="sourceLine" id="cb27-7" title="7">    <span class="co"># using titanic.logit we just estimated above</span></a>
+<a class="sourceLine" id="cb27-8" title="8">    <span class="st">&quot;Zelig model&quot;</span> =<span class="st"> </span><span class="kw">zelig</span>(Survived <span class="op">~</span><span class="st"> </span>Class <span class="op">+</span><span class="st"> </span>Sex <span class="op">+</span><span class="st"> </span>Age, </a>
+<a class="sourceLine" id="cb27-9" title="9">    <span class="dt">data =</span> titanic.expanded, <span class="dt">model =</span> <span class="st">&quot;logit&quot;</span>, <span class="dt">cite =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb27-10" title="10"><span class="st">        </span><span class="kw">from_zelig_model</span>()</a>
+<a class="sourceLine" id="cb27-11" title="11">)</a>
+<a class="sourceLine" id="cb27-12" title="12"></a>
+<a class="sourceLine" id="cb27-13" title="13"><span class="kw">modelsummary</span>(models, <span class="dt">stars =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Ch 3 model
+</th>
+<th style="text-align:center;">
+Zelig model
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+0.685**
+</td>
+<td style="text-align:center;">
+0.685**
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.273)
+</td>
+<td style="text-align:center;">
+(0.273)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Class2nd
+</td>
+<td style="text-align:center;">
+-1.018***
+</td>
+<td style="text-align:center;">
+-1.018***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.196)
+</td>
+<td style="text-align:center;">
+(0.196)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Class3rd
+</td>
+<td style="text-align:center;">
+-1.778***
+</td>
+<td style="text-align:center;">
+-1.778***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.172)
+</td>
+<td style="text-align:center;">
+(0.172)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ClassCrew
+</td>
+<td style="text-align:center;">
+-0.858***
+</td>
+<td style="text-align:center;">
+-0.858***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.157)
+</td>
+<td style="text-align:center;">
+(0.157)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SexFemale
+</td>
+<td style="text-align:center;">
+2.420***
+</td>
+<td style="text-align:center;">
+2.420***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.140)
+</td>
+<td style="text-align:center;">
+(0.140)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AgeAdult
+</td>
+<td style="text-align:center;">
+-1.062***
+</td>
+<td style="text-align:center;">
+-1.062***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1px">
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+(0.244)
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+(0.244)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+2201
+</td>
+<td style="text-align:center;">
+2201
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AIC
+</td>
+<td style="text-align:center;">
+2222.1
+</td>
+<td style="text-align:center;">
+2222.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BIC
+</td>
+<td style="text-align:center;">
+2256.2
+</td>
+<td style="text-align:center;">
+2256.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Log.Lik.
+</td>
+<td style="text-align:center;">
+-1105.031
+</td>
+<td style="text-align:center;">
+-1105.031
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01
+</td>
+</tr>
+</tfoot>
+</table>
+<p>As we can see, the output is identical, proving that either method will work. Now we can look at various different models by simply changing the
+<code>model =</code> parpameter. Here’s a compariason of a logit, and probit.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">models =<span class="st"> </span><span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb28-2" title="2">    <span class="st">&quot;Logit&quot;</span> =<span class="st"> </span><span class="kw">zelig</span>(Survived <span class="op">~</span><span class="st"> </span>Class <span class="op">+</span><span class="st"> </span>Sex <span class="op">+</span><span class="st"> </span>Age,</a>
+<a class="sourceLine" id="cb28-3" title="3">                    <span class="dt">data =</span> titanic.expanded, </a>
+<a class="sourceLine" id="cb28-4" title="4">                    <span class="dt">model =</span> <span class="st">&quot;logit&quot;</span>, <span class="dt">cite =</span> F) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb28-5" title="5"><span class="st">        </span><span class="kw">from_zelig_model</span>(),</a>
+<a class="sourceLine" id="cb28-6" title="6">    <span class="st">&quot;Probit&quot;</span> =<span class="st"> </span><span class="kw">zelig</span>(Survived <span class="op">~</span><span class="st"> </span>Class <span class="op">+</span><span class="st"> </span>Sex <span class="op">+</span><span class="st"> </span>Age,</a>
+<a class="sourceLine" id="cb28-7" title="7">                     <span class="dt">data =</span> titanic.expanded,</a>
+<a class="sourceLine" id="cb28-8" title="8">                     <span class="dt">model =</span> <span class="st">&quot;probit&quot;</span>, <span class="dt">cite =</span> F) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb28-9" title="9"><span class="st">        </span><span class="kw">from_zelig_model</span>()</a>
+<a class="sourceLine" id="cb28-10" title="10">)</a>
+<a class="sourceLine" id="cb28-11" title="11"></a>
+<a class="sourceLine" id="cb28-12" title="12"><span class="kw">modelsummary</span>(models, <span class="dt">stars =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Logit
+</th>
+<th style="text-align:center;">
+Probit
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+0.685**
+</td>
+<td style="text-align:center;">
+0.367**
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.273)
+</td>
+<td style="text-align:center;">
+(0.161)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Class2nd
+</td>
+<td style="text-align:center;">
+-1.018***
+</td>
+<td style="text-align:center;">
+-0.630***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.196)
+</td>
+<td style="text-align:center;">
+(0.114)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Class3rd
+</td>
+<td style="text-align:center;">
+-1.778***
+</td>
+<td style="text-align:center;">
+-1.027***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.172)
+</td>
+<td style="text-align:center;">
+(0.098)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ClassCrew
+</td>
+<td style="text-align:center;">
+-0.858***
+</td>
+<td style="text-align:center;">
+-0.540***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.157)
+</td>
+<td style="text-align:center;">
+(0.094)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SexFemale
+</td>
+<td style="text-align:center;">
+2.420***
+</td>
+<td style="text-align:center;">
+1.450***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.140)
+</td>
+<td style="text-align:center;">
+(0.080)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AgeAdult
+</td>
+<td style="text-align:center;">
+-1.062***
+</td>
+<td style="text-align:center;">
+-0.580***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1px">
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+(0.244)
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+(0.141)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+2201
+</td>
+<td style="text-align:center;">
+2201
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AIC
+</td>
+<td style="text-align:center;">
+2222.1
+</td>
+<td style="text-align:center;">
+2224.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BIC
+</td>
+<td style="text-align:center;">
+2256.2
+</td>
+<td style="text-align:center;">
+2258.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Log.Lik.
+</td>
+<td style="text-align:center;">
+-1105.031
+</td>
+<td style="text-align:center;">
+-1106.314
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01
+</td>
+</tr>
+</tfoot>
+</table>
+<p>You can see all of the supported models, and their specific syntax in the <a href="http://docs.zeligproject.org/articles/index.html#section-core-zelig-model-details"></a>.</p>
+<div id="simulation-and-counterfactuals" class="section level2">
+<h2><span class="header-section-number">6.1</span> Simulation and Counterfactuals</h2>
+<p>Zelig can take a model and generate simulated values. This can be particularly useful for plotting counterfactuals.
+We’ll use the <code>mtcars</code> dataset. This is a dataset of various car features for 32 models, from a Motor Trend magazine’s 1974
+issue.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">data</span>(<span class="st">&quot;mtcars&quot;</span>)</a>
+<a class="sourceLine" id="cb29-2" title="2"><span class="kw">head</span>(mtcars)</a>
+<a class="sourceLine" id="cb29-3" title="3"><span class="co">#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb</span></a>
+<a class="sourceLine" id="cb29-4" title="4"><span class="co">#&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4</span></a>
+<a class="sourceLine" id="cb29-5" title="5"><span class="co">#&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4</span></a>
+<a class="sourceLine" id="cb29-6" title="6"><span class="co">#&gt; Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1</span></a>
+<a class="sourceLine" id="cb29-7" title="7"><span class="co">#&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1</span></a>
+<a class="sourceLine" id="cb29-8" title="8"><span class="co">#&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</span></a>
+<a class="sourceLine" id="cb29-9" title="9"><span class="co">#&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</span></a></code></pre></div>
+<p>Let’s say we’re interested in the effect the that number of cylinders has on a car’s fuel effeciency. We’ll
+start by looking at the data.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="kw">table</span>(mtcars<span class="op">$</span>cyl)</a>
+<a class="sourceLine" id="cb30-2" title="2"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb30-3" title="3"><span class="co">#&gt;  4  6  8 </span></a>
+<a class="sourceLine" id="cb30-4" title="4"><span class="co">#&gt; 11  7 14</span></a>
+<a class="sourceLine" id="cb30-5" title="5"></a>
+<a class="sourceLine" id="cb30-6" title="6"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> mpg)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb30-7" title="7"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">alpha =</span> <span class="fl">.3</span>)</a></code></pre></div>
+<embed src="One_stop_modeling_files/figure-html/unnamed-chunk-6-1.pdf" width="70%" style="display: block; margin: auto;" type="application/pdf" />
+<p>To look at the effect of cylinders <em>all else equal</em>, we need to estimate a model.
+Miles per gallon is roughly countious and regularly distributed, so we’ll use OLS. In addition to the number of cylinders
+lets adjust for the weight, horsepower, and the number of gears a car has.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1">m1 &lt;-<span class="st"> </span><span class="kw">zelig</span>(mpg <span class="op">~</span><span class="st"> </span>cyl <span class="op">+</span><span class="st"> </span>wt <span class="op">+</span><span class="st"> </span>hp <span class="op">+</span><span class="st"> </span>gear, <span class="dt">data =</span> mtcars, </a>
+<a class="sourceLine" id="cb31-2" title="2">            <span class="dt">model =</span> <span class="st">&quot;ls&quot;</span>, <span class="dt">cite =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb31-3" title="3"><span class="kw">summary</span>(m1)</a>
+<a class="sourceLine" id="cb31-4" title="4"><span class="co">#&gt; Model: </span></a>
+<a class="sourceLine" id="cb31-5" title="5"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb31-6" title="6"><span class="co">#&gt; Call:</span></a>
+<a class="sourceLine" id="cb31-7" title="7"><span class="co">#&gt; z5$zelig(formula = mpg ~ cyl + wt + hp + gear, data = mtcars)</span></a>
+<a class="sourceLine" id="cb31-8" title="8"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb31-9" title="9"><span class="co">#&gt; Residuals:</span></a>
+<a class="sourceLine" id="cb31-10" title="10"><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></a>
+<a class="sourceLine" id="cb31-11" title="11"><span class="co">#&gt; -3.4710 -1.7876 -0.6517  1.2362  5.9677 </span></a>
+<a class="sourceLine" id="cb31-12" title="12"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb31-13" title="13"><span class="co">#&gt; Coefficients:</span></a>
+<a class="sourceLine" id="cb31-14" title="14"><span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)</span></a>
+<a class="sourceLine" id="cb31-15" title="15"><span class="co">#&gt; (Intercept) 36.68953    5.97025   6.145 1.44e-06</span></a>
+<a class="sourceLine" id="cb31-16" title="16"><span class="co">#&gt; cyl         -0.81260    0.66320  -1.225  0.23106</span></a>
+<a class="sourceLine" id="cb31-17" title="17"><span class="co">#&gt; wt          -3.02263    0.85116  -3.551  0.00143</span></a>
+<a class="sourceLine" id="cb31-18" title="18"><span class="co">#&gt; hp          -0.02170    0.01574  -1.379  0.17922</span></a>
+<a class="sourceLine" id="cb31-19" title="19"><span class="co">#&gt; gear         0.36259    1.00000   0.363  0.71974</span></a>
+<a class="sourceLine" id="cb31-20" title="20"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb31-21" title="21"><span class="co">#&gt; Residual standard error: 2.551 on 27 degrees of freedom</span></a>
+<a class="sourceLine" id="cb31-22" title="22"><span class="co">#&gt; Multiple R-squared:  0.8439, Adjusted R-squared:  0.8208 </span></a>
+<a class="sourceLine" id="cb31-23" title="23"><span class="co">#&gt; F-statistic: 36.49 on 4 and 27 DF,  p-value: 1.599e-10</span></a>
+<a class="sourceLine" id="cb31-24" title="24"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb31-25" title="25"><span class="co">#&gt; Next step: Use &#39;setx&#39; method</span></a></code></pre></div>
+<p>The table shows that adding a cylinder to the engine decreases the average miles per gallon by 0.8. Now we can simulate some values
+and visualize the relationship.</p>
+<p>First we have to set the values of interest. Let’s see a 4 cylinder vs 8 cylinder car. This is done with the
+<code>setx()</code> and <code>setx1()</code> commands. We then simulate values with <code>sim()</code>, and finally plot the results with <code>plot()</code>.
+This can all be chained together with <code>%&gt;%</code>.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">rep</span>(<span class="dv">2</span>, <span class="dv">4</span>))</a>
+<a class="sourceLine" id="cb32-2" title="2"></a>
+<a class="sourceLine" id="cb32-3" title="3"><span class="kw">zelig</span>(mpg <span class="op">~</span><span class="st"> </span>cyl <span class="op">+</span><span class="st"> </span>wt <span class="op">+</span><span class="st"> </span>hp <span class="op">+</span><span class="st"> </span>gear, <span class="dt">data =</span> mtcars, </a>
+<a class="sourceLine" id="cb32-4" title="4">            <span class="dt">model =</span> <span class="st">&quot;ls&quot;</span>, <span class="dt">cite =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb32-5" title="5"><span class="st">    </span><span class="kw">setx</span>(<span class="dt">cyl =</span> <span class="dv">4</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb32-6" title="6"><span class="st">    </span><span class="kw">setx1</span>(<span class="dt">cyl =</span> <span class="dv">8</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb32-7" title="7"><span class="st">    </span><span class="kw">sim</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb32-8" title="8"><span class="st">    </span><span class="kw">plot</span>()</a></code></pre></div>
+<embed src="One_stop_modeling_files/figure-html/unnamed-chunk-8-1.pdf" width="70%" style="display: block; margin: auto;" type="application/pdf" />
+<p>We can see from the graphs that a car with 8 cylinders (in blue) is expected to have a lower mgp when
+compared to a car with 4 cylinders. That said, there is some overlap in the comparison.</p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="2">
+<li id="fn2"><p>There are two options for converting Zelig’s output to a format that’s readable for <code>modelsummary()</code>. As seen above
+you can add a pipe (<code>%&gt;%</code>) followed by <code>from_zelig_model()</code>. Alternatively, you can wrap the code inside of <code>from_zelig_model()</code>.
+For example <code>from_zelig_model(zelig(Survived ~ Class + Sex + Age, data = titanic.expanded, model = "logit"))</code>.
+Both methods do the same thing, the difference is ultimately asthetic. Choose the method you find most readable.<a href="one-stop-modeling-zelig.html#fnref2" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="merging-and-wrangling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="visualizing-and-describing-your-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"edit": {
+"link": "https://github.com/newton-c/R_for_STATA_Users/edit/main/%s",
+"text": "Edit"
+},
+"sharing": false
+},
+"css": "r4su.css"
+});
+});
+</script>
+
+</body>
+
+</html>
