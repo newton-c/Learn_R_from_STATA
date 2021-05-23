@@ -1,3 +1,5 @@
+index
+r-for-stata-users
 introduction
 who-is-this-book-for
 who-isnt-this-book-for

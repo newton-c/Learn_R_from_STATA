@@ -8,3 +8,5 @@ site: bookdown::bookdown_site
 documentclass: book
 ---
 
+# Index
+## R for STATA Users
