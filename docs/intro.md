@@ -25,7 +25,7 @@ These models are exactly the same. They all run OLS regressions -- you can eithe
 This book is for anyone that is already profecient in STATA that would like to learn how to conduct statistical analyses in R. It is primarily written for researchers, educations, and students in quatitative fields.
 
 ## Who isn't this book for?
-This books assumes that you are already comfortable with STATA and statistics. If you don't already know STATA, this book will not make a lot of sense as the underlying concepts will not be explained. If you are not already familiar with the math and intuition behind statistical models, this book will not be of much help eight. No pure math covered what so ever. THere may be some generall discussions on model selection or other topics, but the point of this book is not to explain why you should do something statistically, only to show you how to do something you're already familiar with in STATA using R. This book teaches you
+This books assumes that you are already comfortable with STATA and statistics. If you don't already know STATA, this book will not make a lot of sense as the underlying concepts will not be explained. If you are not already familiar with the math and intuition behind statistical models, this book will not be of much help eight. No pure math covered what so ever. There may be some generall discussions on model selection or other topics, but the point of this book is not to explain why you should do something statistically, only to show you how to do something you're already familiar with in STATA using R. This book teaches you
 how to read in a new language -- not how to read.
 
 ## Setting up R
