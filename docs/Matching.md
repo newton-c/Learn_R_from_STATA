@@ -1,6 +1,22 @@
 # Matching
 
 ## The MarchIt Package
+Written by Daniel Ho, Kosuke Imai, Gary King, Elizabeth Stuart, Alex Whitworth,
+and Noah Greifer, MatchIt allows a consistent syntax for various different
+matching algorithms. As of the writing of this chapter (13 July 2021), MatchIt
+supports seven algorithms, witch are: nearest neighbor matching ("nearest", 
+on the propensity score by default), optimal pair matching ("optimal"),
+optimal full matching ("full"), genetic matching ("genetic"), coarsened 
+exact matching ("cem"), exact matching ("exact"), and subclassification
+("subclass").
+
+The basic sytax for matching involves specifying an equation for matching on
+the treatment vaiable the same way we specifiy an eqation for regression,
+with the treatment separated from the rest of the equation with a `~`, and 
+the rest of the variable separated by `+` (assuming the equation is additive).
+We must also specify the dataset we're using with `data = ` and the algorithm
+we want with `method = `.
+
 ```
 library(MatchIt)
 library(modelsummary)

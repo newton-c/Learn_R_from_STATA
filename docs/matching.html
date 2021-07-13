@@ -259,6 +259,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">14</span> Matching</h1>
 <div id="the-marchit-package" class="section level2">
 <h2><span class="header-section-number">14.1</span> The MarchIt Package</h2>
+<p>Written by Daniel Ho, Kosuke Imai, Gary King, Elizabeth Stuart, Alex Whitworth,
+and Noah Greifer, MatchIt allows a consistent syntax for various different
+matching algorithms. As of the writing of this chapter (13 July 2021), MatchIt
+supports seven algorithms, witch are: nearest neighbor matching (“nearest”,
+on the propensity score by default), optimal pair matching (“optimal”),
+optimal full matching (“full”), genetic matching (“genetic”), coarsened
+exact matching (“cem”), exact matching (“exact”), and subclassification
+(“subclass”).</p>
+<p>The basic sytax for matching involves specifying an equation for matching on
+the treatment vaiable the same way we specifiy an eqation for regression,
+with the treatment separated from the rest of the equation with a <code>~</code>, and
+the rest of the variable separated by <code>+</code> (assuming the equation is additive).
+We must also specify the dataset we’re using with <code>data =</code> and the algorithm
+we want with <code>method =</code>.</p>
 <pre><code>library(MatchIt)
 library(modelsummary)
 library(tidyverse)
