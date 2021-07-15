@@ -11,6 +11,8 @@ library(modelsummary)
 library(tidyverse)
 library(Zelig)
 
+theme_set(theme_bw())
+
 head(iris)
 #>   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 #> 1          5.1         3.5          1.4         0.2  setosa
@@ -37,13 +39,11 @@ summary(iris)
 
 ggplot(iris) +
     geom_point(aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
-    geom_hline(yintercept = 2.5) +
-    theme_bw()
+    geom_hline(yintercept = 2.5) 
 
 ggplot(iris) +
     geom_point(aes(x = Sepal.Width, y = Petal.Width, color = Species)) +
-    geom_abline(intercept = -1.9) +
-    theme_bw()
+    geom_abline(intercept = -1.9) 
 ```
 
 <img src="MLE_files/figure-html/unnamed-chunk-1-1.png" width="70%" style="display: block; margin: auto;" /><img src="MLE_files/figure-html/unnamed-chunk-1-2.png" width="70%" style="display: block; margin: auto;" />
