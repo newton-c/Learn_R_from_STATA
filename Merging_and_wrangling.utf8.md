@@ -1,0 +1,35 @@
+# Merging and Wrangling
+
+## base R
+```
+merged_data <- merge(data1, data2, by = c("time", "space"), all = TRUE)
+```
+
+## dplyr
+```
+joined_data <- inner_join(data1, data2, by ("time" = "time", "space" = "space"))
+joined_data <- left_join(data1, data2, by ("time" = "time", "space" = "space"))
+joined_data <- full_join(data1, data2, by ("time" = "time", "space" = "space"))
+```
+
+## merge.stats
+If you're used to merging in STATA, you'll probably miss the `_merge` column, which nicely summarizes how year observation merged (or didn't).
+To replicate this, I created the `merge.stats` package. This package is currently in devlopment, but it can be installed from GitHub and tried out by running
+
+```r
+devtools::install_github("newton-c/merge_stats_R")
+```
+This package has two commands, `merge_stats()` and `join_stats()`. Both packages add a new column, `merge` to the merged dataframe, as well as printing statistics, such
+as how many observations from each dataframes did and did not successfully merge. `merge_stats()` is build on top of the base R `merge()` function and takes all of the 
+same parameters. In addition, you can specify `show.stats = TRUE` to print the statics of the merge, or `show.stats = FALSE` if you want to cut down on how
+much is being printed to the console. `merge_join` is built on top of the various `_join()` functions from dyplr. This function has two additional arguements, 
+`show_stats = ` which says whether to print the statistics of the join, and `join = ` which specifies wither the joint is `"inner"`, `"right"`, `"left"`, `"full"`, `"semi"`, or `"anti"`.
+
+
+## Into the tidyverse
+### `filter()`
+### `mutate()`
+### `group_by()`
+### `select()`
+### `%>%`
+### Stringing it Together
