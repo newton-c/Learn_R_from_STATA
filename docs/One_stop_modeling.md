@@ -38,7 +38,7 @@ titanic.logit <- zelig(Survived ~ Class + Sex + Age,
 #>   R Core Team. 2007.
 #>   logit: Logistic Regression for Dichotomous Dependent Variables
 #>   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-#>   "Zelig: Everyone's Statistical Software," http://zeligproject.org/
+#>   "Zelig: Everyone's Statistical Software," https://zeligproject.org/
 ```
 As you can see, Zelig automatically prints the citation for the model your using. This can be very useful when preparing your 
 references for a project, but very annoying when you're running a bunch of models. Adding `cite = FALSE` (or `cite = F`)

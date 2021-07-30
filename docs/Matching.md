@@ -17,6 +17,13 @@ the rest of the variable separated by `+` (assuming the equation is additive).
 We must also specify the dataset we're using with `data = ` and the algorithm
 we want with `method = `.
 
+Using `matchit()`, you can then see how well balanced the matches are using
+`summary()`. You will see statistiques about the balance of the original data,
+the matched data, as well as information about how many observarions were matched
+in the treated group, how many were matched in the control group, and how many
+were omitted. 
+
+
 ```
 library(MatchIt)
 library(modelsummary)

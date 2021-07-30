@@ -259,6 +259,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">12</span> Panel Models</h1>
 <div id="fixed-effects" class="section level2">
 <h2><span class="header-section-number">12.1</span> Fixed-Effects</h2>
+<p>The easiest way to include fixed effects is by hand. You can simply add the
+variables you are using to the equation, but they must be the right class. In
+R if a variable is a <code>factor</code>, then each unique value will automatically have a dummy
+variable generated for it. For example, if you want to include country-year fixed-effects
+and you have the variables <code>country</code> and <code>year</code>, the fixed-effects panel model would
+be:</p>
+<pre><code>panel_model &lt;- lm(y ~ x + country + year, data = panel_data)</code></pre>
+<p>It is crucial that the variable be factor, however. You can check the class of
+the variable with the <code>class()</code> command.</p>
+<pre><code>class(panel_data$country)
+class(panel_data$year)</code></pre>
+<p>If the variables are not already factors, you can convert them with <code>as.factor</code>.
+You can use this command to generate a new variable, or simply modify the existing
+variables in the equation. Both options are shown below.</p>
+<pre><code># new variables of class factor
+panel_data$country_factor &lt;- as.factor(panel_data$country)
+panel_data$year_factor &lt;- as.factor(panel_data$year)
+
+# modifying variables in the equation
+panel_model &lt;- lm(y ~ x + as.factor(country) + as.factor(year),
+                  data = panel_data)</code></pre>
 <div id="adjusting-standard-errors" class="section level3">
 <h3><span class="header-section-number">12.1.1</span> Adjusting Standard Errors</h3>
 </div>
