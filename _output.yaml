@@ -1,7 +1,7 @@
 bookdown::bs4_book:
     theme:
         primary: "#637238"
-        repo: https://github.com/newton-c/R_for_STATA_Users
+        repo: https://github.com/newton-c/Learn_R_from_STATA
         includes:
             in_header: [ga_script.html]
 
@@ -13,9 +13,9 @@ bookdown::gitbook:
         toc:
             collapse: section
             before: |
-                <li><strong><a href="./">R for STATA Users</a></strong></li>
+                <li><strong><a href="./">Learn R from STATA</a></strong></li>
             edit:
-                link: https://github.com/newton-c/R_for_STATA_Users/edit/main/%s
+                link: https://github.com/newton-c/Learn_R_from_STATA/edit/main/%s
                 text: "Edit"
             sharing: no
         css: r4su.css
