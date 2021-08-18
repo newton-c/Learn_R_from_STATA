@@ -2,17 +2,18 @@
 
 Now we'll look at plain old OLS.  In STATA this is done using the command `reg`. In R, OLS is run using the command `lm()`. This is part of base-R, so there are no packages to install, you just start R and you're ready to go. 
 
-While STATA seperates each part of the regression with a space, R wraps everything in parentheses. You don't have to include any spaces between the elements inside the pathenses, but it best to do so, for readability. You do have to add `~`, `+`, and `:`. `~` goes between the dependent variabale, and the rest of the equation, `+` seperates the rest of the variables in an additive model, and `:` indicates a multiplitcative interation. So 
-
-```lm(y ~ x1 + x2 + x1:x2, data = stata.data)```
-
-in R is the same as 
+While STATA seperates each part of the regression with a space, R wraps everything in parentheses. You don't have to include any spaces between the elements inside the pathenses, but it best to do so, for readability. You do have to add `~`, `+`, and/or `:`. `~` goes between the dependent variabale, and the rest of the equation, `+` seperates the rest of the variables in an additive model, and `:` indicates a multiplitcative interation. So 
 
 ```
 gen x1x2 = x1*x2
 reg y x1 x2 x1x2
 ``` 
-in STATA.
+in STATA. Is written
+
+```lm(y ~ x1 + x2 + x1:x2, data = stata.data)```
+In R.
+
+
 
 This R code could also be written: 
 ```
@@ -28,7 +29,7 @@ lm(y ~ x1 + x2 + x1:x2)
 ## Which way should you write your model?
 Starting with `attach(stata.data)` is likely to be most comfortable for STATA users. This method loads a single dataframe into the environment (in this case stata.data) and now any variable you reference is assumed to belong to that dataframe. If you call a variable that doesn't exist in the dataframe, you see the message `Error in eval(predvars, data, env) : object 'variable' not found` where `'variable'` is that name of the non-existant variable you tried to call. 
 
-If you want to switch to another dataframe, you simply write `detach(stata.data)` and then attach another dataframe (i.e. `attach(stata.data2)`). Note that `detach()` will not remove the data from the environment, it only removes it from being the default for calling variables. If you want to remove the data completly, type `rm(stata.data)`.
+If you want to switch to another dataframe, you simply write `detach(stata.data)` and then attach another dataframe (i.e. `attach(stata.data2)`). Note that `detach()` will not remove the data from the environment, it only removes it from being the default for calling variables. If you want to remove the data from the environment, type `rm(stata.data)`.
 
 While this may be the most similar to the way you're used to working with dataframes in STATA, one of the advantages of R is that you can work with various different dataframes at the same time. You can alsways indicate which dataframe a variable belongs to by writeing `dataframe$variable`. This is seen in the second example above and is quite specific, but requires specifying the dataframe for every variable. This can be tedious. Adding `data = dataframe` is a nice balance where you only have to specify the data once per model, but you can still access different dataframes without constantly typing `detach()` and `attach()`.  
 

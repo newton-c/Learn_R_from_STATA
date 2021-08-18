@@ -258,12 +258,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="linear-regression" class="section level1">
 <h1><span class="header-section-number">9</span> Linear Regression</h1>
 <p>Now we’ll look at plain old OLS. In STATA this is done using the command <code>reg</code>. In R, OLS is run using the command <code>lm()</code>. This is part of base-R, so there are no packages to install, you just start R and you’re ready to go.</p>
-<p>While STATA seperates each part of the regression with a space, R wraps everything in parentheses. You don’t have to include any spaces between the elements inside the pathenses, but it best to do so, for readability. You do have to add <code>~</code>, <code>+</code>, and <code>:</code>. <code>~</code> goes between the dependent variabale, and the rest of the equation, <code>+</code> seperates the rest of the variables in an additive model, and <code>:</code> indicates a multiplitcative interation. So</p>
-<p><code>lm(y ~ x1 + x2 + x1:x2, data = stata.data)</code></p>
-<p>in R is the same as</p>
+<p>While STATA seperates each part of the regression with a space, R wraps everything in parentheses. You don’t have to include any spaces between the elements inside the pathenses, but it best to do so, for readability. You do have to add <code>~</code>, <code>+</code>, and/or <code>:</code>. <code>~</code> goes between the dependent variabale, and the rest of the equation, <code>+</code> seperates the rest of the variables in an additive model, and <code>:</code> indicates a multiplitcative interation. So</p>
 <pre><code>gen x1x2 = x1*x2
 reg y x1 x2 x1x2</code></pre>
-<p>in STATA.</p>
+<p>in STATA. Is written</p>
+<p><code>lm(y ~ x1 + x2 + x1:x2, data = stata.data)</code>
+In R.</p>
 <p>This R code could also be written:</p>
 <pre><code>lm(stata.data$y ~ stata.data$x1 + stata.data$x2 + 
     stata.data$x1:stata.data$x2)</code></pre>
@@ -273,7 +273,7 @@ lm(y ~ x1 + x2 + x1:x2)</code></pre>
 <div id="which-way-should-you-write-your-model" class="section level2">
 <h2><span class="header-section-number">9.1</span> Which way should you write your model?</h2>
 <p>Starting with <code>attach(stata.data)</code> is likely to be most comfortable for STATA users. This method loads a single dataframe into the environment (in this case stata.data) and now any variable you reference is assumed to belong to that dataframe. If you call a variable that doesn’t exist in the dataframe, you see the message <code>Error in eval(predvars, data, env) : object 'variable' not found</code> where <code>'variable'</code> is that name of the non-existant variable you tried to call.</p>
-<p>If you want to switch to another dataframe, you simply write <code>detach(stata.data)</code> and then attach another dataframe (i.e. <code>attach(stata.data2)</code>). Note that <code>detach()</code> will not remove the data from the environment, it only removes it from being the default for calling variables. If you want to remove the data completly, type <code>rm(stata.data)</code>.</p>
+<p>If you want to switch to another dataframe, you simply write <code>detach(stata.data)</code> and then attach another dataframe (i.e. <code>attach(stata.data2)</code>). Note that <code>detach()</code> will not remove the data from the environment, it only removes it from being the default for calling variables. If you want to remove the data from the environment, type <code>rm(stata.data)</code>.</p>
 <p>While this may be the most similar to the way you’re used to working with dataframes in STATA, one of the advantages of R is that you can work with various different dataframes at the same time. You can alsways indicate which dataframe a variable belongs to by writeing <code>dataframe$variable</code>. This is seen in the second example above and is quite specific, but requires specifying the dataframe for every variable. This can be tedious. Adding <code>data = dataframe</code> is a nice balance where you only have to specify the data once per model, but you can still access different dataframes without constantly typing <code>detach()</code> and <code>attach()</code>.</p>
 </div>
 <div id="viewing-the-results" class="section level2">
