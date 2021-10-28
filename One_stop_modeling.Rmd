@@ -92,7 +92,7 @@ head(mtcars)
 Let's say we're interested in the effect the that number of cylinders has on a car's fuel effeciency. We'll
 start by looking at the data.
 
-```{r}
+```{r, out.height = 100%}
 table(mtcars$cyl)
 
 ggplot(mtcars, aes(x = mpg)) +
@@ -114,7 +114,7 @@ First we have to set the values of interest. Let's see a 4 cylinder vs 8 cylinde
 This can all be chained together with `%>%`.
 
 
-```{r fig.height = 3, fig.width = 5}
+```{r fig.height = 3, fig.width = 5, out.height = 100%}
 par(mar = rep(2, 4))
 
 zelig(mpg ~ cyl + wt + hp + gear, data = mtcars, 
