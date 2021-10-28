@@ -92,7 +92,7 @@ head(mtcars)
 Let's say we're interested in the effect the that number of cylinders has on a car's fuel effeciency. We'll
 start by looking at the data.
 
-```{r, out.height = 100%}
+```{r, out.height = "100%"}
 table(mtcars$cyl)
 
 ggplot(mtcars, aes(x = mpg)) +
@@ -114,7 +114,7 @@ First we have to set the values of interest. Let's see a 4 cylinder vs 8 cylinde
 This can all be chained together with `%>%`.
 
 
-```{r fig.height = 3, fig.width = 5, out.height = 100%}
+```{r fig.height = 3, fig.width = 5, out.height = "100%"}
 par(mar = rep(2, 4))
 
 zelig(mpg ~ cyl + wt + hp + gear, data = mtcars, 
@@ -134,4 +134,4 @@ compared to a car with 4 cylinders. That said, there is some overlap in the comp
 [^1]: There are two options for converting Zelig's output to a format that's readable for `modelsummary()`. As seen above
 you can add a pipe (`%>%`) followed by `from_zelig_model()`. Alternatively, you can wrap the code inside of `from_zelig_model()`. 
 For example `from_zelig_model(zelig(Survived ~ Class + Sex + Age, data = titanic.expanded, model = "logit"))`.
-Both methods do the same thing, the difference is ultimately asthetic. Choose the method you find most readable. 
+Both methods do the same thing, the difference is ultimately asthetic. I prefer using `%>%` as the commands read in the order that they are being executed, where as nesting commands requires you to start near the end of the line and read backwards.

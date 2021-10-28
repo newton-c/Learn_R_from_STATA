@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>9 Linear Regression | Learn R from STATA</title>
   <meta name="description" content="9 Linear Regression | Learn R from STATA" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="9 Linear Regression | Learn R from STATA" />
   <meta property="og:type" content="book" />
@@ -32,7 +32,8 @@
   
 <link rel="prev" href="visualizing-and-describing-your-data.html"/>
 <link rel="next" href="mle.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,7 +49,8 @@
 
 
 
-
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <!-- gtag.js, from Google Analytics -->
@@ -125,6 +127,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 </head>
 
 <body>
@@ -158,17 +161,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#reporting"><i class="fa fa-check"></i><b>4.5</b> Reporting</a></li>
 <li class="chapter" data-level="4.6" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#exercises"><i class="fa fa-check"></i><b>4.6</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html"><i class="fa fa-check"></i><b>5</b> Dealing with .dta</a><ul>
-<li class="chapter" data-level="5.1" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#using-haven-to-import-stata-files"><i class="fa fa-check"></i><b>5.1</b> Using haven to import STATA files</a></li>
-<li class="chapter" data-level="5.2" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#dealing-with-errors"><i class="fa fa-check"></i><b>5.2</b> Dealing with errors</a></li>
-<li class="chapter" data-level="5.3" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#but-theres-still-problems"><i class="fa fa-check"></i><b>5.3</b> But there’s still problems</a></li>
-<li class="chapter" data-level="5.4" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#other-data-formats"><i class="fa fa-check"></i><b>5.4</b> Other data formats</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#rdata"><i class="fa fa-check"></i><b>5.4.1</b> .Rdata</a></li>
-<li class="chapter" data-level="5.4.2" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#csv-and-other-delimited-files"><i class="fa fa-check"></i><b>5.4.2</b> .csv and other delimited files</a></li>
-<li class="chapter" data-level="5.4.3" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#excel-files"><i class="fa fa-check"></i><b>5.4.3</b> Excel files</a></li>
-<li class="chapter" data-level="5.4.4" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#json"><i class="fa fa-check"></i><b>5.4.4</b> .json</a></li>
+<li class="chapter" data-level="5" data-path="dealing-with-.html"><a href="dealing-with-.html"><i class="fa fa-check"></i><b>5</b> Dealing with .dta</a><ul>
+<li class="chapter" data-level="5.1" data-path="dealing-with-.html"><a href="dealing-with-.html#using-haven-to-import-stata-files"><i class="fa fa-check"></i><b>5.1</b> Using haven to import STATA files</a></li>
+<li class="chapter" data-level="5.2" data-path="dealing-with-.html"><a href="dealing-with-.html#dealing-with-errors"><i class="fa fa-check"></i><b>5.2</b> Dealing with errors</a></li>
+<li class="chapter" data-level="5.3" data-path="dealing-with-.html"><a href="dealing-with-.html#but-theres-still-problems"><i class="fa fa-check"></i><b>5.3</b> But there’s still problems</a></li>
+<li class="chapter" data-level="5.4" data-path="dealing-with-.html"><a href="dealing-with-.html#other-data-formats"><i class="fa fa-check"></i><b>5.4</b> Other data formats</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="dealing-with-.html"><a href="dealing-with-.html#rdata"><i class="fa fa-check"></i><b>5.4.1</b> .Rdata</a></li>
+<li class="chapter" data-level="5.4.2" data-path="dealing-with-.html"><a href="dealing-with-.html#csv-and-other-delimited-files"><i class="fa fa-check"></i><b>5.4.2</b> .csv and other delimited files</a></li>
+<li class="chapter" data-level="5.4.3" data-path="dealing-with-.html"><a href="dealing-with-.html#excel-files"><i class="fa fa-check"></i><b>5.4.3</b> Excel files</a></li>
+<li class="chapter" data-level="5.4.4" data-path="dealing-with-.html"><a href="dealing-with-.html#json"><i class="fa fa-check"></i><b>5.4.4</b> .json</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#using-multiple-dataframes"><i class="fa fa-check"></i><b>5.5</b> Using multiple dataframes</a></li>
+<li class="chapter" data-level="5.5" data-path="dealing-with-.html"><a href="dealing-with-.html#using-multiple-dataframes"><i class="fa fa-check"></i><b>5.5</b> Using multiple dataframes</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html"><i class="fa fa-check"></i><b>6</b> Merging and Wrangling</a><ul>
 <li class="chapter" data-level="6.1" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#base-r"><i class="fa fa-check"></i><b>6.1</b> base R</a></li>
@@ -311,8 +314,10 @@ lm(y ~ x1 + x2 + x1:x2)</code></pre>
 <a class="sourceLine" id="cb37-5" title="5">    <span class="st">&quot;dose&quot;</span> =<span class="st"> &quot;Dose (mg/day)&quot;</span></a>
 <a class="sourceLine" id="cb37-6" title="6">)</a>
 <a class="sourceLine" id="cb37-7" title="7"></a>
-<a class="sourceLine" id="cb37-8" title="8"><span class="kw">modelsummary</span>(<span class="dt">models =</span> model, <span class="dt">coef_map =</span> cn, <span class="dt">stars =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<a class="sourceLine" id="cb37-8" title="8"><span class="kw">modelsummary</span>(<span class="dt">models =</span> model, <span class="dt">coef_map =</span> cn, <span class="dt">stars =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb37-9" title="9"><span class="co">#&gt; Warning: In version 0.8.0 of the `modelsummary` package, the default significance markers produced by the `stars=TRUE` argument were changed to be consistent with R&#39;s defaults.</span></a>
+<a class="sourceLine" id="cb37-10" title="10"><span class="co">#&gt; This warning is displayed once per session.</span></a></code></pre></div>
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -328,7 +333,7 @@ Model 1
 Supplement Type
 </td>
 <td style="text-align:center;">
--3.700***
+−3.700**
 </td>
 </tr>
 <tr>
@@ -398,7 +403,7 @@ BIC
 Log.Lik.
 </td>
 <td style="text-align:center;">
--170.208
+−170.208
 </td>
 </tr>
 <tr>
@@ -412,8 +417,8 @@ F
 </tbody>
 <tfoot>
 <tr>
-<td style="padding: 0; border:0;" colspan="100%">
-<sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01
+<td style="padding: 0; " colspan="100%">
+<sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001
 </td>
 </tr>
 </tfoot>
@@ -431,7 +436,6 @@ F
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -450,6 +454,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -470,6 +475,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "edit": {

@@ -76,9 +76,11 @@ cn = c(
 )
 
 modelsummary(models = model, coef_map = cn, stars = TRUE)
+#> Warning: In version 0.8.0 of the `modelsummary` package, the default significance markers produced by the `stars=TRUE` argument were changed to be consistent with R's defaults.
+#> This warning is displayed once per session.
 ```
 
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
  <thead>
   <tr>
    <th style="text-align:left;">   </th>
@@ -88,7 +90,7 @@ modelsummary(models = model, coef_map = cn, stars = TRUE)
 <tbody>
   <tr>
    <td style="text-align:left;"> Supplement Type </td>
-   <td style="text-align:center;"> -3.700*** </td>
+   <td style="text-align:center;"> −3.700** </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
@@ -124,17 +126,13 @@ modelsummary(models = model, coef_map = cn, stars = TRUE)
   </tr>
   <tr>
    <td style="text-align:left;"> Log.Lik. </td>
-   <td style="text-align:center;"> -170.208 </td>
+   <td style="text-align:center;"> −170.208 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> F </td>
    <td style="text-align:center;"> 67.718 </td>
   </tr>
 </tbody>
-<tfoot>
-<tr>
-<td style="padding: 0; border:0;" colspan="100%">
-<sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
-</tr>
-</tfoot>
+<tfoot><tr><td style="padding: 0; " colspan="100%">
+<sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
 </table>

@@ -92,9 +92,11 @@ models = list(
 )
 
 modelsummary(models, stars = TRUE)
+#> Warning: In version 0.8.0 of the `modelsummary` package, the default significance markers produced by the `stars=TRUE` argument were changed to be consistent with R's defaults.
+#> This warning is displayed once per session.
 ```
 
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
  <thead>
   <tr>
    <th style="text-align:left;">   </th>
@@ -105,8 +107,8 @@ modelsummary(models, stars = TRUE)
 <tbody>
   <tr>
    <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:center;"> 0.685** </td>
-   <td style="text-align:center;"> 0.685** </td>
+   <td style="text-align:center;"> 0.685* </td>
+   <td style="text-align:center;"> 0.685* </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
@@ -115,8 +117,8 @@ modelsummary(models, stars = TRUE)
   </tr>
   <tr>
    <td style="text-align:left;"> Class2nd </td>
-   <td style="text-align:center;"> -1.018*** </td>
-   <td style="text-align:center;"> -1.018*** </td>
+   <td style="text-align:center;"> −1.018*** </td>
+   <td style="text-align:center;"> −1.018*** </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
@@ -125,8 +127,8 @@ modelsummary(models, stars = TRUE)
   </tr>
   <tr>
    <td style="text-align:left;"> Class3rd </td>
-   <td style="text-align:center;"> -1.778*** </td>
-   <td style="text-align:center;"> -1.778*** </td>
+   <td style="text-align:center;"> −1.778*** </td>
+   <td style="text-align:center;"> −1.778*** </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
@@ -135,8 +137,8 @@ modelsummary(models, stars = TRUE)
   </tr>
   <tr>
    <td style="text-align:left;"> ClassCrew </td>
-   <td style="text-align:center;"> -0.858*** </td>
-   <td style="text-align:center;"> -0.858*** </td>
+   <td style="text-align:center;"> −0.858*** </td>
+   <td style="text-align:center;"> −0.858*** </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
@@ -155,8 +157,8 @@ modelsummary(models, stars = TRUE)
   </tr>
   <tr>
    <td style="text-align:left;"> AgeAdult </td>
-   <td style="text-align:center;"> -1.062*** </td>
-   <td style="text-align:center;"> -1.062*** </td>
+   <td style="text-align:center;"> −1.062*** </td>
+   <td style="text-align:center;"> −1.062*** </td>
   </tr>
   <tr>
    <td style="text-align:left;box-shadow: 0px 1px">  </td>
@@ -180,16 +182,12 @@ modelsummary(models, stars = TRUE)
   </tr>
   <tr>
    <td style="text-align:left;"> Log.Lik. </td>
-   <td style="text-align:center;"> -1105.031 </td>
-   <td style="text-align:center;"> -1105.031 </td>
+   <td style="text-align:center;"> −1105.031 </td>
+   <td style="text-align:center;"> −1105.031 </td>
   </tr>
 </tbody>
-<tfoot>
-<tr>
-<td style="padding: 0; border:0;" colspan="100%">
-<sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
-</tr>
-</tfoot>
+<tfoot><tr><td style="padding: 0; " colspan="100%">
+<sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
 </table>
 As we can see, the output is identical, proving that either method will work. Now we can look at various different models by simply changing the
 `model = ` parpameter. Here's a compariason of a logit, and probit.
@@ -210,7 +208,7 @@ models = list(
 modelsummary(models, stars = TRUE)
 ```
 
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
  <thead>
   <tr>
    <th style="text-align:left;">   </th>
@@ -221,8 +219,8 @@ modelsummary(models, stars = TRUE)
 <tbody>
   <tr>
    <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:center;"> 0.685** </td>
-   <td style="text-align:center;"> 0.367** </td>
+   <td style="text-align:center;"> 0.685* </td>
+   <td style="text-align:center;"> 0.367* </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
@@ -231,8 +229,8 @@ modelsummary(models, stars = TRUE)
   </tr>
   <tr>
    <td style="text-align:left;"> Class2nd </td>
-   <td style="text-align:center;"> -1.018*** </td>
-   <td style="text-align:center;"> -0.630*** </td>
+   <td style="text-align:center;"> −1.018*** </td>
+   <td style="text-align:center;"> −0.630*** </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
@@ -241,8 +239,8 @@ modelsummary(models, stars = TRUE)
   </tr>
   <tr>
    <td style="text-align:left;"> Class3rd </td>
-   <td style="text-align:center;"> -1.778*** </td>
-   <td style="text-align:center;"> -1.027*** </td>
+   <td style="text-align:center;"> −1.778*** </td>
+   <td style="text-align:center;"> −1.027*** </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
@@ -251,8 +249,8 @@ modelsummary(models, stars = TRUE)
   </tr>
   <tr>
    <td style="text-align:left;"> ClassCrew </td>
-   <td style="text-align:center;"> -0.858*** </td>
-   <td style="text-align:center;"> -0.540*** </td>
+   <td style="text-align:center;"> −0.858*** </td>
+   <td style="text-align:center;"> −0.540*** </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
@@ -271,8 +269,8 @@ modelsummary(models, stars = TRUE)
   </tr>
   <tr>
    <td style="text-align:left;"> AgeAdult </td>
-   <td style="text-align:center;"> -1.062*** </td>
-   <td style="text-align:center;"> -0.580*** </td>
+   <td style="text-align:center;"> −1.062*** </td>
+   <td style="text-align:center;"> −0.580*** </td>
   </tr>
   <tr>
    <td style="text-align:left;box-shadow: 0px 1px">  </td>
@@ -296,16 +294,12 @@ modelsummary(models, stars = TRUE)
   </tr>
   <tr>
    <td style="text-align:left;"> Log.Lik. </td>
-   <td style="text-align:center;"> -1105.031 </td>
-   <td style="text-align:center;"> -1106.314 </td>
+   <td style="text-align:center;"> −1105.031 </td>
+   <td style="text-align:center;"> −1106.314 </td>
   </tr>
 </tbody>
-<tfoot>
-<tr>
-<td style="padding: 0; border:0;" colspan="100%">
-<sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
-</tr>
-</tfoot>
+<tfoot><tr><td style="padding: 0; " colspan="100%">
+<sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
 </table>
 You can see all of the supported models, and their specific syntax in the [\textcolor{blue}{Zelig documentation}](http://docs.zeligproject.org/articles/index.html#section-core-zelig-model-details).
 
@@ -336,12 +330,11 @@ table(mtcars$cyl)
 #> 
 #>  4  6  8 
 #> 11  7 14
-
 ggplot(mtcars, aes(x = mpg)) +
     geom_density(fill = "blue", color = "blue", alpha = .3)
 ```
 
-<embed src="One_stop_modeling_files/figure-html/unnamed-chunk-6-1.pdf" width="70%" style="display: block; margin: auto;" type="application/pdf" />
+<embed src="One_stop_modeling_files/figure-html/unnamed-chunk-6-1.pdf" width="70%" height="100%" style="display: block; margin: auto;" type="application/pdf" />
 To look at the effect of cylinders *all else equal*, we need to estimate a model.
 Miles per gallon is roughly countious and regularly distributed, so we'll use OLS. In addition to the number of cylinders
 lets adjust for the weight, horsepower, and the number of gears a car has. 
@@ -391,10 +384,9 @@ zelig(mpg ~ cyl + wt + hp + gear, data = mtcars,
     setx1(cyl = 8) %>% 
     sim() %>% 
     plot()
-
 ```
 
-<embed src="One_stop_modeling_files/figure-html/unnamed-chunk-8-1.pdf" width="70%" style="display: block; margin: auto;" type="application/pdf" />
+<embed src="One_stop_modeling_files/figure-html/unnamed-chunk-8-1.pdf" width="70%" height="100%" style="display: block; margin: auto;" type="application/pdf" />
 
 We can see from the graphs that a car with 8 cylinders (in blue) is expected to have a lower mgp when
 compared to a car with 4 cylinders. That said, there is some overlap in the comparison. 
@@ -403,4 +395,4 @@ compared to a car with 4 cylinders. That said, there is some overlap in the comp
 [^1]: There are two options for converting Zelig's output to a format that's readable for `modelsummary()`. As seen above
 you can add a pipe (`%>%`) followed by `from_zelig_model()`. Alternatively, you can wrap the code inside of `from_zelig_model()`. 
 For example `from_zelig_model(zelig(Survived ~ Class + Sex + Age, data = titanic.expanded, model = "logit"))`.
-Both methods do the same thing, the difference is ultimately asthetic. Choose the method you find most readable. 
+Both methods do the same thing, the difference is ultimately asthetic. I prefer using `%>%` as the commands read in the order that they are being executed, where as nesting commands requires you to start near the end of the line and read backwards.

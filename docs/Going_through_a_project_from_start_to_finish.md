@@ -136,9 +136,11 @@ independent.var.names = c(
 
 modelsummary(titanic.logit, stars = TRUE, 
     coef_map = independent.var.names)
+#> Warning: In version 0.8.0 of the `modelsummary` package, the default significance markers produced by the `stars=TRUE` argument were changed to be consistent with R's defaults.
+#> This warning is displayed once per session.
 ```
 
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
  <thead>
   <tr>
    <th style="text-align:left;">   </th>
@@ -148,7 +150,7 @@ modelsummary(titanic.logit, stars = TRUE,
 <tbody>
   <tr>
    <td style="text-align:left;"> Second Class </td>
-   <td style="text-align:center;"> -1.018*** </td>
+   <td style="text-align:center;"> −1.018*** </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
@@ -156,7 +158,7 @@ modelsummary(titanic.logit, stars = TRUE,
   </tr>
   <tr>
    <td style="text-align:left;"> Third Class </td>
-   <td style="text-align:center;"> -1.778*** </td>
+   <td style="text-align:center;"> −1.778*** </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
@@ -164,7 +166,7 @@ modelsummary(titanic.logit, stars = TRUE,
   </tr>
   <tr>
    <td style="text-align:left;"> Crew </td>
-   <td style="text-align:center;"> -0.858*** </td>
+   <td style="text-align:center;"> −0.858*** </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
@@ -180,7 +182,7 @@ modelsummary(titanic.logit, stars = TRUE,
   </tr>
   <tr>
    <td style="text-align:left;"> Age (Adult) </td>
-   <td style="text-align:center;"> -1.062*** </td>
+   <td style="text-align:center;"> −1.062*** </td>
   </tr>
   <tr>
    <td style="text-align:left;box-shadow: 0px 1px">  </td>
@@ -200,15 +202,11 @@ modelsummary(titanic.logit, stars = TRUE,
   </tr>
   <tr>
    <td style="text-align:left;"> Log.Lik. </td>
-   <td style="text-align:center;"> -1105.031 </td>
+   <td style="text-align:center;"> −1105.031 </td>
   </tr>
 </tbody>
-<tfoot>
-<tr>
-<td style="padding: 0; border:0;" colspan="100%">
-<sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
-</tr>
-</tfoot>
+<tfoot><tr><td style="padding: 0; " colspan="100%">
+<sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
 </table>
 And say we have multiple models, such as one for each independent variable plus our original model, we can report all of them like this:
 
@@ -236,7 +234,7 @@ modelsummary(models, stars = TRUE,
     coef_map = independent.var.names)
 ```
 
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
  <thead>
   <tr>
    <th style="text-align:left;">   </th>
@@ -249,10 +247,10 @@ modelsummary(models, stars = TRUE,
 <tbody>
   <tr>
    <td style="text-align:left;"> Second Class </td>
-   <td style="text-align:center;"> -0.856*** </td>
+   <td style="text-align:center;"> −0.856*** </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
-   <td style="text-align:center;"> -1.018*** </td>
+   <td style="text-align:center;"> −1.018*** </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
@@ -263,10 +261,10 @@ modelsummary(models, stars = TRUE,
   </tr>
   <tr>
    <td style="text-align:left;"> Third Class </td>
-   <td style="text-align:center;"> -1.596*** </td>
+   <td style="text-align:center;"> −1.596*** </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
-   <td style="text-align:center;"> -1.778*** </td>
+   <td style="text-align:center;"> −1.778*** </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
@@ -277,10 +275,10 @@ modelsummary(models, stars = TRUE,
   </tr>
   <tr>
    <td style="text-align:left;"> Crew </td>
-   <td style="text-align:center;"> -1.664*** </td>
+   <td style="text-align:center;"> −1.664*** </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
-   <td style="text-align:center;"> -0.858*** </td>
+   <td style="text-align:center;"> −0.858*** </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
@@ -307,8 +305,8 @@ modelsummary(models, stars = TRUE,
    <td style="text-align:left;"> Age (Adult) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
-   <td style="text-align:center;"> -0.880*** </td>
-   <td style="text-align:center;"> -1.062*** </td>
+   <td style="text-align:center;"> −0.880*** </td>
+   <td style="text-align:center;"> −1.062*** </td>
   </tr>
   <tr>
    <td style="text-align:left;box-shadow: 0px 1px">  </td>
@@ -340,18 +338,14 @@ modelsummary(models, stars = TRUE,
   </tr>
   <tr>
    <td style="text-align:left;"> Log.Lik. </td>
-   <td style="text-align:center;"> -1294.278 </td>
-   <td style="text-align:center;"> -1167.494 </td>
-   <td style="text-align:center;"> -1374.948 </td>
-   <td style="text-align:center;"> -1105.031 </td>
+   <td style="text-align:center;"> −1294.278 </td>
+   <td style="text-align:center;"> −1167.494 </td>
+   <td style="text-align:center;"> −1374.948 </td>
+   <td style="text-align:center;"> −1105.031 </td>
   </tr>
 </tbody>
-<tfoot>
-<tr>
-<td style="padding: 0; border:0;" colspan="100%">
-<sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
-</tr>
-</tfoot>
+<tfoot><tr><td style="padding: 0; " colspan="100%">
+<sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
 </table>
 
 We can graph our results using `ggplot2`, but first we need to calculate the predicted probailities.

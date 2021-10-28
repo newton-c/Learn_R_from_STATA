@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7 One Stop Modeling: Zelig | Learn R from STATA</title>
   <meta name="description" content="7 One Stop Modeling: Zelig | Learn R from STATA" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7 One Stop Modeling: Zelig | Learn R from STATA" />
   <meta property="og:type" content="book" />
@@ -32,7 +32,8 @@
   
 <link rel="prev" href="merging-and-wrangling.html"/>
 <link rel="next" href="visualizing-and-describing-your-data.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,7 +49,8 @@
 
 
 
-
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <!-- gtag.js, from Google Analytics -->
@@ -125,6 +127,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 </head>
 
 <body>
@@ -158,17 +161,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#reporting"><i class="fa fa-check"></i><b>4.5</b> Reporting</a></li>
 <li class="chapter" data-level="4.6" data-path="going-through-a-project-from-start-to-finish.html"><a href="going-through-a-project-from-start-to-finish.html#exercises"><i class="fa fa-check"></i><b>4.6</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html"><i class="fa fa-check"></i><b>5</b> Dealing with .dta</a><ul>
-<li class="chapter" data-level="5.1" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#using-haven-to-import-stata-files"><i class="fa fa-check"></i><b>5.1</b> Using haven to import STATA files</a></li>
-<li class="chapter" data-level="5.2" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#dealing-with-errors"><i class="fa fa-check"></i><b>5.2</b> Dealing with errors</a></li>
-<li class="chapter" data-level="5.3" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#but-theres-still-problems"><i class="fa fa-check"></i><b>5.3</b> But there’s still problems</a></li>
-<li class="chapter" data-level="5.4" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#other-data-formats"><i class="fa fa-check"></i><b>5.4</b> Other data formats</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#rdata"><i class="fa fa-check"></i><b>5.4.1</b> .Rdata</a></li>
-<li class="chapter" data-level="5.4.2" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#csv-and-other-delimited-files"><i class="fa fa-check"></i><b>5.4.2</b> .csv and other delimited files</a></li>
-<li class="chapter" data-level="5.4.3" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#excel-files"><i class="fa fa-check"></i><b>5.4.3</b> Excel files</a></li>
-<li class="chapter" data-level="5.4.4" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#json"><i class="fa fa-check"></i><b>5.4.4</b> .json</a></li>
+<li class="chapter" data-level="5" data-path="dealing-with-.html"><a href="dealing-with-.html"><i class="fa fa-check"></i><b>5</b> Dealing with .dta</a><ul>
+<li class="chapter" data-level="5.1" data-path="dealing-with-.html"><a href="dealing-with-.html#using-haven-to-import-stata-files"><i class="fa fa-check"></i><b>5.1</b> Using haven to import STATA files</a></li>
+<li class="chapter" data-level="5.2" data-path="dealing-with-.html"><a href="dealing-with-.html#dealing-with-errors"><i class="fa fa-check"></i><b>5.2</b> Dealing with errors</a></li>
+<li class="chapter" data-level="5.3" data-path="dealing-with-.html"><a href="dealing-with-.html#but-theres-still-problems"><i class="fa fa-check"></i><b>5.3</b> But there’s still problems</a></li>
+<li class="chapter" data-level="5.4" data-path="dealing-with-.html"><a href="dealing-with-.html#other-data-formats"><i class="fa fa-check"></i><b>5.4</b> Other data formats</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="dealing-with-.html"><a href="dealing-with-.html#rdata"><i class="fa fa-check"></i><b>5.4.1</b> .Rdata</a></li>
+<li class="chapter" data-level="5.4.2" data-path="dealing-with-.html"><a href="dealing-with-.html#csv-and-other-delimited-files"><i class="fa fa-check"></i><b>5.4.2</b> .csv and other delimited files</a></li>
+<li class="chapter" data-level="5.4.3" data-path="dealing-with-.html"><a href="dealing-with-.html#excel-files"><i class="fa fa-check"></i><b>5.4.3</b> Excel files</a></li>
+<li class="chapter" data-level="5.4.4" data-path="dealing-with-.html"><a href="dealing-with-.html#json"><i class="fa fa-check"></i><b>5.4.4</b> .json</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="dealing-with-dta.html"><a href="dealing-with-dta.html#using-multiple-dataframes"><i class="fa fa-check"></i><b>5.5</b> Using multiple dataframes</a></li>
+<li class="chapter" data-level="5.5" data-path="dealing-with-.html"><a href="dealing-with-.html#using-multiple-dataframes"><i class="fa fa-check"></i><b>5.5</b> Using multiple dataframes</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html"><i class="fa fa-check"></i><b>6</b> Merging and Wrangling</a><ul>
 <li class="chapter" data-level="6.1" data-path="merging-and-wrangling.html"><a href="merging-and-wrangling.html#base-r"><i class="fa fa-check"></i><b>6.1</b> base R</a></li>
@@ -331,8 +334,10 @@ We can compare the original logit from Chapter 3 to the one above to varify that
 <a class="sourceLine" id="cb27-10" title="10"><span class="st">        </span><span class="kw">from_zelig_model</span>()</a>
 <a class="sourceLine" id="cb27-11" title="11">)</a>
 <a class="sourceLine" id="cb27-12" title="12"></a>
-<a class="sourceLine" id="cb27-13" title="13"><span class="kw">modelsummary</span>(models, <span class="dt">stars =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<a class="sourceLine" id="cb27-13" title="13"><span class="kw">modelsummary</span>(models, <span class="dt">stars =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb27-14" title="14"><span class="co">#&gt; Warning: In version 0.8.0 of the `modelsummary` package, the default significance markers produced by the `stars=TRUE` argument were changed to be consistent with R&#39;s defaults.</span></a>
+<a class="sourceLine" id="cb27-15" title="15"><span class="co">#&gt; This warning is displayed once per session.</span></a></code></pre></div>
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -351,10 +356,10 @@ Zelig model
 (Intercept)
 </td>
 <td style="text-align:center;">
-0.685**
+0.685*
 </td>
 <td style="text-align:center;">
-0.685**
+0.685*
 </td>
 </tr>
 <tr>
@@ -372,10 +377,10 @@ Zelig model
 Class2nd
 </td>
 <td style="text-align:center;">
--1.018***
+−1.018***
 </td>
 <td style="text-align:center;">
--1.018***
+−1.018***
 </td>
 </tr>
 <tr>
@@ -393,10 +398,10 @@ Class2nd
 Class3rd
 </td>
 <td style="text-align:center;">
--1.778***
+−1.778***
 </td>
 <td style="text-align:center;">
--1.778***
+−1.778***
 </td>
 </tr>
 <tr>
@@ -414,10 +419,10 @@ Class3rd
 ClassCrew
 </td>
 <td style="text-align:center;">
--0.858***
+−0.858***
 </td>
 <td style="text-align:center;">
--0.858***
+−0.858***
 </td>
 </tr>
 <tr>
@@ -456,10 +461,10 @@ SexFemale
 AgeAdult
 </td>
 <td style="text-align:center;">
--1.062***
+−1.062***
 </td>
 <td style="text-align:center;">
--1.062***
+−1.062***
 </td>
 </tr>
 <tr>
@@ -510,17 +515,17 @@ BIC
 Log.Lik.
 </td>
 <td style="text-align:center;">
--1105.031
+−1105.031
 </td>
 <td style="text-align:center;">
--1105.031
+−1105.031
 </td>
 </tr>
 </tbody>
 <tfoot>
 <tr>
-<td style="padding: 0; border:0;" colspan="100%">
-<sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01
+<td style="padding: 0; " colspan="100%">
+<sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001
 </td>
 </tr>
 </tfoot>
@@ -539,7 +544,7 @@ Log.Lik.
 <a class="sourceLine" id="cb28-10" title="10">)</a>
 <a class="sourceLine" id="cb28-11" title="11"></a>
 <a class="sourceLine" id="cb28-12" title="12"><span class="kw">modelsummary</span>(models, <span class="dt">stars =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -558,10 +563,10 @@ Probit
 (Intercept)
 </td>
 <td style="text-align:center;">
-0.685**
+0.685*
 </td>
 <td style="text-align:center;">
-0.367**
+0.367*
 </td>
 </tr>
 <tr>
@@ -579,10 +584,10 @@ Probit
 Class2nd
 </td>
 <td style="text-align:center;">
--1.018***
+−1.018***
 </td>
 <td style="text-align:center;">
--0.630***
+−0.630***
 </td>
 </tr>
 <tr>
@@ -600,10 +605,10 @@ Class2nd
 Class3rd
 </td>
 <td style="text-align:center;">
--1.778***
+−1.778***
 </td>
 <td style="text-align:center;">
--1.027***
+−1.027***
 </td>
 </tr>
 <tr>
@@ -621,10 +626,10 @@ Class3rd
 ClassCrew
 </td>
 <td style="text-align:center;">
--0.858***
+−0.858***
 </td>
 <td style="text-align:center;">
--0.540***
+−0.540***
 </td>
 </tr>
 <tr>
@@ -663,10 +668,10 @@ SexFemale
 AgeAdult
 </td>
 <td style="text-align:center;">
--1.062***
+−1.062***
 </td>
 <td style="text-align:center;">
--0.580***
+−0.580***
 </td>
 </tr>
 <tr>
@@ -717,17 +722,17 @@ BIC
 Log.Lik.
 </td>
 <td style="text-align:center;">
--1105.031
+−1105.031
 </td>
 <td style="text-align:center;">
--1106.314
+−1106.314
 </td>
 </tr>
 </tbody>
 <tfoot>
 <tr>
-<td style="padding: 0; border:0;" colspan="100%">
-<sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01
+<td style="padding: 0; " colspan="100%">
+<sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001
 </td>
 </tr>
 </tfoot>
@@ -753,10 +758,9 @@ start by looking at the data.</p>
 <a class="sourceLine" id="cb30-2" title="2"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb30-3" title="3"><span class="co">#&gt;  4  6  8 </span></a>
 <a class="sourceLine" id="cb30-4" title="4"><span class="co">#&gt; 11  7 14</span></a>
-<a class="sourceLine" id="cb30-5" title="5"></a>
-<a class="sourceLine" id="cb30-6" title="6"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> mpg)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb30-7" title="7"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">alpha =</span> <span class="fl">.3</span>)</a></code></pre></div>
-<embed src="One_stop_modeling_files/figure-html/unnamed-chunk-6-1.pdf" width="70%" style="display: block; margin: auto;" type="application/pdf" />
+<a class="sourceLine" id="cb30-5" title="5"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> mpg)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb30-6" title="6"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">alpha =</span> <span class="fl">.3</span>)</a></code></pre></div>
+<embed src="One_stop_modeling_files/figure-html/unnamed-chunk-6-1.pdf" width="70%" height="100%" style="display: block; margin: auto;" type="application/pdf" />
 <p>To look at the effect of cylinders <em>all else equal</em>, we need to estimate a model.
 Miles per gallon is roughly countious and regularly distributed, so we’ll use OLS. In addition to the number of cylinders
 lets adjust for the weight, horsepower, and the number of gears a car has.</p>
@@ -798,7 +802,7 @@ This can all be chained together with <code>%&gt;%</code>.</p>
 <a class="sourceLine" id="cb32-6" title="6"><span class="st">    </span><span class="kw">setx1</span>(<span class="dt">cyl =</span> <span class="dv">8</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb32-7" title="7"><span class="st">    </span><span class="kw">sim</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb32-8" title="8"><span class="st">    </span><span class="kw">plot</span>()</a></code></pre></div>
-<embed src="One_stop_modeling_files/figure-html/unnamed-chunk-8-1.pdf" width="70%" style="display: block; margin: auto;" type="application/pdf" />
+<embed src="One_stop_modeling_files/figure-html/unnamed-chunk-8-1.pdf" width="70%" height="100%" style="display: block; margin: auto;" type="application/pdf" />
 <p>We can see from the graphs that a car with 8 cylinders (in blue) is expected to have a lower mgp when
 compared to a car with 4 cylinders. That said, there is some overlap in the comparison.</p>
 
@@ -810,7 +814,7 @@ compared to a car with 4 cylinders. That said, there is some overlap in the comp
 <li id="fn2"><p>There are two options for converting Zelig’s output to a format that’s readable for <code>modelsummary()</code>. As seen above
 you can add a pipe (<code>%&gt;%</code>) followed by <code>from_zelig_model()</code>. Alternatively, you can wrap the code inside of <code>from_zelig_model()</code>.
 For example <code>from_zelig_model(zelig(Survived ~ Class + Sex + Age, data = titanic.expanded, model = "logit"))</code>.
-Both methods do the same thing, the difference is ultimately asthetic. Choose the method you find most readable.<a href="one-stop-modeling-zelig.html#fnref2" class="footnote-back">↩</a></p></li>
+Both methods do the same thing, the difference is ultimately asthetic. I prefer using <code>%&gt;%</code> as the commands read in the order that they are being executed, where as nesting commands requires you to start near the end of the line and read backwards.<a href="one-stop-modeling-zelig.html#fnref2" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -823,7 +827,6 @@ Both methods do the same thing, the difference is ultimately asthetic. Choose th
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -842,6 +845,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -862,6 +866,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "edit": {

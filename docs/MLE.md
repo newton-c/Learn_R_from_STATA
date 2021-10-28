@@ -36,7 +36,6 @@ summary(iris)
 #>                 
 #>                 
 #> 
-
 ggplot(iris) +
     geom_point(aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
     geom_hline(yintercept = 2.5) 
@@ -89,7 +88,7 @@ models = list(
 modelsummary(models = models, stars = TRUE)
 ```
 
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
  <thead>
   <tr>
    <th style="text-align:left;">   </th>
@@ -100,8 +99,8 @@ modelsummary(models = models, stars = TRUE)
 <tbody>
   <tr>
    <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:center;"> -42.638* </td>
-   <td style="text-align:center;"> -23.985* </td>
+   <td style="text-align:center;"> −42.638+ </td>
+   <td style="text-align:center;"> −23.985+ </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
@@ -110,8 +109,8 @@ modelsummary(models = models, stars = TRUE)
   </tr>
   <tr>
    <td style="text-align:left;"> Sepal.Length </td>
-   <td style="text-align:center;"> -2.465 </td>
-   <td style="text-align:center;"> -1.440 </td>
+   <td style="text-align:center;"> −2.465 </td>
+   <td style="text-align:center;"> −1.440 </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
@@ -120,8 +119,8 @@ modelsummary(models = models, stars = TRUE)
   </tr>
   <tr>
    <td style="text-align:left;"> Sepal.Width </td>
-   <td style="text-align:center;"> -6.681 </td>
-   <td style="text-align:center;"> -3.778 </td>
+   <td style="text-align:center;"> −6.681 </td>
+   <td style="text-align:center;"> −3.778 </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
@@ -130,8 +129,8 @@ modelsummary(models = models, stars = TRUE)
   </tr>
   <tr>
    <td style="text-align:left;"> Petal.Length </td>
-   <td style="text-align:center;"> 9.429** </td>
-   <td style="text-align:center;"> 5.316** </td>
+   <td style="text-align:center;"> 9.429* </td>
+   <td style="text-align:center;"> 5.316* </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
@@ -140,8 +139,8 @@ modelsummary(models = models, stars = TRUE)
   </tr>
   <tr>
    <td style="text-align:left;"> Petal.Width </td>
-   <td style="text-align:center;"> 18.286* </td>
-   <td style="text-align:center;"> 10.486* </td>
+   <td style="text-align:center;"> 18.286+ </td>
+   <td style="text-align:center;"> 10.486+ </td>
   </tr>
   <tr>
    <td style="text-align:left;box-shadow: 0px 1px">  </td>
@@ -165,16 +164,12 @@ modelsummary(models = models, stars = TRUE)
   </tr>
   <tr>
    <td style="text-align:left;"> Log.Lik. </td>
-   <td style="text-align:center;"> -5.949 </td>
-   <td style="text-align:center;"> -5.876 </td>
+   <td style="text-align:center;"> −5.949 </td>
+   <td style="text-align:center;"> −5.876 </td>
   </tr>
 </tbody>
-<tfoot>
-<tr>
-<td style="padding: 0; border:0;" colspan="100%">
-<sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
-</tr>
-</tfoot>
+<tfoot><tr><td style="padding: 0; " colspan="100%">
+<sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
 </table>
 
 ## Counts
