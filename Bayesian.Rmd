@@ -12,5 +12,6 @@ The second condition under which Bayesian and ML models give the same answer, is
 when the Bayesian priors are flat. 
 
 ## Using STAN in R
+The `rstanarm` package makes basic Bayesian modeling easy. It copies the syntax from
+common R packages for GLMs and multilevel modeling so there is little learnin curve.
 
-## McElreath and Rethinking

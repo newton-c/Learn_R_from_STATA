@@ -60,7 +60,6 @@ counts
 rare-events-and-zero-inflation
 bayesian-models
 using-stan-in-r
-mcelreath-and-rethinking
 panel-models
 fixed-effects
 adjusting-standard-errors
@@ -68,6 +67,7 @@ random-effects
 pml
 mixed-models
 multilevelhierarchical-models
+lmer-and-stan_lmer
 missing-data-1
 amelia-ii
 k-nn-imputation

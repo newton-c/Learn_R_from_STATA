@@ -38,3 +38,4 @@ panel_model <- lm(y ~ x + as.factor(country) + as.factor(year),
 ### PML
 ## Mixed Models
 ## Multilevel/Hierarchical Models
+### `lmer` and `stan_lmer`
